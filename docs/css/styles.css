@@ -444,7 +444,10 @@ main:focus { outline: none; }
   overflow-wrap: anywhere;
 }
 .skill__modes { color: var(--color-text-subtle); }
-.skill__modes .label { margin-right: var(--spacing-s); }
+.skill > .skill__modes { margin-top: var(--spacing-l); }
+.skill__modes > * + * { margin-top: var(--spacing-2xs); }
+.mode-list { list-style: none; margin: 0; padding: 0; }
+.skill__note { margin-top: var(--spacing-s); }
 
 /* ---------- Callout ---------- */
 .callout {
