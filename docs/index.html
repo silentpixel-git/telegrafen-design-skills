@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telegrafen design skills: workshop guide</title>
+  <meta name="description" content="A self-serve guide to the four Telegrafen Figma skills: mockups, components, visual design and UX writing.">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <!-- Telegrafen UI Icons v1.2.5 (figma.com/design/tgJeQElYu5kOzdP3VxVsky). Export background removed. -->
+  <symbol id="i-copy" viewBox="0 0 32 32"><path d="M4 3C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H8.28571C8.838 21 9.28571 20.5523 9.28571 20C9.28571 19.4477 8.838 19 8.28571 19H5V5H19V8.28571C19 8.838 19.4477 9.28571 20 9.28571C20.5523 9.28571 21 8.838 21 8.28571V4C21 3.44772 20.5523 3 20 3H4Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 11C11.4477 11 11 11.4477 11 12V28C11 28.5523 11.4477 29 12 29H28C28.5523 29 29 28.5523 29 28V12C29 11.4477 28.5523 11 28 11H12ZM13 27V13H27V27H13Z" fill="currentColor"/></symbol>
+  <symbol id="i-success" viewBox="0 0 32 32"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.666 10.2541C24.078 10.6219 24.1138 11.2541 23.7459 11.666L15.6209 20.766C15.4312 20.9785 15.1599 21.1 14.875 21.1C14.5901 21.1 14.3188 20.9785 14.1291 20.766L9.25406 15.306C8.88623 14.8941 8.92202 14.2619 9.33399 13.8941C9.74596 13.5262 10.3781 13.562 10.7459 13.974L14.875 18.5985L22.2541 10.334C22.6219 9.92202 23.254 9.88624 23.666 10.2541Z" fill="currentColor"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 32 32"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.2318 16.6402C9.92274 16.2694 9.92274 15.7307 10.2318 15.3598L17.7318 6.35984C18.0853 5.93556 18.7159 5.87824 19.1402 6.2318C19.5645 6.58537 19.6218 7.21593 19.2682 7.64021L12.3017 16L19.2682 24.3598C19.6218 24.7841 19.5645 25.4147 19.1402 25.7682C18.7159 26.1218 18.0853 26.0645 17.7318 25.6402L10.2318 16.6402Z" fill="currentColor"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 32 32"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.2682 15.3598C21.5773 15.7307 21.5773 16.2694 21.2682 16.6402L13.7682 25.6402C13.4147 26.0645 12.7841 26.1218 12.3598 25.7682C11.9356 25.4147 11.8782 24.7841 12.2318 24.3598L19.1983 16L12.2318 7.64021C11.8782 7.21593 11.9356 6.58537 12.3598 6.2318C12.7841 5.87824 13.4147 5.93556 13.7682 6.35984L21.2682 15.3598Z" fill="currentColor"/></symbol>
+  <symbol id="i-info" viewBox="0 0 32 32"><path d="M14.8461 11.1353C14.8461 10.498 15.3627 9.98145 16 9.98145C16.6372 9.98145 17.1538 10.498 17.1538 11.1353C17.1538 11.7725 16.6372 12.2891 16 12.2891C15.3627 12.2891 14.8461 11.7725 14.8461 11.1353Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 14.9814L17 20.9814C17 21.5337 16.5523 21.9814 16 21.9814C15.4477 21.9814 15 21.5337 15 20.9814L15 14.9814C15 14.4292 15.4477 13.9814 16 13.9814C16.5523 13.9814 17 14.4292 17 14.9814Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.98145C9.92487 4.98145 5 9.90631 5 15.9814C5 22.0566 9.92487 26.9814 16 26.9814C22.0751 26.9814 27 22.0566 27 15.9814C27 9.90631 22.0751 4.98145 16 4.98145ZM3 15.9814C3 8.80174 8.8203 2.98145 16 2.98145C23.1797 2.98145 29 8.80174 29 15.9814C29 23.1611 23.1797 28.9814 16 28.9814C8.8203 28.9814 3 23.1611 3 15.9814Z" fill="currentColor"/></symbol>
+  <symbol id="i-external" viewBox="0 0 32 32"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 10C5 9.44772 5.44772 9 6 9H13.1111C13.6634 9 14.1111 9.44772 14.1111 10C14.1111 10.5523 13.6634 11 13.1111 11H7V25H21V18C21 17.4477 21.4477 17 22 17C22.5523 17 23 17.4477 23 18V26C23 26.5523 22.5523 27 22 27H6C5.44772 27 5 26.5523 5 26V10Z" fill="currentColor"/><path d="M23.5857 7.00005L14.3837 16.202C13.9932 16.5926 13.9932 17.2257 14.3837 17.6162C14.7742 18.0068 15.4074 18.0068 15.7979 17.6162L25 8.41417V11.4546C25 12.0069 25.4477 12.4546 26 12.4546C26.5523 12.4546 27 12.0069 27 11.4546V6.00005C27 5.44776 26.5523 5.00005 26 5.00005H20.5455C19.9932 5.00005 19.5455 5.44776 19.5455 6.00005C19.5455 6.55233 19.9932 7.00005 20.5455 7.00005L23.5857 7.00005Z" fill="currentColor"/></symbol>
+  <symbol id="i-telenor" viewBox="0 0 32 32"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.1408 11.1141C15.513 11.1697 15.5883 11.0966 15.6377 10.7544C15.7184 10.2324 15.9109 9.35219 16.3607 8.44999C16.8477 7.4771 17.6232 6.40809 18.7079 5.69231C19.6215 5.09724 21.119 4.43815 22.2783 4.19909C23.2266 4.0008 24.1151 3.96295 24.8775 4.03152C26.4443 4.16836 27.3109 4.60228 27.7459 5.16389C27.9073 5.3737 27.9955 5.63253 27.9992 5.80009C28.0116 6.07943 27.8861 6.44397 27.473 6.80184C27.0711 7.14657 26.2137 7.58271 25.0445 7.96463C23.8308 8.35716 22.1723 8.77168 20.519 9.14122C19.1347 9.45098 18.3471 9.7146 17.6894 9.93118C16.5955 10.2914 16.2658 11.3491 16.9475 11.6721C17.9327 12.1389 18.5489 12.627 19.074 13.0419C19.8617 13.6695 20.7765 14.4081 21.9123 15.74C22.9412 16.9614 24.6245 19.2926 25.2304 21.5554C25.9009 24.0396 25.4819 26.3955 24.0354 27.0534C22.6172 27.6995 20.7273 26.7672 19.4006 25.4304C18.1384 24.1616 17.2575 22.6672 16.4291 20.3621C15.7107 18.3807 15.4195 15.5076 15.4207 14.0046C15.4207 13.5039 15.4124 13.3971 15.4332 12.9449C15.4814 12.5509 14.3882 12.225 13.2132 12.9596C11.8761 13.7956 10.5661 15.3106 9.79276 16.1905C9.45632 16.5745 9.00028 17.1389 8.51704 17.7308C7.87999 18.5072 7.17679 19.3158 6.53574 19.7678C5.57098 20.4512 4.02096 20.7337 2.93525 19.9811C2.33174 19.5619 2.01048 18.7704 2.0004 17.9657C1.9914 17.3992 2.13596 16.8866 2.42706 16.381C2.79074 15.7604 3.38952 15.0943 4.33879 14.3315C5.32039 13.5476 6.88736 12.6609 8.45766 12.048C10.8529 11.1111 13.4318 10.8163 15.1408 11.1141Z" fill="currentColor"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="hero t-dark">
+  <div class="container">
+    <svg class="hero__logo" aria-hidden="true" focusable="false"><use href="#i-telenor"></use></svg>
+    <p class="eyebrow">Workshop guide</p>
+    <h1>Design with the Telegrafen skills in Figma</h1>
+    <p class="lead">Pick the right skill and mode, copy a starter prompt, and follow the recommended workflow from first draft to final QA.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary btn--m" href="#picker">Find the right skill</a>
+      <a class="btn btn--tertiary btn--m" href="#workflow">Follow the workflow</a>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="On this page">
+  <div class="container">
+    <ul>
+      <li><a href="#picker">Skill picker</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#modes">Modes</a></li>
+      <li><a href="#rules">Source rules</a></li>
+      <li><a href="#tips">Design tips</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+      <li><a href="#prompts">Demo prompts</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#cheatsheet">Cheat sheet</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+
+  <!-- 1. Picker -->
+  <section id="picker" class="section" aria-labelledby="picker-title">
+    <div class="container">
+      <h2 id="picker-title">What do you want to do?</h2>
+      <p class="section__intro">Choose a task. You get the skill, the mode and a starter prompt to adapt. The mapping follows the workshop cheat sheet.</p>
+
+      <fieldset class="chip-group">
+        <legend class="label">Your task</legend>
+        <div class="chip-group__items" id="picker-options">
+          <!-- Rendered by js/app.js; static fallback below for no-JS. -->
+        </div>
+      </fieldset>
+
+      <div class="picker-result" id="picker-result" aria-live="polite">
+        <p class="picker-result__empty">Select a task to see a recommendation.</p>
+      </div>
+      <noscript><p class="note">The picker needs JavaScript. Use the <a href="#cheatsheet">cheat sheet</a> instead.</p></noscript>
+    </div>
+  </section>
+
+  <!-- 2. Skills at a glance -->
+  <section id="skills" class="section" aria-labelledby="skills-title">
+    <div class="container">
+      <h2 id="skills-title">The four skills at a glance</h2>
+      <p class="section__intro">Versions come from each <code>SKILL.md</code> frontmatter in this repository.</p>
+      <ul class="skill-list">
+        <li class="skill">
+          <div class="skill__head">
+            <h3>Mockups</h3>
+            <span class="badge">v2.4</span>
+          </div>
+          <p class="skill__cmd">/telegrafen-design-mockups</p>
+          <p>Build screens, flows and prototypes from verified Telegrafen assets.</p>
+          <p class="skill__modes"><span class="label">Modes</span> Build &amp; Iterate (default) · Review &amp; Finalize</p>
+        </li>
+        <li class="skill">
+          <div class="skill__head">
+            <h3>Components</h3>
+            <span class="badge">v1.4</span>
+          </div>
+          <p class="skill__cmd">/telegrafen-design-components</p>
+          <p>Design, review, repair and finalise reusable components.</p>
+          <p class="skill__modes"><span class="label">Modes</span> Build &amp; Iterate (default) · Review &amp; QA (read-only) · Repair &amp; Finalize (edits authorised)</p>
+        </li>
+        <li class="skill">
+          <div class="skill__head">
+            <h3>Visual Design</h3>
+            <span class="badge">v1.1</span>
+          </div>
+          <p class="skill__cmd">/telegrafen-visual-design</p>
+          <p>Senior art-direction review and focused visual refinement of existing designs.</p>
+          <p class="skill__modes"><span class="label">Modes</span> Review (read-only) · Apply (authorised changes). <em>Deep</em> is a verification-depth modifier for either mode, not a mode. It does not expand editing authority.</p>
+        </li>
+        <li class="skill">
+          <div class="skill__head">
+            <h3>UX Writing</h3>
+            <span class="badge">v1.2</span>
+          </div>
+          <p class="skill__cmd">/telegrafen-ux-writing</p>
+          <p>Norwegian Bokmål interface microcopy. Not for campaigns, articles, product pages, emails, push notifications or other long-form copy.</p>
+          <p class="skill__modes"><span class="label">Operations</span> Create · Rewrite · Update selected content · QA (read-only)</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. Modes -->
+  <section id="modes" class="section" aria-labelledby="modes-title">
+    <div class="container">
+      <h2 id="modes-title">Choosing the right mode</h2>
+      <div class="callout" role="note">
+        <svg class="icon callout__icon" aria-hidden="true" focusable="false"><use href="#i-info"></use></svg>
+        <div>
+          <p class="callout__title">Review modes are not interchangeable</p>
+          <p>Mockups <strong>Review &amp; Finalize</strong> inspects the full scope, corrects defects in the requested area and runs the production and WCAG 2.2 AA gates. Components <strong>Review &amp; QA</strong>, Visual Design <strong>Review</strong> and UX Writing <strong>QA</strong> are read-only: they report findings and change nothing unless you explicitly authorise edits.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="modes-caption">
+        <table>
+          <caption id="modes-caption">Modes by skill</caption>
+          <thead>
+            <tr><th scope="col">Skill</th><th scope="col">Mode</th><th scope="col">Edits</th><th scope="col">What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" rowspan="2">Mockups</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, requested views only</td><td>Rapid draft with targeted checks. Ends with <em>Draft status</em>: READY TO ITERATE, NEEDS CHANGES or BLOCKED. No review verdicts.</td></tr>
+            <tr><td>Review &amp; Finalize</td><td>Requested area and connected states</td><td>Inspects every visible section and state in scope, reports unrelated defects, and runs the complete production and WCAG 2.2 AA gates.</td></tr>
+            <tr><th scope="row" rowspan="3">Components</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, after the interview gate</td><td>Fast draft loop. Every unresolved product decision needs your answer, and you confirm the contract before it builds.</td></tr>
+            <tr><td>Review &amp; QA</td><td>No, read-only</td><td>Structural and visual assessment.</td></tr>
+            <tr><td>Repair &amp; Finalize</td><td>Yes, authorised fixes</td><td>Authorised edits, then the complete finalisation audit.</td></tr>
+            <tr><th scope="row" rowspan="2">Visual Design</th><td>Review</td><td>No, read-only</td><td>Findings ranked Critical, Important or Polish, plus Preserve decisions.</td></tr>
+            <tr><td>Apply</td><td>Agreed scope only</td><td>Revision placed beside the original. Execution ledger, then Mockup production QA and Visual acceptance QA.</td></tr>
+            <tr><th scope="row" rowspan="2">UX Writing</th><td>Create, rewrite, update selected content</td><td>Yes, when context and facts are clear</td><td>One recommended version in Norwegian Bokmål.</td></tr>
+            <tr><td>QA</td><td>No, unless you ask to “QA and fix” or “update”</td><td>Findings and ready-to-paste replacements.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Source rules -->
+  <section id="rules" class="section" aria-labelledby="rules-title">
+    <div class="container">
+      <h2 id="rules-title">Source rules everyone should know</h2>
+      <p class="section__intro">These come from the <code>SKILL.md</code> files. They are rules, not suggestions.</p>
+      <ol class="rule-list">
+        <li><strong>One skill per prompt.</strong> Only the first Figma Resources skill mentioned in a prompt is reliably invoked. Use separate prompts and explicit handoffs.</li>
+        <li><strong>Live Telegrafen is the authority.</strong> Verify actual component instances, icon, style and variable bindings, and provenance. Visual resemblance does not prove compliance.</li>
+        <li><strong>No guessing on material decisions.</strong> Inspect the system first, then ask about unresolved user needs, purpose, behaviour, content or constraints. Components has a stricter interview-and-confirmation gate.</li>
+        <li><strong>Mockups assembles screens.</strong> It hands off reusable component anatomy, properties, variants, states or QA to Components.</li>
+        <li><strong>New frames are siblings, placed to the right.</strong> Mockups creates new independent design frames beside the anchor in the same Section (or Page), never inside the selected object.</li>
+        <li><strong>Production assets by default.</strong> Beta or experimental assets need your consent. Preserve existing work, content and accepted design decisions.</li>
+        <li><strong>Dark surfaces are local dark-mode contexts.</strong> Verify nested colours, states and controls. In dark contexts, Button <code>Neutral</code> is Off. Components goes further: never enable <code>Neutral</code> on a Button.</li>
+        <li><strong>No invented facts or fake PASS.</strong> Do not invent commercial facts or claim a verified PASS without evidence. Missing necessary provenance or access is BLOCKED.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5. Tips -->
+  <section id="tips" class="section" aria-labelledby="tips-title">
+    <div class="container">
+      <h2 id="tips-title">Practical design tips</h2>
+      <ul class="tip-list">
+        <li><strong>Task first.</strong> Prioritise the user task and one clear primary action over decorative effects. Avoid unnecessary cards and repeated containment; consider open lists and grids.</li>
+        <li><strong>Real styles and tokens.</strong> Use published typography styles and semantic colour tokens, not visual copies or hard-coded approximations.</li>
+        <li><strong>Stress the design.</strong> Check component states and interactive affordances, light and dark contexts, resizing, long labels and wrapped text.</li>
+        <li><strong>UX Writing.</strong> Clear, calm Norwegian Bokmål. <em>du</em> for the customer and <em>vi</em> for Telenor, sentence case, specific actions. No invented prices, eligibility or promises.</li>
+        <li><strong>QA.</strong> Give evidence-backed status, scope and remaining blocks. An attractive output alone is not a PASS.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. Workflow walkthrough -->
+  <section id="workflow" class="section" aria-labelledby="workflow-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 id="workflow-title">Suggested end-to-end workflow</h2>
+        <span class="badge">Workshop recommendation</span>
+      </div>
+      <p class="section__intro">Seven steps from brief to final QA. One skill per prompt at every step.</p>
+
+      <div class="walkthrough" id="walkthrough">
+        <ol class="stepper" id="stepper" hidden></ol>
+        <p class="walkthrough__progress" id="walkthrough-progress" aria-live="polite" hidden></p>
+
+        <ol class="steps" id="steps">
+          <li class="step" id="step-1">
+            <h3 class="step__title">Select a Figma frame and confirm the brief</h3>
+            <p class="step__skill">Before you prompt</p>
+            <p>Know the user task, the primary action and the target sizes. Select the frame the new work should sit beside.</p>
+          </li>
+          <li class="step" id="step-2">
+            <h3 class="step__title">Generate one small, scoped view</h3>
+            <p class="step__skill">Mockups · Build &amp; Iterate</p>
+            <p>Ask for one view, not a whole flow. Expect questions about material unknowns and a <em>Draft status</em> of READY TO ITERATE, NEEDS CHANGES or BLOCKED.</p>
+            <p><a href="#prompt-a">Use demo prompt A</a></p>
+          </li>
+          <li class="step" id="step-3">
+            <h3 class="step__title">Rewrite or QA the customer-facing copy</h3>
+            <p class="step__skill">UX Writing · Rewrite or QA</p>
+            <p>Use a separate prompt. QA is read-only unless you ask to “QA and fix” or “update”.</p>
+          </li>
+          <li class="step" id="step-4">
+            <h3 class="step__title">Run production and WCAG checks</h3>
+            <p class="step__skill">Mockups · Review &amp; Finalize</p>
+            <p>Runs the production and WCAG 2.2 AA design gates. Applies fixes only within the authorised scope and reports unrelated issues.</p>
+            <p><a href="#prompt-d">Use demo prompt D</a></p>
+          </li>
+          <li class="step" id="step-5">
+            <h3 class="step__title">Critique hierarchy, quality and brand</h3>
+            <p class="step__skill">Visual Design · Review</p>
+            <p>Read-only. Findings are ranked Critical, Important or Polish, with Preserve decisions so good work survives rework.</p>
+            <p><a href="#prompt-b">Use demo prompt B</a></p>
+          </li>
+          <li class="step" id="step-6">
+            <h3 class="step__title">Apply only the accepted recommendations</h3>
+            <p class="step__skill">Visual Design · Apply</p>
+            <p>Implements accepted findings in a revision beside the original, returns a ledger (Implemented, Preserved, Blocked, Dismissed by user), then runs Mockup production QA and Visual acceptance QA.</p>
+            <p><a href="#prompt-c">Use demo prompt C</a></p>
+          </li>
+          <li class="step" id="step-7">
+            <h3 class="step__title">Hand off new reusable components</h3>
+            <p class="step__skill">Components · separate handoff</p>
+            <p>If the design needs a new reusable component, send a separate Components prompt. Do not use Mockups to build component APIs.</p>
+          </li>
+        </ol>
+
+        <div class="walkthrough__nav" id="walkthrough-nav" hidden>
+          <button type="button" class="btn btn--secondary btn--m" id="step-prev">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-left"></use></svg>
+            <span>Previous</span>
+          </button>
+          <button type="button" class="btn btn--primary btn--m" id="step-next">
+            <span>Next</span>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-right"></use></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Demo prompts -->
+  <section id="prompts" class="section" aria-labelledby="prompts-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 id="prompts-title">Live demo prompts</h2>
+        <span class="badge">Workshop examples</span>
+      </div>
+      <p class="section__intro">Examples written for the workshop, not quotes from the skills. Adapt them to your own frame and brief.</p>
+
+      <div class="prompt-list">
+        <article class="prompt" id="prompt-a" aria-labelledby="prompt-a-title">
+          <h3 id="prompt-a-title"><span class="prompt__key">A</span> Explore</h3>
+          <p class="prompt__text" id="prompt-a-text">/telegrafen-design-mockups. Use Build &amp; Iterate. Design one desktop view showing a recommended broadband and TV bundle. Explain the primary customer action, use verified Telegrafen assets, place the new frame beside the selected frame, and ask about material unknowns.</p>
+          <button type="button" class="btn btn--secondary btn--s copy-btn" data-copy-target="prompt-a-text" aria-describedby="prompt-a-title"></button>
+        </article>
+        <article class="prompt" id="prompt-b" aria-labelledby="prompt-b-title">
+          <h3 id="prompt-b-title"><span class="prompt__key">B</span> Critique</h3>
+          <p class="prompt__text" id="prompt-b-text">/telegrafen-visual-design. Review the selected screen, read-only. Identify the five highest-impact findings for hierarchy, spacing, typography, composition, and premium Telenor expression. State what to preserve.</p>
+          <button type="button" class="btn btn--secondary btn--s copy-btn" data-copy-target="prompt-b-text" aria-describedby="prompt-b-title"></button>
+        </article>
+        <article class="prompt" id="prompt-c" aria-labelledby="prompt-c-title">
+          <h3 id="prompt-c-title"><span class="prompt__key">C</span> Focused refinement</h3>
+          <p class="prompt__text" id="prompt-c-text">/telegrafen-visual-design. Apply only accepted findings 1, 2 and 4; preserve confirmed content and interactions. Provide an implementation ledger and validation.</p>
+          <button type="button" class="btn btn--secondary btn--s copy-btn" data-copy-target="prompt-c-text" aria-describedby="prompt-c-title"></button>
+        </article>
+        <article class="prompt" id="prompt-d" aria-labelledby="prompt-d-title">
+          <h3 id="prompt-d-title"><span class="prompt__key">D</span> Finalise</h3>
+          <p class="prompt__text" id="prompt-d-text">/telegrafen-design-mockups. Review &amp; Finalize the selected frame. Inspect actual provenance/bindings, responsive states, accessibility and visual polish. Correct only authorised defects and report production/WCAG gates.</p>
+          <button type="button" class="btn btn--secondary btn--s copy-btn" data-copy-target="prompt-d-text" aria-describedby="prompt-d-title"></button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Agenda -->
+  <section id="agenda" class="section" aria-labelledby="agenda-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 id="agenda-title">70-minute hands-on agenda</h2>
+        <span class="badge">Workshop recommendation</span>
+      </div>
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="agenda-caption">
+        <table class="agenda">
+          <caption id="agenda-caption" class="visually-hidden">Workshop agenda</caption>
+          <thead><tr><th scope="col">Minutes</th><th scope="col">Activity</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">0–10</th><td>The four skills and when to use each</td></tr>
+            <tr><th scope="row">10–20</th><td>Live demo of Mockups Build &amp; Iterate</td></tr>
+            <tr><th scope="row">20–35</th><td>Each designer creates one scoped view</td></tr>
+            <tr><th scope="row">35–45</th><td>Visual Design Review and selective Apply demo</td></tr>
+            <tr><th scope="row">45–60</th><td>Peer critique, improvement and comparison</td></tr>
+            <tr><th scope="row">60–70</th><td>Production QA vs exploration, takeaways and questions</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Cheat sheet -->
+  <section id="cheatsheet" class="section" aria-labelledby="cheatsheet-title">
+    <div class="container">
+      <h2 id="cheatsheet-title">Quick cheat sheet</h2>
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cheatsheet-caption">
+        <table>
+          <caption id="cheatsheet-caption" class="visually-hidden">Need, skill and mode</caption>
+          <thead><tr><th scope="col">I need</th><th scope="col">Skill</th><th scope="col">Mode</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">New screen or flow</th><td>Mockups</td><td>Build &amp; Iterate</td></tr>
+            <tr><th scope="row">Final screen QA</th><td>Mockups</td><td>Review &amp; Finalize</td></tr>
+            <tr><th scope="row">New reusable component</th><td>Components</td><td>Build &amp; Iterate</td></tr>
+            <tr><th scope="row">Component audit only</th><td>Components</td><td>Review &amp; QA</td></tr>
+            <tr><th scope="row">Component fixes and release QA</th><td>Components</td><td>Repair &amp; Finalize</td></tr>
+            <tr><th scope="row">Visual critique only</th><td>Visual Design</td><td>Review</td></tr>
+            <tr><th scope="row">Apply accepted visual changes</th><td>Visual Design</td><td>Apply</td></tr>
+            <tr><th scope="row">New or improved Norwegian in-product copy</th><td>UX Writing</td><td>Create or Rewrite</td></tr>
+            <tr><th scope="row">Copy assessment only</th><td>UX Writing</td><td>QA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Sources -->
+  <section id="sources" class="section section--last" aria-labelledby="sources-title">
+    <div class="container">
+      <h2 id="sources-title">Sources and scope</h2>
+      <ul class="source-list">
+        <li><a href="https://github.com/silentpixel-git/telegrafen-design-skills/blob/main/skills/telegrafen-design-mockups/SKILL.md">telegrafen-design-mockups/SKILL.md</a> v2.4</li>
+        <li><a href="https://github.com/silentpixel-git/telegrafen-design-skills/blob/main/skills/telegrafen-design-components/SKILL.md">telegrafen-design-components/SKILL.md</a> v1.4</li>
+        <li><a href="https://github.com/silentpixel-git/telegrafen-design-skills/blob/main/skills/telegrafen-visual-design/SKILL.md">telegrafen-visual-design/SKILL.md</a> v1.1</li>
+        <li><a href="https://github.com/silentpixel-git/telegrafen-design-skills/blob/main/skills/telegrafen-ux-writing/SKILL.md">telegrafen-ux-writing/SKILL.md</a> v1.2</li>
+      </ul>
+      <p>The workflow, demo prompts, starter prompts and agenda are workshop recommendations, not source rules. Where the workshop handout and a <code>SKILL.md</code> differ, this guide follows <code>SKILL.md</code>. The current published Figma libraries remain the runtime source of truth.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Telegrafen design skills workshop guide. Styled with tokens from the Telegrafen Design Tokens and Components libraries.</p>
+  </div>
+</footer>
+
+<div class="visually-hidden" id="announcer" aria-live="polite" aria-atomic="true"></div>
+<script src="js/app.js"></script>
+</body>
+</html>

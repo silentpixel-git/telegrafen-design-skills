@@ -1,0 +1,242 @@
+/*
+ * Telegrafen tokens used by the workshop guide.
+ *
+ * PROVENANCE
+ * Every value below was read with the Figma MCP from the live published
+ * libraries. No value was estimated or invented. Custom property names keep
+ * the Telegrafen token path: "Color/Surface/Action/Stronger" becomes
+ * --color-surface-action-stronger.
+ *
+ * Design Tokens (Telegrafen Design Tokens v1.4.4)
+ *   https://www.figma.com/design/aW7bFTLqx5L0XTWMskOHSR/
+ *   - Collection "Colors", modes Light | Dark. Semantic colours resolve to
+ *     Primitives/* hex values (noted next to each value).
+ *   - Collection "Device", modes Desktop | Small Mobile | Mobile | Tablet |
+ *     Laptop | Ultrawide: Spacing/*, Height/*, Layout/*, and
+ *     Typography/Font Size/*. Desktop values are the default here. Mobile and
+ *     Small Mobile values apply at max-width 599px (Device/Mobile/Max).
+ *     Tablet and Laptop share the Desktop values for every size token used
+ *     here; only Layout/Margin and Layout/Gap differ.
+ *   - Collection "Primitive": Radius/*, Border/*, Device/* breakpoints.
+ *   - Text styles Title/*, Text/*, Content/*: family "Telenor Evolution UI".
+ *     Title = Medium, line height 120%. Text = Light, 140%. Content = Light,
+ *     150%. "Bold" style variants use Medium. Letter spacing 0.
+ *     Note: the Text/L, Text/M and Text/S style objects report a mixed
+ *     fontName. Weights were verified on library instances instead: Label
+ *     uses Text/S Light, Button S uses Text/S Bold (Medium), Button M uses
+ *     Text/L Bold (Medium), Tabs use Text/L Light, Chip uses Text/M Light.
+ *   - Effect style Shadow/S.
+ *
+ * Components (Telegrafen Components v2.5.0)
+ *   https://www.figma.com/design/80yLUPif6wgDwXLu5MbMFj/
+ *   - Button 4906:15790, Chip 5639:2555, Tabs 68:22072, Badge 23:122,
+ *     Accordion Item 8790:164, Divider, Label, Paragraph.
+ *   - Chip Min Width/M (Components-file variable): 58 desktop, 50 mobile.
+ *
+ * UI Icons (UI Icons v1.2.5)
+ *   https://www.figma.com/design/tgJeQElYu5kOzdP3VxVsky/
+ *   - Copy 44627:4000, Success 46617:96377, Chevron Left 44615:109534,
+ *     Chevron Right 44615:109544, Info Circle Outline 46617:96384,
+ *     External Link 44615:109540, Telenor Original 47783:6.
+ *     Inlined in index.html as <symbol>s, with the export background
+ *     removed and the fill set to currentColor.
+ *
+ * FONT
+ *   The Telenor Evolution UI font files are licensed and are NOT committed.
+ *   The font renders only where it is installed locally; otherwise the
+ *   system stack is used.
+ */
+
+:root {
+  /* Colors, Light mode */
+  --color-page-default: #ffffff;              /* Base/White */
+  --color-page-subtle: #f9f9fb;               /* Neutral/25 */
+  --color-surface-default: #ffffff;           /* Base/White */
+  --color-surface-subtle: #f2f3f7;            /* Neutral/50 */
+  --color-surface-strong: #e5e8f0;            /* Neutral/100 */
+  --color-surface-brand-subtler: #ebf3ff;     /* Mid Blue/50 */
+  --color-surface-brand-strong: #070452;      /* Mid Blue/1000 */
+  --color-surface-brand-logo: #00c8ff;        /* Blue/500 */
+  --color-surface-info-subtler: #ebf3ff;      /* Mid Blue/50 */
+
+  --color-surface-action-stronger: #1020f9;        /* Mid Blue/600 */
+  --color-surface-action-stronger-hover: #0e09aa;  /* Mid Blue/800 */
+  --color-surface-action-stronger-active: #070452; /* Mid Blue/1000 */
+  --color-surface-action-strong: #18223f;          /* Neutral/1000 */
+  --color-surface-action-strong-hover: #374262;    /* Neutral/800 */
+  --color-surface-action-strong-active: #677398;   /* Neutral/600 */
+  --color-surface-action-subtle: #ebf3ff;          /* Mid Blue/50 */
+  --color-surface-action-subtle-hover: #d6e7ff;    /* Mid Blue/100 */
+  --color-surface-action-subtle-active: #ebf3ff;   /* Mid Blue/50 */
+  --color-surface-action-subtler: #e5e8f0;         /* Neutral/100 */
+  --color-surface-action-subtler-hover: #c5cbdd;   /* Neutral/200 */
+  --color-surface-action-subtler-active: #b2bad1;  /* Neutral/300 */
+  --color-surface-action-disabled: #e5e8f0;        /* Neutral/100 */
+
+  --color-text-default: #293351;              /* Neutral/900 */
+  --color-text-subtle: #4f5b7d;               /* Neutral/700 */
+  --color-text-subtler: #677398;              /* Neutral/600 */
+  --color-text-strong: #000b2e;               /* Base/Black */
+  --color-text-brand-on-subtler: #0e0a7f;     /* Mid Blue/900 */
+  --color-text-brand-on-strong: #83fcfc;      /* Turquoise/300 */
+  --color-text-info: #1c16c5;                 /* Mid Blue/700 */
+  --color-text-action-strong: #1020f9;        /* Mid Blue/600 */
+  --color-text-action-strong-hover: #0e09aa;  /* Mid Blue/800 */
+  --color-text-action-strong-active: #070452; /* Mid Blue/1000 */
+  --color-text-action-subtle: #18223f;        /* Neutral/1000 */
+  --color-text-action-subtle-hover: #0e09aa;  /* Mid Blue/800 */
+  --color-text-action-inverted: #f5ffff;      /* Turquoise/25 */
+  --color-text-action-disabled: #b2bad1;      /* Neutral/300 */
+
+  --color-border-default: #7c88ab;            /* Neutral/500 */
+  --color-border-subtle: #b2bad1;             /* Neutral/300 */
+  --color-border-subtler: #e5e8f0;            /* Neutral/100 */
+  --color-border-strong: #4f5b7d;             /* Neutral/700 */
+  --color-border-info: #1020f9;               /* Mid Blue/600 */
+  --color-border-action-strong: #1020f9;      /* Mid Blue/600 */
+  --color-border-action-strong-hover: #0e09aa;/* Mid Blue/800 */
+  --color-border-action-focus: #5b00d1;       /* Purple/700 */
+
+  --color-icon-default: var(--color-text-default);   /* = Color/Text/Default */
+  --color-icon-info: #1020f9;                        /* Mid Blue/600 */
+
+  /* Spacing, Device/Desktop */
+  --spacing-6xl: 80px;
+  --spacing-5xl: 64px;
+  --spacing-4xl: 48px;
+  --spacing-3xl: 32px;
+  --spacing-2xl: 24px;
+  --spacing-xl: 20px;
+  --spacing-l: 16px;
+  --spacing-m: 12px;
+  --spacing-s: 8px;
+  --spacing-xs: 6px;
+  --spacing-2xs: 4px;
+  --spacing-3xs: 2px;
+
+  /* Height, Device/Desktop */
+  --height-3xl: 56px;
+  --height-2xl: 48px;
+  --height-xl: 40px;
+  --height-l: 32px;
+
+  /* Layout, Device/Desktop */
+  --layout-margin: 48px;
+  --layout-gap: 24px;
+
+  /* Radius and border width, Primitive */
+  --radius-none: 0;
+  --radius-2xs: 2px;
+  --radius-xs: 4px;
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-max: 1000px;
+  --border-xs: 1px;
+  --border-s: 2px;
+
+  /* Effect style Shadow/S */
+  --shadow-s: 0 0 4px -2px rgba(0, 26, 102, 0.05), 0 2px 8px 0 rgba(0, 26, 102, 0.1), 0 2px 8px 0 rgba(0, 26, 102, 0.02);
+
+  /* Components-file variable */
+  --chip-min-width-m: 58px;
+
+  /* Typography: family, weights and line heights from the text styles */
+  --font-family: "Telenor Evolution UI", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --line-height-title: 1.2;
+  --line-height-text: 1.4;
+  --line-height-content: 1.5;
+
+  /* Typography/Font Size, Device/Desktop */
+  --font-size-title-xl: 48px;
+  --font-size-title-l: 40px;
+  --font-size-title-m: 32px;
+  --font-size-title-s: 24px;
+  --font-size-title-xs: 20px;
+  --font-size-title-2xs: 18px;
+  --font-size-title-3xs: 16px;
+  --font-size-text-xl: 20px;
+  --font-size-text-l: 18px;
+  --font-size-text-m: 16px;
+  --font-size-text-s: 14px;
+  --font-size-content-l: 20px;
+  --font-size-content-m: 18px;
+  --font-size-content-s: 16px;
+}
+
+/* Device/Mobile and Device/Small Mobile (Device/Mobile/Max = 599) */
+@media (max-width: 599px) {
+  :root {
+    --spacing-6xl: 64px;
+    --spacing-5xl: 48px;
+    --spacing-4xl: 32px;
+    --spacing-3xl: 24px;
+    --spacing-2xl: 20px;
+    --spacing-xl: 16px;
+    --spacing-l: 12px;
+    --spacing-m: 8px;
+    --spacing-s: 6px;
+    --spacing-xs: 4px;
+    --spacing-2xs: 2px;
+    --spacing-3xs: 1px;
+
+    --height-3xl: 48px;
+    --height-2xl: 40px;
+    --height-xl: 32px;
+    --height-l: 28px;
+
+    --layout-margin: 16px;
+    --layout-gap: 16px;
+
+    --chip-min-width-m: 50px;
+
+    --font-size-title-xl: 40px;
+    --font-size-title-l: 32px;
+    --font-size-title-m: 24px;
+    --font-size-title-s: 20px;
+    --font-size-title-xs: 18px;
+    --font-size-title-2xs: 16px;
+    --font-size-title-3xs: 14px;
+    --font-size-text-xl: 18px;
+    --font-size-text-l: 16px;
+    --font-size-text-m: 14px;
+    --font-size-text-s: 12px;
+    --font-size-content-l: 18px;
+    --font-size-content-m: 16px;
+    --font-size-content-s: 14px;
+  }
+}
+
+/* Device/Tablet and Device/Laptop (600 to 1199): Layout/Margin and Layout/Gap */
+@media (min-width: 600px) and (max-width: 1199px) {
+  :root {
+    --layout-margin: 24px;
+    --layout-gap: 16px;
+  }
+}
+
+/*
+ * Local dark-mode context (Colors collection, Dark mode).
+ * Every dark-background region is a complete local dark context.
+ */
+.t-dark {
+  --color-page-default: #000b2e;              /* Base/Black */
+  --color-surface-default: #000b2e;           /* Base/Black */
+  --color-surface-subtle: #293351;            /* Neutral/900 */
+  --color-text-default: #f2f3f7;              /* Neutral/50 */
+  --color-text-subtle: #c5cbdd;               /* Neutral/200 */
+  --color-text-strong: #ffffff;               /* Base/White */
+  --color-text-action-strong: #42f0f0;        /* Turquoise/400 */
+  --color-text-action-inverted: #070452;      /* Mid Blue/1000 */
+  --color-surface-action-stronger: #42f0f0;        /* Turquoise/400 */
+  --color-surface-action-stronger-hover: #adffff;  /* Turquoise/200 */
+  --color-surface-action-stronger-active: #ebffff; /* Turquoise/50 */
+  --color-border-action-strong-hover: #adffff;     /* Turquoise/200 */
+  --color-border-subtle: #4f5b7d;             /* Neutral/700 */
+  --color-border-subtler: #293351;            /* Neutral/900 */
+  --color-border-action-focus: #b18aff;       /* Purple/300 */
+  color: var(--color-text-default);
+  background: var(--color-page-default);
+}
