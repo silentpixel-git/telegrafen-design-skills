@@ -83,7 +83,7 @@
   --orb-alpha-1: 22%;
   --orb-alpha-2: 14%;
   --grain-opacity: 0.025;
-  --ambient-shadow: 0 30px 60px -36px rgba(0, 26, 102, 0.28);
+  --ambient-shadow: 0 6px 20px -12px rgba(0, 26, 102, 0.16);
 }
 
 /* Telegrafen Colors, Dark mode. Applied by system preference unless the
@@ -135,7 +135,7 @@
     --orb-alpha-1: 30%;
     --orb-alpha-2: 18%;
     --grain-opacity: 0.04;
-    --ambient-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+    --ambient-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.45);
   }
 }
 :root[data-theme="dark"] {
@@ -184,7 +184,7 @@
   --orb-alpha-1: 30%;
   --orb-alpha-2: 18%;
   --grain-opacity: 0.04;
-  --ambient-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  --ambient-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.45);
 }
 
 /* Experimental role aliases, mapped onto Telegrafen semantic colours */

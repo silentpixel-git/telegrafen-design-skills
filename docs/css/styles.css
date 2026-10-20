@@ -141,7 +141,6 @@ main:focus { outline: none; }
   position: relative;
   border-radius: var(--r-panel);
   background: var(--panel);
-  box-shadow: var(--ambient-shadow);
 }
 
 /* Eyebrow pill (badges and the hero eyebrow) */
@@ -248,13 +247,6 @@ main:focus { outline: none; }
 .btn--primary[disabled] .btn__orb,
 .btn--secondary[disabled] .btn__orb { background: transparent; }
 
-.copy-btn.is-copied,
-.copy-btn.is-copied:hover {
-  background: var(--color-surface-success-strong);
-  color: var(--color-text-success-on-strong);
-}
-.copy-btn.is-copied .btn__orb { background: color-mix(in srgb, var(--color-text-success-on-strong) 16%, transparent); }
-
 /* ---------- Hero ---------- */
 .hero {
   padding: var(--s-10) 0 calc(var(--s-9) + var(--s-6));
@@ -283,43 +275,28 @@ main:focus { outline: none; }
   margin-bottom: var(--s-6);
 }
 
-/* Theme switch: radio pills, shown by JS only */
-.theme-switch { margin: 0; padding: 0; border: 0; min-width: 0; }
-.theme-switch[hidden] { display: none; }
-.theme-switch__items {
-  display: flex;
-  gap: 2px;
-  padding: 4px;
-  border-radius: var(--r-pill);
-  background: var(--fill-soft);
-}
-.theme-switch label { position: relative; display: inline-flex; }
-.theme-switch input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-.theme-switch span {
+/* Theme toggle: single icon button, shown by JS only */
+.theme-toggle {
   display: inline-flex;
   align-items: center;
-  min-height: 36px;
-  padding: 0 14px;
-  border-radius: var(--r-pill);
-  font-size: 0.875rem;
-  color: var(--color-text-action-subtle);
-  pointer-events: none;
-  transition: background-color var(--dur-fast) var(--ease-spring), color var(--dur-fast) var(--ease-spring);
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-subtle);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-spring), color var(--dur-fast) var(--ease-spring), transform var(--dur-fast) var(--ease-spring);
 }
-.theme-switch label:hover span { background: var(--color-surface-action-opacity); }
-.theme-switch input:checked + span {
-  background: var(--color-surface-action-strong);
-  color: var(--color-text-inverted);
-}
-.theme-switch input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { background: var(--color-surface-action-opacity); color: var(--text); }
+.theme-toggle:active { transform: scale(0.94); }
+.theme-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.theme-toggle .icon { width: 24px; height: 24px; }
+.theme-toggle__light, .theme-toggle.is-dark .theme-toggle__dark { display: none; }
+.theme-toggle.is-dark .theme-toggle__light { display: block; }
 .hero h1 { margin-top: var(--s-5); max-width: 13ch; }
 .lead {
   margin-top: var(--s-6);
@@ -519,9 +496,8 @@ main:focus { outline: none; }
 .picker-result h3 { font-size: var(--fs-h3-ref); letter-spacing: -0.03em; line-height: 1.1; }
 .picker-result .skill__cmd { margin-top: var(--s-3); }
 .picker-result__why { margin-top: var(--s-4); max-width: 60ch; color: var(--text); }
-.picker-result .prompt__text { background: var(--color-surface-default); }
+.picker-result .prompt__well { background: var(--color-surface-default); }
 .picker-result__prompt-label { margin-top: var(--s-6); margin-bottom: var(--s-3); }
-.picker-result__actions { margin-top: var(--s-4); }
 
 /* ---------- Walkthrough: segmented pill track + panel ---------- */
 .walkthrough { margin-top: var(--s-7); }
@@ -660,12 +636,15 @@ main:focus { outline: none; }
   font-weight: 500;
   letter-spacing: 0;
 }
-.prompt__text {
+.prompt__well {
+  position: relative;
   align-self: stretch;
   flex: 1;
-  padding: var(--s-5);
   border-radius: var(--r-well);
   background: var(--well);
+}
+.prompt__text {
+  padding: var(--s-5) calc(var(--s-5) + 44px) var(--s-5) var(--s-5);
   font-family: var(--font-mono);
   font-size: 0.875rem;
   line-height: 1.7;
@@ -673,6 +652,31 @@ main:focus { outline: none; }
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+/* Copy: icon button inside the well it copies */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-subtle);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-spring), color var(--dur-fast) var(--ease-spring), transform var(--dur-fast) var(--ease-spring);
+}
+.copy-btn[hidden] { display: none; }
+.copy-btn .icon { width: 20px; height: 20px; }
+.copy-btn:hover { background: var(--color-surface-action-opacity); color: var(--text); }
+.copy-btn:active { transform: scale(0.92); }
+.copy-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.copy-btn.is-copied,
+.copy-btn.is-copied:hover { background: var(--color-surface-success-strong); color: var(--color-text-success-on-strong); }
 
 .skill { padding-top: var(--s-5); border-top: 1px solid var(--hairline-strong); }
 .skill > * + * { margin-top: var(--s-3); }
@@ -816,7 +820,7 @@ tbody th { font-weight: 560; color: var(--text-strong); }
 
 @media (min-width: 900px) {
   .hero__grid { position: relative; }
-  .theme-switch { position: absolute; top: 0; right: var(--gutter); }
+  .theme-toggle { position: absolute; top: 0; right: var(--gutter); }
 }
 
 /* ---------- Below 900: bento collapses ---------- */
@@ -855,13 +859,13 @@ tbody th { font-weight: 560; color: var(--text-strong); }
 
 /* ---------- Forced colours ---------- */
 @media (forced-colors: active) {
-  .btn, .chip__face, .toc__inner.container, .stepper button, .theme-switch span { border: 1px solid CanvasText; }
+  .btn, .chip__face, .toc__inner.container, .stepper button, .theme-toggle, .copy-btn { border: 1px solid CanvasText; }
   .picker-result, .walkthrough.is-enhanced .steps, .callout { border: 1px solid CanvasText; }
 }
 
 @media print {
   body::before, body::after { display: none; }
-  .toc, .theme-switch, .hero__actions, .copy-btn, .walkthrough__nav, .stepper, .skip-link { display: none !important; }
+  .toc, .theme-toggle, .hero__actions, .copy-btn, .walkthrough__nav, .stepper, .skip-link { display: none !important; }
   .is-enhanced .step[hidden] { display: block !important; }
   .reveal-on .reveal { opacity: 1; transform: none; }
 }

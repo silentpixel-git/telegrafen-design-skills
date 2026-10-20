@@ -17,23 +17,33 @@
     });
   }
 
-  /* ---------- Theme switch (System follows prefers-color-scheme) ---------- */
+  /* ---------- Theme toggle (follows prefers-color-scheme until chosen) ---------- */
 
-  var themeSwitch = document.querySelector(".theme-switch");
-  if (themeSwitch) {
-    var savedTheme = document.documentElement.getAttribute("data-theme") || "system";
-    var themeInput = themeSwitch.querySelector('input[value="' + savedTheme + '"]');
-    if (themeInput) { themeInput.checked = true; }
-    themeSwitch.addEventListener("change", function (event) {
-      var value = event.target.value;
-      if (value === "light" || value === "dark") {
-        document.documentElement.setAttribute("data-theme", value);
-      } else {
-        document.documentElement.removeAttribute("data-theme");
-      }
-      try { localStorage.setItem("guide-theme", value); } catch (e) { /* storage unavailable */ }
+  var themeToggle = document.querySelector(".theme-toggle");
+  if (themeToggle) {
+    var rootEl = document.documentElement;
+    var darkQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+    var isDark = function () {
+      var chosen = rootEl.getAttribute("data-theme");
+      return chosen ? chosen === "dark" : !!(darkQuery && darkQuery.matches);
+    };
+    var syncToggle = function () {
+      var dark = isDark();
+      themeToggle.classList.toggle("is-dark", dark);
+      themeToggle.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    };
+    themeToggle.addEventListener("click", function () {
+      var next = isDark() ? "light" : "dark";
+      rootEl.setAttribute("data-theme", next);
+      try { localStorage.setItem("guide-theme", next); } catch (e) { /* storage unavailable */ }
+      syncToggle();
     });
-    themeSwitch.hidden = false;
+    if (darkQuery) {
+      if (darkQuery.addEventListener) { darkQuery.addEventListener("change", syncToggle); }
+      else if (darkQuery.addListener) { darkQuery.addListener(syncToggle); }
+    }
+    syncToggle();
+    themeToggle.hidden = false;
   }
 
   /* ---------- Copy to clipboard ---------- */
@@ -42,9 +52,9 @@
   var COPIED_LABEL = "Copied";
 
   function setCopyButton(button, copied) {
-    button.innerHTML = "<span>" + (copied ? COPIED_LABEL : COPY_LABEL) + "</span>" +
-      '<span class="btn__orb" aria-hidden="true">' + icon(copied ? "i-success" : "i-copy") + "</span>";
-    button.classList.add("btn--orb");
+    button.classList.toggle("is-copied", copied);
+    button.innerHTML = icon(copied ? "i-success" : "i-copy") +
+      '<span class="visually-hidden">' + (copied ? COPIED_LABEL : COPY_LABEL) + "</span>";
     button.classList.toggle("is-copied", copied);
   }
 
@@ -81,6 +91,7 @@
 
   function initCopyButton(button) {
     setCopyButton(button, false);
+    button.hidden = false;
     var timer;
     button.addEventListener("click", function () {
       var target = document.getElementById(button.getAttribute("data-copy-target"));
@@ -219,9 +230,8 @@
       '<p class="skill__cmd">' + escapeHtml(t.command) + "</p>" +
       '<p class="picker-result__why">' + escapeHtml(t.why) + "</p>" +
       '<p class="label picker-result__prompt-label" id="picker-prompt-label">' + escapeHtml(source) + "</p>" +
-      '<p class="prompt__text" id="picker-prompt-text">' + escapeHtml(t.prompt) + "</p>" +
-      '<p class="picker-result__actions">' +
-      '<button type="button" class="btn btn--secondary btn--s copy-btn" data-copy-target="picker-prompt-text" aria-describedby="picker-prompt-label"></button></p>';
+      '<div class="prompt__well"><p class="prompt__text" id="picker-prompt-text">' + escapeHtml(t.prompt) + "</p>" +
+      '<button type="button" class="copy-btn" data-copy-target="picker-prompt-text" aria-describedby="picker-prompt-label" hidden></button></div>';
     initCopyButton(result.querySelector(".copy-btn"));
   }
 
