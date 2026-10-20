@@ -46,25 +46,33 @@
 </header>
 
 <nav class="toc" aria-label="On this page">
-  <div class="container">
-    <ul>
-      <li><a href="#picker">Skill picker</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#modes">Modes</a></li>
-      <li><a href="#rules">Source rules</a></li>
-      <li><a href="#tips">Design tips</a></li>
-      <li><a href="#workflow">Workflow</a></li>
-      <li><a href="#prompts">Demo prompts</a></li>
-      <li><a href="#cheatsheet">Cheat sheet</a></li>
-      <li><a href="#sources">Sources</a></li>
-    </ul>
+  <div class="container toc__inner">
+    <div class="toc__group">
+      <p class="toc__label" id="toc-use">Use it</p>
+      <ul aria-labelledby="toc-use">
+        <li><a href="#picker">Skill picker</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#prompts">Demo prompts</a></li>
+      </ul>
+    </div>
+    <div class="toc__group">
+      <p class="toc__label" id="toc-ref">Reference</p>
+      <ul aria-labelledby="toc-ref">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#modes">Modes</a></li>
+        <li><a href="#rules">Source rules</a></li>
+        <li><a href="#tips">Design tips</a></li>
+        <li><a href="#cheatsheet">Cheat sheet</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
 
 <main id="main" tabindex="-1">
 
-  <!-- 1. Picker -->
-  <section id="picker" class="section" aria-labelledby="picker-title">
+  <!-- Use it: Picker -->
+  <section id="picker" class="section section--use" aria-labelledby="picker-title">
     <div class="container">
       <h2 id="picker-title">What do you want to do?</h2>
       <p class="section__intro">Choose a task. You get the skill, the mode and a starter prompt to adapt. The mapping follows the workshop cheat sheet.</p>
@@ -83,120 +91,8 @@
     </div>
   </section>
 
-  <!-- 2. Skills at a glance -->
-  <section id="skills" class="section" aria-labelledby="skills-title">
-    <div class="container">
-      <h2 id="skills-title">The four skills at a glance</h2>
-      <p class="section__intro">Versions come from each <code>SKILL.md</code> frontmatter in this repository.</p>
-      <ul class="skill-list">
-        <li class="skill">
-          <div class="skill__head">
-            <h3>Mockups</h3>
-            <span class="badge">v2.4</span>
-          </div>
-          <p class="skill__cmd">/telegrafen-design-mockups</p>
-          <p>Build screens, flows and prototypes from verified Telegrafen assets.</p>
-          <p class="skill__modes"><span class="label">Modes</span> Build &amp; Iterate (default) · Review &amp; Finalize</p>
-        </li>
-        <li class="skill">
-          <div class="skill__head">
-            <h3>Components</h3>
-            <span class="badge">v1.4</span>
-          </div>
-          <p class="skill__cmd">/telegrafen-design-components</p>
-          <p>Design, review, repair and finalise reusable components.</p>
-          <p class="skill__modes"><span class="label">Modes</span> Build &amp; Iterate (default) · Review &amp; QA (read-only) · Repair &amp; Finalize (edits authorised)</p>
-        </li>
-        <li class="skill">
-          <div class="skill__head">
-            <h3>Visual Design</h3>
-            <span class="badge">v1.1</span>
-          </div>
-          <p class="skill__cmd">/telegrafen-visual-design</p>
-          <p>Senior art-direction review and focused visual refinement of existing designs.</p>
-          <p class="skill__modes"><span class="label">Modes</span> Review (read-only) · Apply (authorised changes). <em>Deep</em> is a verification-depth modifier for either mode, not a mode. It does not expand editing authority.</p>
-        </li>
-        <li class="skill">
-          <div class="skill__head">
-            <h3>UX Writing</h3>
-            <span class="badge">v1.2</span>
-          </div>
-          <p class="skill__cmd">/telegrafen-ux-writing</p>
-          <p>Norwegian Bokmål interface microcopy. Not for campaigns, articles, product pages, emails, push notifications or other long-form copy.</p>
-          <p class="skill__modes"><span class="label">Operations</span> Create · Rewrite · Update selected content · QA (read-only)</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 3. Modes -->
-  <section id="modes" class="section" aria-labelledby="modes-title">
-    <div class="container">
-      <h2 id="modes-title">Choosing the right mode</h2>
-      <div class="callout" role="note">
-        <svg class="icon callout__icon" aria-hidden="true" focusable="false"><use href="#i-info"></use></svg>
-        <div>
-          <p class="callout__title">Review modes are not interchangeable</p>
-          <p>Mockups <strong>Review &amp; Finalize</strong> inspects the full scope, corrects defects in the requested area and runs the production and WCAG 2.2 AA gates. Components <strong>Review &amp; QA</strong>, Visual Design <strong>Review</strong> and UX Writing <strong>QA</strong> are read-only: they report findings and change nothing unless you explicitly authorise edits.</p>
-        </div>
-      </div>
-
-      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="modes-caption">
-        <table>
-          <caption id="modes-caption">Modes by skill</caption>
-          <thead>
-            <tr><th scope="col">Skill</th><th scope="col">Mode</th><th scope="col">Edits</th><th scope="col">What it does</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row" rowspan="2">Mockups</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, requested views only</td><td>Rapid draft with targeted checks. Ends with <em>Draft status</em>: READY TO ITERATE, NEEDS CHANGES or BLOCKED. No review verdicts.</td></tr>
-            <tr><td>Review &amp; Finalize</td><td>Requested area and connected states</td><td>Inspects every visible section and state in scope, reports unrelated defects, and runs the complete production and WCAG 2.2 AA gates.</td></tr>
-            <tr><th scope="row" rowspan="3">Components</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, after the interview gate</td><td>Fast draft loop. Every unresolved product decision needs your answer, and you confirm the contract before it builds.</td></tr>
-            <tr><td>Review &amp; QA</td><td>No, read-only</td><td>Structural and visual assessment.</td></tr>
-            <tr><td>Repair &amp; Finalize</td><td>Yes, authorised fixes</td><td>Authorised edits, then the complete finalisation audit.</td></tr>
-            <tr><th scope="row" rowspan="2">Visual Design</th><td>Review</td><td>No, read-only</td><td>Findings ranked Critical, Important or Polish, plus Preserve decisions.</td></tr>
-            <tr><td>Apply</td><td>Agreed scope only</td><td>Revision placed beside the original. Execution ledger, then Mockup production QA and Visual acceptance QA.</td></tr>
-            <tr><th scope="row" rowspan="2">UX Writing</th><td>Create, rewrite, update selected content</td><td>Yes, when context and facts are clear</td><td>One recommended version in Norwegian Bokmål.</td></tr>
-            <tr><td>QA</td><td>No, unless you ask to “QA and fix” or “update”</td><td>Findings and ready-to-paste replacements.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Source rules -->
-  <section id="rules" class="section" aria-labelledby="rules-title">
-    <div class="container">
-      <h2 id="rules-title">Source rules everyone should know</h2>
-      <p class="section__intro">These come from the <code>SKILL.md</code> files. They are rules, not suggestions.</p>
-      <ol class="rule-list">
-        <li><strong>One skill per prompt.</strong> Only the first Figma Resources skill mentioned in a prompt is reliably invoked. Use separate prompts and explicit handoffs.</li>
-        <li><strong>Live Telegrafen is the authority.</strong> Verify actual component instances, icon, style and variable bindings, and provenance. Visual resemblance does not prove compliance.</li>
-        <li><strong>No guessing on material decisions.</strong> Inspect the system first, then ask about unresolved user needs, purpose, behaviour, content or constraints. Components has a stricter interview-and-confirmation gate.</li>
-        <li><strong>Mockups assembles screens.</strong> It hands off reusable component anatomy, properties, variants, states or QA to Components.</li>
-        <li><strong>New frames are siblings, placed to the right.</strong> Mockups creates new independent design frames beside the anchor in the same Section (or Page), never inside the selected object.</li>
-        <li><strong>Production assets by default.</strong> Beta or experimental assets need your consent. Preserve existing work, content and accepted design decisions.</li>
-        <li><strong>Dark surfaces are local dark-mode contexts.</strong> Verify nested colours, states and controls. In dark contexts, Button <code>Neutral</code> is Off. Components goes further: never enable <code>Neutral</code> on a Button.</li>
-        <li><strong>No invented facts or fake PASS.</strong> Do not invent commercial facts or claim a verified PASS without evidence. Missing necessary provenance or access is BLOCKED.</li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- 5. Tips -->
-  <section id="tips" class="section" aria-labelledby="tips-title">
-    <div class="container">
-      <h2 id="tips-title">Practical design tips</h2>
-      <ul class="tip-list">
-        <li><strong>Task first.</strong> Prioritise the user task and one clear primary action over decorative effects. Avoid unnecessary cards and repeated containment; consider open lists and grids.</li>
-        <li><strong>Real styles and tokens.</strong> Use published typography styles and semantic colour tokens, not visual copies or hard-coded approximations.</li>
-        <li><strong>Stress the design.</strong> Check component states and interactive affordances, light and dark contexts, resizing, long labels and wrapped text.</li>
-        <li><strong>UX Writing.</strong> Clear, calm Norwegian Bokmål. <em>du</em> for the customer and <em>vi</em> for Telenor, sentence case, specific actions. No invented prices, eligibility or promises.</li>
-        <li><strong>QA.</strong> Give evidence-backed status, scope and remaining blocks. An attractive output alone is not a PASS.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 6. Workflow walkthrough -->
-  <section id="workflow" class="section" aria-labelledby="workflow-title">
+  <!-- Use it: Workflow walkthrough -->
+  <section id="workflow" class="section section--use" aria-labelledby="workflow-title">
     <div class="container">
       <div class="section__head">
         <h2 id="workflow-title">Suggested end-to-end workflow</h2>
@@ -264,8 +160,8 @@
     </div>
   </section>
 
-  <!-- 7. Demo prompts -->
-  <section id="prompts" class="section" aria-labelledby="prompts-title">
+  <!-- Use it: Demo prompts -->
+  <section id="prompts" class="section section--use" aria-labelledby="prompts-title">
     <div class="container">
       <div class="section__head">
         <h2 id="prompts-title">Live demo prompts</h2>
@@ -298,10 +194,128 @@
     </div>
   </section>
 
-  <!-- 8. Cheat sheet -->
-  <section id="cheatsheet" class="section" aria-labelledby="cheatsheet-title">
+  <!-- Reference: look-up material, quieter treatment on Color/Page/Subtle -->
+  <section class="ref-group" aria-labelledby="reference-title">
+    <div class="container ref-group__head">
+      <h2 id="reference-title">Reference</h2>
+      <p class="section__intro">Look up skills, modes and rules during and after the workshop.</p>
+    </div>
+  <!-- Reference: Skills at a glance -->
+  <section id="skills" class="section section--ref" aria-labelledby="skills-title">
     <div class="container">
-      <h2 id="cheatsheet-title">Quick cheat sheet</h2>
+      <h3 id="skills-title">The four skills at a glance</h3>
+      <p class="section__intro">Versions come from each <code>SKILL.md</code> frontmatter in this repository.</p>
+      <ul class="skill-list">
+        <li class="skill">
+          <div class="skill__head">
+            <h4>Mockups</h4>
+            <span class="badge">v2.4</span>
+          </div>
+          <p class="skill__cmd">/telegrafen-design-mockups</p>
+          <p>Build screens, flows and prototypes from verified Telegrafen assets.</p>
+          <p class="skill__modes"><span class="label">Modes</span> Build &amp; Iterate (default) · Review &amp; Finalize</p>
+        </li>
+        <li class="skill">
+          <div class="skill__head">
+            <h4>Components</h4>
+            <span class="badge">v1.4</span>
+          </div>
+          <p class="skill__cmd">/telegrafen-design-components</p>
+          <p>Design, review, repair and finalise reusable components.</p>
+          <p class="skill__modes"><span class="label">Modes</span> Build &amp; Iterate (default) · Review &amp; QA (read-only) · Repair &amp; Finalize (edits authorised)</p>
+        </li>
+        <li class="skill">
+          <div class="skill__head">
+            <h4>Visual Design</h4>
+            <span class="badge">v1.1</span>
+          </div>
+          <p class="skill__cmd">/telegrafen-visual-design</p>
+          <p>Senior art-direction review and focused visual refinement of existing designs.</p>
+          <p class="skill__modes"><span class="label">Modes</span> Review (read-only) · Apply (authorised changes). <em>Deep</em> is a verification-depth modifier for either mode, not a mode. It does not expand editing authority.</p>
+        </li>
+        <li class="skill">
+          <div class="skill__head">
+            <h4>UX Writing</h4>
+            <span class="badge">v1.2</span>
+          </div>
+          <p class="skill__cmd">/telegrafen-ux-writing</p>
+          <p>Norwegian Bokmål interface microcopy. Not for campaigns, articles, product pages, emails, push notifications or other long-form copy.</p>
+          <p class="skill__modes"><span class="label">Operations</span> Create · Rewrite · Update selected content · QA (read-only)</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Reference: Modes -->
+  <section id="modes" class="section section--ref" aria-labelledby="modes-title">
+    <div class="container">
+      <h3 id="modes-title">Choosing the right mode</h3>
+      <div class="callout" role="note">
+        <svg class="icon callout__icon" aria-hidden="true" focusable="false"><use href="#i-info"></use></svg>
+        <div>
+          <p class="callout__title">Review modes are not interchangeable</p>
+          <p>Mockups <strong>Review &amp; Finalize</strong> inspects the full scope, corrects defects in the requested area and runs the production and WCAG 2.2 AA gates. Components <strong>Review &amp; QA</strong>, Visual Design <strong>Review</strong> and UX Writing <strong>QA</strong> are read-only: they report findings and change nothing unless you explicitly authorise edits.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="modes-caption">
+        <table>
+          <caption id="modes-caption">Modes by skill</caption>
+          <thead>
+            <tr><th scope="col">Skill</th><th scope="col">Mode</th><th scope="col">Edits</th><th scope="col">What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" rowspan="2">Mockups</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, requested views only</td><td>Rapid draft with targeted checks. Ends with <em>Draft status</em>: READY TO ITERATE, NEEDS CHANGES or BLOCKED. No review verdicts.</td></tr>
+            <tr><td>Review &amp; Finalize</td><td>Requested area and connected states</td><td>Inspects every visible section and state in scope, reports unrelated defects, and runs the complete production and WCAG 2.2 AA gates.</td></tr>
+            <tr><th scope="row" rowspan="3">Components</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, after the interview gate</td><td>Fast draft loop. Every unresolved product decision needs your answer, and you confirm the contract before it builds.</td></tr>
+            <tr><td>Review &amp; QA</td><td>No, read-only</td><td>Structural and visual assessment.</td></tr>
+            <tr><td>Repair &amp; Finalize</td><td>Yes, authorised fixes</td><td>Authorised edits, then the complete finalisation audit.</td></tr>
+            <tr><th scope="row" rowspan="2">Visual Design</th><td>Review</td><td>No, read-only</td><td>Findings ranked Critical, Important or Polish, plus Preserve decisions.</td></tr>
+            <tr><td>Apply</td><td>Agreed scope only</td><td>Revision placed beside the original. Execution ledger, then Mockup production QA and Visual acceptance QA.</td></tr>
+            <tr><th scope="row" rowspan="2">UX Writing</th><td>Create, rewrite, update selected content</td><td>Yes, when context and facts are clear</td><td>One recommended version in Norwegian Bokmål.</td></tr>
+            <tr><td>QA</td><td>No, unless you ask to “QA and fix” or “update”</td><td>Findings and ready-to-paste replacements.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reference: Source rules -->
+  <section id="rules" class="section section--ref" aria-labelledby="rules-title">
+    <div class="container">
+      <h3 id="rules-title">Source rules everyone should know</h3>
+      <p class="section__intro">These come from the <code>SKILL.md</code> files. They are rules, not suggestions.</p>
+      <ol class="rule-list">
+        <li><strong>One skill per prompt.</strong> Only the first Figma Resources skill mentioned in a prompt is reliably invoked. Use separate prompts and explicit handoffs.</li>
+        <li><strong>Live Telegrafen is the authority.</strong> Verify actual component instances, icon, style and variable bindings, and provenance. Visual resemblance does not prove compliance.</li>
+        <li><strong>No guessing on material decisions.</strong> Inspect the system first, then ask about unresolved user needs, purpose, behaviour, content or constraints. Components has a stricter interview-and-confirmation gate.</li>
+        <li><strong>Mockups assembles screens.</strong> It hands off reusable component anatomy, properties, variants, states or QA to Components.</li>
+        <li><strong>New frames are siblings, placed to the right.</strong> Mockups creates new independent design frames beside the anchor in the same Section (or Page), never inside the selected object.</li>
+        <li><strong>Production assets by default.</strong> Beta or experimental assets need your consent. Preserve existing work, content and accepted design decisions.</li>
+        <li><strong>Dark surfaces are local dark-mode contexts.</strong> Verify nested colours, states and controls. In dark contexts, Button <code>Neutral</code> is Off. Components goes further: never enable <code>Neutral</code> on a Button.</li>
+        <li><strong>No invented facts or fake PASS.</strong> Do not invent commercial facts or claim a verified PASS without evidence. Missing necessary provenance or access is BLOCKED.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Reference: Tips -->
+  <section id="tips" class="section section--ref" aria-labelledby="tips-title">
+    <div class="container">
+      <h3 id="tips-title">Practical design tips</h3>
+      <ul class="tip-list">
+        <li><strong>Task first.</strong> Prioritise the user task and one clear primary action over decorative effects. Avoid unnecessary cards and repeated containment; consider open lists and grids.</li>
+        <li><strong>Real styles and tokens.</strong> Use published typography styles and semantic colour tokens, not visual copies or hard-coded approximations.</li>
+        <li><strong>Stress the design.</strong> Check component states and interactive affordances, light and dark contexts, resizing, long labels and wrapped text.</li>
+        <li><strong>UX Writing.</strong> Clear, calm Norwegian Bokmål. <em>du</em> for the customer and <em>vi</em> for Telenor, sentence case, specific actions. No invented prices, eligibility or promises.</li>
+        <li><strong>QA.</strong> Give evidence-backed status, scope and remaining blocks. An attractive output alone is not a PASS.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Reference: Cheat sheet -->
+  <section id="cheatsheet" class="section section--ref" aria-labelledby="cheatsheet-title">
+    <div class="container">
+      <h3 id="cheatsheet-title">Quick cheat sheet</h3>
       <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cheatsheet-caption">
         <table>
           <caption id="cheatsheet-caption" class="visually-hidden">Need, skill and mode</caption>
@@ -322,10 +336,10 @@
     </div>
   </section>
 
-  <!-- 9. Sources -->
-  <section id="sources" class="section section--last" aria-labelledby="sources-title">
+  <!-- Reference: Sources -->
+  <section id="sources" class="section section--ref section--last" aria-labelledby="sources-title">
     <div class="container">
-      <h2 id="sources-title">Sources and scope</h2>
+      <h3 id="sources-title">Sources and scope</h3>
       <ul class="source-list">
         <li><a href="https://github.com/silentpixel-git/telegrafen-design-skills/blob/main/skills/telegrafen-design-mockups/SKILL.md">telegrafen-design-mockups/SKILL.md</a> v2.4</li>
         <li><a href="https://github.com/silentpixel-git/telegrafen-design-skills/blob/main/skills/telegrafen-design-components/SKILL.md">telegrafen-design-components/SKILL.md</a> v1.4</li>
@@ -334,6 +348,7 @@
       </ul>
       <p>The workflow, demo prompts, and starter prompts are workshop recommendations, not source rules. Where the workshop handout and a <code>SKILL.md</code> differ, this guide follows <code>SKILL.md</code>. The current published Figma libraries remain the runtime source of truth.</p>
     </div>
+  </section>
   </section>
 </main>
 
