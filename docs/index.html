@@ -107,7 +107,7 @@
         <h2 id="workflow-title">Suggested end-to-end workflow</h2>
         <span class="badge">Recommendation</span>
       </div>
-      <p class="section__intro">Seven steps from brief to final QA. One skill per prompt at every step, with an example prompt to copy and adapt where it helps.</p>
+      <p class="section__intro">Seven steps from brief to final QA, each with an example prompt to copy and adapt. Use one skill per prompt.</p>
 
       <div class="walkthrough" id="walkthrough">
         <ol class="stepper" id="stepper" hidden></ol>
@@ -116,8 +116,15 @@
         <ol class="steps" id="steps">
           <li class="step" id="step-1" data-short="Brief">
             <h3 class="step__title">Select a Figma frame and confirm the brief</h3>
-            <p class="step__skill">Before you prompt</p>
-            <p>Know the user task, the primary action and the target sizes. Select the frame the new work should sit beside.</p>
+            <p class="step__skill">Before you design · No skill needed</p>
+            <p>Know the user task, the primary action and the target sizes. Look at how other products solve the same task, for example on <a href="https://mobbin.com">Mobbin</a>, and borrow patterns, not visuals. Select the frame the new work should sit beside.</p>
+            <div class="step__prompt" id="prompt-e">
+              <p class="label" id="prompt-e-title">Example prompt</p>
+              <div class="prompt__well">
+                <p class="prompt__text" id="prompt-e-text">Help me sharpen the brief for a recommended broadband and TV bundle view before we design anything. I’ve attached reference screens from Mobbin showing how other apps present plan comparisons and bundle recommendations. Summarise the patterns worth borrowing and the ones to avoid. Then list the user task, the primary action, the target sizes and any open questions. Use the references for patterns only, don’t copy their visuals, and don’t create anything in Figma yet.</p>
+                <button type="button" class="copy-btn" data-copy-target="prompt-e-text" aria-describedby="prompt-e-title" hidden></button>
+              </div>
+            </div>
           </li>
           <li class="step" id="step-2" data-short="Explore">
             <h3 class="step__title">Generate one small, scoped view</h3>
@@ -135,6 +142,13 @@
             <h3 class="step__title">Rewrite or QA the customer-facing copy</h3>
             <p class="step__skill">UX Writing · Rewrite or QA</p>
             <p>Use a separate prompt. QA is read-only unless you ask to “QA and fix” or “update”.</p>
+            <div class="step__prompt" id="prompt-f">
+              <p class="label" id="prompt-f-title">Example prompt</p>
+              <div class="prompt__well">
+                <p class="prompt__text" id="prompt-f-text">/telegrafen-ux-writing. Rewrite the copy in the selected bundle view for choosing a broadband and TV bundle. Use du for the customer and vi for Telenor, sentence case and specific actions. Do not invent prices, eligibility or promises; mark missing facts for clarification.</p>
+                <button type="button" class="copy-btn" data-copy-target="prompt-f-text" aria-describedby="prompt-f-title" hidden></button>
+              </div>
+            </div>
           </li>
           <li class="step" id="step-4" data-short="Finalize">
             <h3 class="step__title">Run production and WCAG checks</h3>
@@ -176,6 +190,13 @@
             <h3 class="step__title">Hand off new reusable components</h3>
             <p class="step__skill">Components · separate handoff</p>
             <p>If the design needs a new reusable component, send a separate Components prompt. Do not use Mockups to build component APIs.</p>
+            <div class="step__prompt" id="prompt-g">
+              <p class="label" id="prompt-g-title">Example prompt</p>
+              <div class="prompt__well">
+                <p class="prompt__text" id="prompt-g-text">/telegrafen-design-components. Use Build &amp; Iterate. The bundle view needs a reusable bundle recommendation card. Inspect the closest approved Telegrafen components first, then ask me one question at a time about purpose, anatomy, content, states and behaviour. Summarise the contract and wait for my confirmation before building.</p>
+                <button type="button" class="copy-btn" data-copy-target="prompt-g-text" aria-describedby="prompt-g-title" hidden></button>
+              </div>
+            </div>
           </li>
         </ol>
 

@@ -116,6 +116,8 @@
   var PROMPT_B = document.getElementById("prompt-b-text").textContent.trim();
   var PROMPT_C = document.getElementById("prompt-c-text").textContent.trim();
   var PROMPT_D = document.getElementById("prompt-d-text").textContent.trim();
+  var PROMPT_F = document.getElementById("prompt-f-text").textContent.trim();
+  var PROMPT_G = document.getElementById("prompt-g-text").textContent.trim();
 
   var TASKS = [
     {
@@ -145,8 +147,8 @@
       command: "/telegrafen-design-components",
       mode: "Build & Iterate",
       why: "Components owns anatomy, properties, variants and states. Expect an interview, one question at a time, and a contract to confirm before it builds.",
-      prompt: "/telegrafen-design-components. Use Build & Iterate. I need a reusable [component] for [user need]. Inspect the closest approved Telegrafen components first, then ask me one question at a time about purpose, anatomy, content, states and behaviour. Summarise the contract and wait for my confirmation before building.",
-      promptSource: "Starter prompt"
+      prompt: PROMPT_G,
+      promptSource: "Example prompt from workflow step 7"
     },
     {
       id: "component-audit",
@@ -195,8 +197,8 @@
       command: "/telegrafen-ux-writing",
       mode: "Create or Rewrite",
       why: "Clear, calm Norwegian Bokmål microcopy. It does not invent product facts; a missing fact is marked for clarification.",
-      prompt: "/telegrafen-ux-writing. Rewrite the copy in the selected frame for [user task]. Use du for the customer and vi for Telenor, sentence case and specific actions. Do not invent prices, eligibility or promises.",
-      promptSource: "Starter prompt"
+      prompt: PROMPT_F,
+      promptSource: "Example prompt from workflow step 3"
     },
     {
       id: "ux-qa",
