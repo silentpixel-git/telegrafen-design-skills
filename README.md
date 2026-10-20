@@ -10,7 +10,7 @@ skills/
 ├── telegrafen-design-mockups/SKILL.md
 ├── telegrafen-design-components/SKILL.md
 └── telegrafen-ux-writing/SKILL.md
-docs/                      # Workshop guide (GitHub Pages)
+docs/                      # Skills guide (GitHub Pages)
 ├── index.html
 ├── css/tokens.css         # Telegrafen tokens with Figma provenance
 ├── css/styles.css
@@ -65,11 +65,11 @@ When a task crosses responsibilities, use one skill per prompt and pass a clear 
 
 Visual design does not replace component construction, mockup assembly, or UX writing. The construction and writing skills do not replace visual art direction.
 
-## Workshop guide
+## Skills guide
 
-An interactive guide for designer workshops on the four Figma skills is published at **https://silentpixel-git.github.io/telegrafen-design-skills/**. It has a skill and mode picker, copyable demo prompts, a step-by-step workflow and the cheat sheet. The source is in [`docs/`](docs/index.html): plain HTML, CSS and JavaScript with no build step. It also works when you open `docs/index.html` directly from disk.
+An interactive guide to the four Figma skills is published at **https://silentpixel-git.github.io/telegrafen-design-skills/**. It has a skill and mode picker, a step-by-step workflow with copyable example prompts and the cheat sheet. The source is in [`docs/`](docs/index.html): plain HTML, CSS and JavaScript with no build step. It also works when you open `docs/index.html` directly from disk.
 
-The workflow and demo prompts are workshop recommendations. The `SKILL.md` files and the live Telegrafen libraries remain the source of truth. [`.github/workflows/pages.yml`](.github/workflows/pages.yml) deploys the guide when `docs/` changes on `main`. In **Settings → Pages**, set **Source** to **GitHub Actions**.
+The workflow and example prompts are recommendations. The `SKILL.md` files and the live Telegrafen libraries remain the source of truth. [`.github/workflows/pages.yml`](.github/workflows/pages.yml) deploys the guide when `docs/` changes on `main`. In **Settings → Pages**, set **Source** to **GitHub Actions**.
 
 ## Commercial content
 

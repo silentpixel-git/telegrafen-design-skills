@@ -601,8 +601,7 @@ main:focus { outline: none; }
   margin-top: var(--s-6);
 }
 
-/* ---------- Bento grids: prompts and skills ---------- */
-.prompt-list,
+/* ---------- Skills grid and prompt wells ---------- */
 .skill-list {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -611,35 +610,14 @@ main:focus { outline: none; }
   padding: 0;
   list-style: none;
 }
-.prompt:nth-child(4n + 1), .prompt:nth-child(4n + 4) { grid-column: span 7; }
-.prompt:nth-child(4n + 2), .prompt:nth-child(4n + 3) { grid-column: span 5; }
 .skill { grid-column: span 6; }
 
-.prompt {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--s-4);
-}
-.prompt h3 { display: flex; align-items: center; gap: var(--s-3); }
-.prompt__key {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--color-surface-action-strong);
-  color: var(--color-text-inverted);
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0;
-}
+.step > .step__prompt { margin-top: var(--s-5); }
+.step__prompt .label { margin-bottom: var(--s-3); }
+.is-enhanced .step__prompt .prompt__well { background: var(--color-surface-default); }
+
 .prompt__well {
   position: relative;
-  align-self: stretch;
-  flex: 1;
   border-radius: var(--r-well);
   background: var(--well);
 }
@@ -829,8 +807,8 @@ tbody th { font-weight: 560; color: var(--text-strong); }
   .hero__aside { max-width: 560px; }
   .stepper__label { display: none; }
   .stepper button { padding: 0 6px; }
-  .prompt-list, .skill-list { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-7); }
-  .prompt-list > *, .skill-list > * { grid-column: 1 / -1 !important; }
+  .skill-list { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-7); }
+  .skill-list > * { grid-column: 1 / -1 !important; }
 }
 
 /* ---------- Below 768: single column, px-4 ---------- */

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <script>try{var t=localStorage.getItem("guide-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-  <title>Telegrafen design skills: workshop guide</title>
+  <title>Telegrafen design skills: guide</title>
   <meta name="description" content="A self-serve guide to the four Telegrafen Figma skills: mockups, components, visual design and UX writing.">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -35,7 +35,7 @@
           <svg class="icon theme-toggle__light" aria-hidden="true" focusable="false"><use href="#i-light-mode"></use></svg>
         </button>
       </div>
-      <p class="eyebrow">Workshop guide</p>
+      <p class="eyebrow">Skills guide</p>
       <h1>Design with the Telegrafen skills in Figma</h1>
       <p class="lead">Pick the right skill and mode, copy a starter prompt, and follow the recommended workflow from first draft to final QA.</p>
       <div class="hero__actions">
@@ -62,7 +62,6 @@
       <ul aria-labelledby="toc-use">
         <li><a href="#picker">Skill picker</a></li>
         <li><a href="#workflow">Workflow</a></li>
-        <li><a href="#prompts">Demo prompts</a></li>
       </ul>
     </div>
     <div class="toc__group">
@@ -85,7 +84,7 @@
   <section id="picker" class="section section--use" aria-labelledby="picker-title">
     <div class="container">
       <h2 id="picker-title">What do you want to do?</h2>
-      <p class="section__intro">Choose a task. You get the skill, the mode and a starter prompt to adapt. The mapping follows the workshop cheat sheet.</p>
+      <p class="section__intro">Choose a task. You get the skill, the mode and a starter prompt to adapt. The mapping follows the cheat sheet.</p>
 
       <fieldset class="chip-group">
         <legend class="label">Your task</legend>
@@ -106,9 +105,9 @@
     <div class="container">
       <div class="section__head">
         <h2 id="workflow-title">Suggested end-to-end workflow</h2>
-        <span class="badge">Workshop recommendation</span>
+        <span class="badge">Recommendation</span>
       </div>
-      <p class="section__intro">Seven steps from brief to final QA. One skill per prompt at every step.</p>
+      <p class="section__intro">Seven steps from brief to final QA. One skill per prompt at every step, with an example prompt to copy and adapt where it helps.</p>
 
       <div class="walkthrough" id="walkthrough">
         <ol class="stepper" id="stepper" hidden></ol>
@@ -124,7 +123,13 @@
             <h3 class="step__title">Generate one small, scoped view</h3>
             <p class="step__skill">Mockups · Build &amp; Iterate</p>
             <p>Ask for one view, not a whole flow. Expect questions about material unknowns and a <em>Draft status</em> of READY TO ITERATE, NEEDS CHANGES or BLOCKED.</p>
-            <p><a href="#prompt-a">Use demo prompt A</a></p>
+            <div class="step__prompt" id="prompt-a">
+              <p class="label" id="prompt-a-title">Example prompt</p>
+              <div class="prompt__well">
+                <p class="prompt__text" id="prompt-a-text">/telegrafen-design-mockups. Use Build &amp; Iterate. Design one desktop view showing a recommended broadband and TV bundle. Explain the primary customer action, use verified Telegrafen assets, place the new frame beside the selected frame, and ask about material unknowns.</p>
+                <button type="button" class="copy-btn" data-copy-target="prompt-a-text" aria-describedby="prompt-a-title" hidden></button>
+              </div>
+            </div>
           </li>
           <li class="step" id="step-3" data-short="Copy">
             <h3 class="step__title">Rewrite or QA the customer-facing copy</h3>
@@ -135,19 +140,37 @@
             <h3 class="step__title">Run production and WCAG checks</h3>
             <p class="step__skill">Mockups · Review &amp; Finalize</p>
             <p>Runs the production and WCAG 2.2 AA design gates. Applies fixes only within the authorised scope and reports unrelated issues.</p>
-            <p><a href="#prompt-d">Use demo prompt D</a></p>
+            <div class="step__prompt" id="prompt-d">
+              <p class="label" id="prompt-d-title">Example prompt</p>
+              <div class="prompt__well">
+                <p class="prompt__text" id="prompt-d-text">/telegrafen-design-mockups. Review &amp; Finalize the selected frame. Inspect actual provenance/bindings, responsive states, accessibility and visual polish. Correct only authorised defects and report production/WCAG gates.</p>
+                <button type="button" class="copy-btn" data-copy-target="prompt-d-text" aria-describedby="prompt-d-title" hidden></button>
+              </div>
+            </div>
           </li>
           <li class="step" id="step-5" data-short="Critique">
             <h3 class="step__title">Critique hierarchy, quality and brand</h3>
             <p class="step__skill">Visual Design · Review</p>
             <p>Read-only. Findings are ranked Critical, Important or Polish, with Preserve decisions so good work survives rework.</p>
-            <p><a href="#prompt-b">Use demo prompt B</a></p>
+            <div class="step__prompt" id="prompt-b">
+              <p class="label" id="prompt-b-title">Example prompt</p>
+              <div class="prompt__well">
+                <p class="prompt__text" id="prompt-b-text">/telegrafen-visual-design. Review the selected screen, read-only. Identify the five highest-impact findings for hierarchy, spacing, typography, composition, and premium Telenor expression. State what to preserve.</p>
+                <button type="button" class="copy-btn" data-copy-target="prompt-b-text" aria-describedby="prompt-b-title" hidden></button>
+              </div>
+            </div>
           </li>
           <li class="step" id="step-6" data-short="Refine">
             <h3 class="step__title">Apply only the accepted recommendations</h3>
             <p class="step__skill">Visual Design · Apply</p>
             <p>Implements accepted findings in a revision beside the original, returns a ledger (Implemented, Preserved, Blocked, Dismissed by user), then runs Mockup production QA and Visual acceptance QA.</p>
-            <p><a href="#prompt-c">Use demo prompt C</a></p>
+            <div class="step__prompt" id="prompt-c">
+              <p class="label" id="prompt-c-title">Example prompt</p>
+              <div class="prompt__well">
+                <p class="prompt__text" id="prompt-c-text">/telegrafen-visual-design. Apply only accepted findings 1, 2 and 4; preserve confirmed content and interactions. Provide an implementation ledger and validation.</p>
+                <button type="button" class="copy-btn" data-copy-target="prompt-c-text" aria-describedby="prompt-c-title" hidden></button>
+              </div>
+            </div>
           </li>
           <li class="step" id="step-7" data-short="Handoff">
             <h3 class="step__title">Hand off new reusable components</h3>
@@ -170,53 +193,11 @@
     </div>
   </section>
 
-  <!-- Use it: Demo prompts -->
-  <section id="prompts" class="section section--use" aria-labelledby="prompts-title">
-    <div class="container">
-      <div class="section__head">
-        <h2 id="prompts-title">Live demo prompts</h2>
-        <span class="badge">Workshop examples</span>
-      </div>
-      <p class="section__intro">Examples written for the workshop, not quotes from the skills. Adapt them to your own frame and brief.</p>
-
-      <div class="prompt-list">
-        <article class="prompt" id="prompt-a" aria-labelledby="prompt-a-title">
-          <h3 id="prompt-a-title"><span class="prompt__key">A</span> Explore</h3>
-          <div class="prompt__well">
-            <p class="prompt__text" id="prompt-a-text">/telegrafen-design-mockups. Use Build &amp; Iterate. Design one desktop view showing a recommended broadband and TV bundle. Explain the primary customer action, use verified Telegrafen assets, place the new frame beside the selected frame, and ask about material unknowns.</p>
-            <button type="button" class="copy-btn" data-copy-target="prompt-a-text" aria-describedby="prompt-a-title" hidden></button>
-          </div>
-        </article>
-        <article class="prompt" id="prompt-b" aria-labelledby="prompt-b-title">
-          <h3 id="prompt-b-title"><span class="prompt__key">B</span> Critique</h3>
-          <div class="prompt__well">
-            <p class="prompt__text" id="prompt-b-text">/telegrafen-visual-design. Review the selected screen, read-only. Identify the five highest-impact findings for hierarchy, spacing, typography, composition, and premium Telenor expression. State what to preserve.</p>
-            <button type="button" class="copy-btn" data-copy-target="prompt-b-text" aria-describedby="prompt-b-title" hidden></button>
-          </div>
-        </article>
-        <article class="prompt" id="prompt-c" aria-labelledby="prompt-c-title">
-          <h3 id="prompt-c-title"><span class="prompt__key">C</span> Focused refinement</h3>
-          <div class="prompt__well">
-            <p class="prompt__text" id="prompt-c-text">/telegrafen-visual-design. Apply only accepted findings 1, 2 and 4; preserve confirmed content and interactions. Provide an implementation ledger and validation.</p>
-            <button type="button" class="copy-btn" data-copy-target="prompt-c-text" aria-describedby="prompt-c-title" hidden></button>
-          </div>
-        </article>
-        <article class="prompt" id="prompt-d" aria-labelledby="prompt-d-title">
-          <h3 id="prompt-d-title"><span class="prompt__key">D</span> Finalise</h3>
-          <div class="prompt__well">
-            <p class="prompt__text" id="prompt-d-text">/telegrafen-design-mockups. Review &amp; Finalize the selected frame. Inspect actual provenance/bindings, responsive states, accessibility and visual polish. Correct only authorised defects and report production/WCAG gates.</p>
-            <button type="button" class="copy-btn" data-copy-target="prompt-d-text" aria-describedby="prompt-d-title" hidden></button>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- Reference: look-up material, quieter treatment on Color/Page/Subtle -->
   <section class="ref-group" aria-labelledby="reference-title">
     <div class="container ref-group__head">
       <h2 id="reference-title">Reference</h2>
-      <p class="section__intro">Look up skills, modes and rules during and after the workshop.</p>
+      <p class="section__intro">Look up skills, modes and rules while you work.</p>
     </div>
   <!-- Reference: Skills at a glance -->
   <section id="skills" class="section section--ref" aria-labelledby="skills-title">
@@ -392,7 +373,7 @@
         <li><a href="https://github.com/silentpixel-git/telegrafen-design-skills/blob/main/skills/telegrafen-visual-design/SKILL.md">telegrafen-visual-design/SKILL.md</a> v1.1</li>
         <li><a href="https://github.com/silentpixel-git/telegrafen-design-skills/blob/main/skills/telegrafen-ux-writing/SKILL.md">telegrafen-ux-writing/SKILL.md</a> v1.2</li>
       </ul>
-      <p>The workflow, demo prompts, and starter prompts are workshop recommendations, not source rules. Where the workshop handout and a <code>SKILL.md</code> differ, this guide follows <code>SKILL.md</code>. The current published Figma libraries remain the runtime source of truth.</p>
+      <p>The workflow, example prompts and starter prompts are recommendations, not source rules. Where this guide and a <code>SKILL.md</code> differ, follow <code>SKILL.md</code>. The current published Figma libraries remain the runtime source of truth.</p>
     </div>
   </section>
   </section>
@@ -400,7 +381,7 @@
 
 <footer class="footer">
   <div class="container">
-    <p>Telegrafen design skills workshop guide. Styled with tokens from the Telegrafen Design Tokens and Components libraries.</p>
+    <p>Telegrafen design skills guide. Styled with tokens from the Telegrafen Design Tokens and Components libraries.</p>
   </div>
 </footer>
 

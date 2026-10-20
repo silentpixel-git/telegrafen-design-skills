@@ -126,7 +126,7 @@
       mode: "Build & Iterate",
       why: "Mockups assembles screens from verified Telegrafen assets. Start with one small, scoped view. You get a Draft status, not a review verdict.",
       prompt: PROMPT_A,
-      promptSource: "Demo prompt A"
+      promptSource: "Example prompt from workflow step 2"
     },
     {
       id: "final-qa",
@@ -136,7 +136,7 @@
       mode: "Review & Finalize",
       why: "Runs the complete production and WCAG 2.2 AA gates, corrects defects only in the requested area and connected states, and reports unrelated issues.",
       prompt: PROMPT_D,
-      promptSource: "Demo prompt D"
+      promptSource: "Example prompt from workflow step 4"
     },
     {
       id: "new-component",
@@ -176,7 +176,7 @@
       mode: "Review",
       why: "Read-only art-direction review. Findings are ranked Critical, Important or Polish, with Preserve decisions.",
       prompt: PROMPT_B,
-      promptSource: "Demo prompt B"
+      promptSource: "Example prompt from workflow step 5"
     },
     {
       id: "visual-apply",
@@ -186,7 +186,7 @@
       mode: "Apply",
       why: "Implements only the accepted findings in a revision beside the original, then runs Mockup production QA and Visual acceptance QA.",
       prompt: PROMPT_C,
-      promptSource: "Demo prompt C"
+      promptSource: "Example prompt from workflow step 6"
     },
     {
       id: "ux-copy",
@@ -222,8 +222,8 @@
 
   function renderResult(t) {
     var source = t.promptSource === "Starter prompt"
-      ? "Starter prompt (workshop example, adapt the bracketed details)"
-      : t.promptSource + " (workshop example)";
+      ? "Starter prompt (adapt the bracketed details)"
+      : t.promptSource;
     result.innerHTML =
       '<div class="picker-result__meta"><span class="badge">From the cheat sheet</span></div>' +
       "<h3>" + escapeHtml(t.skill) + " · " + escapeHtml(t.mode) + "</h3>" +
@@ -305,7 +305,7 @@
       ".hero__main > *", ".hero__aside",
       ".section > .container > h2", ".section > .container > h3", ".section__head", ".section__intro",
       ".ref-group__head > *", ".chip-group", ".picker-result", ".walkthrough",
-      ".prompt", ".skill", ".callout", ".table-wrap", ".rule-list", ".tip-list", ".source-list"
+      ".skill", ".callout", ".table-wrap", ".rule-list", ".tip-list", ".source-list"
     ].join(","));
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
