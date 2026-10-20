@@ -22,14 +22,25 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="hero t-dark">
-  <div class="container">
-    <svg class="hero__logo" aria-hidden="true" focusable="false"><use href="#i-telenor"></use></svg>
-    <p class="eyebrow">Workshop guide</p>
-    <h1>Design with the Telegrafen skills in Figma</h1>
-    <p class="lead">Pick the right skill and mode, copy a starter prompt, and follow the recommended workflow from first draft to final QA.</p>
-    <div class="hero__actions">
-      <a class="btn btn--primary btn--m" href="#picker">Find the right skill</a>
-      <a class="btn btn--tertiary btn--m" href="#workflow">Follow the workflow</a>
+  <div class="container hero__grid">
+    <div class="hero__main">
+      <svg class="hero__logo" aria-hidden="true" focusable="false"><use href="#i-telenor"></use></svg>
+      <p class="eyebrow">Workshop guide</p>
+      <h1>Design with the Telegrafen skills in Figma</h1>
+      <p class="lead">Pick the right skill and mode, copy a starter prompt, and follow the recommended workflow from first draft to final QA.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--m" href="#picker">Find the right skill</a>
+        <a class="btn btn--tertiary btn--m" href="#workflow">Follow the workflow</a>
+      </div>
+    </div>
+    <div class="hero__aside">
+      <h2 class="hero__aside-title" id="hero-skills-title">Four skills, one per prompt</h2>
+      <ul class="hero-skills" aria-labelledby="hero-skills-title">
+        <li><span class="hero-skills__name">Mockups <span class="hero-skills__version">v2.4</span></span><code class="hero-skills__cmd">/telegrafen-design-mockups</code></li>
+        <li><span class="hero-skills__name">Components <span class="hero-skills__version">v1.4</span></span><code class="hero-skills__cmd">/telegrafen-design-components</code></li>
+        <li><span class="hero-skills__name">Visual Design <span class="hero-skills__version">v1.1</span></span><code class="hero-skills__cmd">/telegrafen-visual-design</code></li>
+        <li><span class="hero-skills__name">UX Writing <span class="hero-skills__version">v1.2</span></span><code class="hero-skills__cmd">/telegrafen-ux-writing</code></li>
+      </ul>
     </div>
   </div>
 </header>
@@ -198,41 +209,41 @@
         <p class="walkthrough__progress" id="walkthrough-progress" aria-live="polite" hidden></p>
 
         <ol class="steps" id="steps">
-          <li class="step" id="step-1">
+          <li class="step" id="step-1" data-short="Brief">
             <h3 class="step__title">Select a Figma frame and confirm the brief</h3>
             <p class="step__skill">Before you prompt</p>
             <p>Know the user task, the primary action and the target sizes. Select the frame the new work should sit beside.</p>
           </li>
-          <li class="step" id="step-2">
+          <li class="step" id="step-2" data-short="Explore">
             <h3 class="step__title">Generate one small, scoped view</h3>
             <p class="step__skill">Mockups · Build &amp; Iterate</p>
             <p>Ask for one view, not a whole flow. Expect questions about material unknowns and a <em>Draft status</em> of READY TO ITERATE, NEEDS CHANGES or BLOCKED.</p>
             <p><a href="#prompt-a">Use demo prompt A</a></p>
           </li>
-          <li class="step" id="step-3">
+          <li class="step" id="step-3" data-short="Copy">
             <h3 class="step__title">Rewrite or QA the customer-facing copy</h3>
             <p class="step__skill">UX Writing · Rewrite or QA</p>
             <p>Use a separate prompt. QA is read-only unless you ask to “QA and fix” or “update”.</p>
           </li>
-          <li class="step" id="step-4">
+          <li class="step" id="step-4" data-short="Finalize">
             <h3 class="step__title">Run production and WCAG checks</h3>
             <p class="step__skill">Mockups · Review &amp; Finalize</p>
             <p>Runs the production and WCAG 2.2 AA design gates. Applies fixes only within the authorised scope and reports unrelated issues.</p>
             <p><a href="#prompt-d">Use demo prompt D</a></p>
           </li>
-          <li class="step" id="step-5">
+          <li class="step" id="step-5" data-short="Critique">
             <h3 class="step__title">Critique hierarchy, quality and brand</h3>
             <p class="step__skill">Visual Design · Review</p>
             <p>Read-only. Findings are ranked Critical, Important or Polish, with Preserve decisions so good work survives rework.</p>
             <p><a href="#prompt-b">Use demo prompt B</a></p>
           </li>
-          <li class="step" id="step-6">
+          <li class="step" id="step-6" data-short="Refine">
             <h3 class="step__title">Apply only the accepted recommendations</h3>
             <p class="step__skill">Visual Design · Apply</p>
             <p>Implements accepted findings in a revision beside the original, returns a ledger (Implemented, Preserved, Blocked, Dismissed by user), then runs Mockup production QA and Visual acceptance QA.</p>
             <p><a href="#prompt-c">Use demo prompt C</a></p>
           </li>
-          <li class="step" id="step-7">
+          <li class="step" id="step-7" data-short="Handoff">
             <h3 class="step__title">Hand off new reusable components</h3>
             <p class="step__skill">Components · separate handoff</p>
             <p>If the design needs a new reusable component, send a separate Components prompt. Do not use Mockups to build component APIs.</p>

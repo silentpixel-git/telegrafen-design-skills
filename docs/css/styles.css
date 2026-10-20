@@ -73,6 +73,12 @@ main:focus { outline: none; }
 }
 .skip-link:focus { transform: none; }
 
+/* Two widths only: the 12-column container, and a reading measure of
+   8 of 12 columns derived from Layout/Margin and Layout/Gap. */
+:root {
+  --measure: calc((min(100vw - 2 * var(--layout-margin), 1200px) - 11 * var(--layout-gap)) * 8 / 12 + 7 * var(--layout-gap));
+}
+
 .container {
   max-width: calc(1200px + 2 * var(--layout-margin)); /* Device/Desktop/Min */
   margin: 0 auto;
@@ -101,7 +107,38 @@ main:focus { outline: none; }
 .hero {
   padding: var(--spacing-5xl) 0 var(--spacing-4xl);
 }
-.hero h1 { color: var(--color-text-strong); max-width: 18ch; }
+.hero h1 { color: var(--color-text-strong); }
+.hero__grid { display: grid; gap: var(--spacing-4xl) var(--layout-gap); }
+@media (min-width: 900px) {
+  .hero__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; }
+}
+/* Open list of the four commands: no cards, dividers only (Border/Subtle). */
+.hero__aside-title {
+  font-size: var(--font-size-title-2xs);          /* Title/2XS */
+  color: var(--color-text-strong);
+}
+.hero-skills { margin: var(--spacing-l) 0 0; padding: 0; list-style: none; }
+.hero-skills li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+  padding: var(--spacing-m) 0;
+  border-top: var(--border-xs) solid var(--color-border-subtle);
+}
+.hero-skills__name {
+  font-size: var(--font-size-text-l);              /* Text/L */
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  color: var(--color-text-strong);
+}
+.hero-skills__version { font-weight: var(--font-weight-light); color: var(--color-text-subtle); }
+.hero-skills__cmd {
+  font-family: inherit;
+  font-size: var(--font-size-text-m);              /* Text/M */
+  line-height: var(--line-height-text);
+  color: var(--color-text-brand-on-strong);
+  overflow-wrap: anywhere;
+}
 .hero__logo {
   display: block;
   width: var(--height-3xl);
@@ -119,7 +156,6 @@ main:focus { outline: none; }
 }
 .lead {
   margin-top: var(--spacing-l);
-  max-width: 55ch;
   font-size: var(--font-size-content-l);         /* Content/L */
   color: var(--color-text-subtle);
 }
@@ -266,7 +302,7 @@ main:focus { outline: none; }
 }
 .section__intro {
   margin-top: var(--spacing-m);
-  max-width: 65ch;
+  max-width: var(--measure);
   color: var(--color-text-subtle);
 }
 .section h2 + .section__intro,
@@ -329,13 +365,12 @@ main:focus { outline: none; }
   outline-offset: var(--border-s);
 }
 
-/* Picker result: one contained surface (Surface/Subtle, Radius/S, Spacing/XL),
-   as in Accordion Item Contained. */
+/* Picker result: open area under a Divider (Border/Subtle); the prompt field
+   is the only rounded boundary, so there are no nested radii. */
 .picker-result {
   margin-top: var(--spacing-3xl);
-  padding: var(--spacing-3xl);
-  border-radius: var(--radius-s);
-  background: var(--color-surface-subtle);
+  padding-top: var(--spacing-2xl);
+  border-top: var(--border-xs) solid var(--color-border-subtle);
 }
 .picker-result__empty { color: var(--color-text-subtle); }
 .picker-result__meta {
@@ -345,12 +380,11 @@ main:focus { outline: none; }
   margin-bottom: var(--spacing-l);
 }
 .picker-result h3 { font-size: var(--font-size-title-s); }  /* Title/S */
-.picker-result__why { margin-top: var(--spacing-s); max-width: 65ch; }
+.picker-result__why { margin-top: var(--spacing-s); max-width: var(--measure); }
 .picker-result__prompt-label {
   margin-top: var(--spacing-2xl);
   margin-bottom: var(--spacing-s);
 }
-.picker-result .prompt__text { background: var(--color-surface-default); }
 
 /* ---------- Skills at a glance: open list with dividers ---------- */
 .skill-list {
@@ -390,7 +424,7 @@ main:focus { outline: none; }
   padding: var(--spacing-xl) var(--spacing-2xl);
   border-left: var(--border-s) solid var(--color-border-info);
   background: var(--color-surface-info-subtler);
-  max-width: 80ch;
+  max-width: var(--measure);
 }
 .callout__icon { color: var(--color-icon-info); margin-top: 0.05em; }
 .callout__title {
@@ -437,7 +471,7 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
   margin: var(--spacing-3xl) 0 0;
   padding: 0;
   list-style: none;
-  max-width: 75ch;
+  max-width: var(--measure);
 }
 .rule-list { counter-reset: rule; }
 .rule-list li, .tip-list li {
@@ -498,6 +532,8 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
   color: var(--color-text-action-strong);
 }
 .stepper button[aria-current="step"] { font-weight: var(--font-weight-medium); }
+.stepper button { gap: var(--spacing-s); }
+.stepper__num { font-variant-numeric: tabular-nums; }
 .stepper button:hover {
   border-bottom: var(--border-s) solid var(--color-border-action-strong-hover);
   color: var(--color-text-action-strong-hover);
@@ -520,7 +556,7 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
 .step {
   counter-increment: step;
   padding: var(--spacing-l) 0;
-  max-width: 65ch;
+  max-width: var(--measure);
 }
 .step > * + * { margin-top: var(--spacing-s); }
 .step__title { font-size: var(--font-size-title-s); }
@@ -532,7 +568,6 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
   color: var(--color-text-brand-on-subtler);
 }
 .is-enhanced .steps { margin-top: var(--spacing-s); }
-.is-enhanced .step { min-height: 13em; }
 .is-enhanced .step:focus { outline: none; }
 .is-enhanced .step__title::before { content: none; }
 
@@ -584,7 +619,7 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
   padding-left: var(--spacing-xl);
 }
 .source-list li + li { margin-top: var(--spacing-xs); }
-#sources p { max-width: 75ch; color: var(--color-text-subtle); }
+#sources p { max-width: var(--measure); color: var(--color-text-subtle); }
 
 .footer {
   padding: var(--spacing-3xl) 0;
@@ -597,10 +632,11 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
 
 /* ---------- Device/Tablet and below ---------- */
 @media (max-width: 899px) {
+  :root { --measure: 100%; }
+  .stepper__label { display: none; }
   .skill-list, .prompt-list { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 599px) {
-  .picker-result { padding: var(--spacing-xl); }
   .rule-list li { padding-left: var(--spacing-3xl); }
   .stepper button { padding: 0 var(--spacing-l); }
   .walkthrough__nav .btn { flex: 1 1 0; }

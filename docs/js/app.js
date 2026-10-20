@@ -224,8 +224,10 @@
   stepper.innerHTML = steps.map(function (step, i) {
     var title = step.querySelector(".step__title").textContent;
     return '<li><button type="button" data-step="' + i + '" aria-controls="' + step.id + '">' +
-      '<span aria-hidden="true">' + (i + 1) + '</span>' +
-      '<span class="visually-hidden">Step ' + (i + 1) + ": " + escapeHtml(title) + "</span>" +
+      '<span class="visually-hidden">Step </span>' +
+      '<span class="stepper__num">' + (i + 1) + '</span>' +
+      ' <span class="stepper__label">' + escapeHtml(step.getAttribute("data-short") || "") + '</span>' +
+      '<span class="visually-hidden">: ' + escapeHtml(title) + "</span>" +
       "</button></li>";
   }).join("");
   var stepButtons = Array.prototype.slice.call(stepper.querySelectorAll("button"));
