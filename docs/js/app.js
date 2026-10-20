@@ -23,8 +23,9 @@
   var COPIED_LABEL = "Copied";
 
   function setCopyButton(button, copied) {
-    button.innerHTML = icon(copied ? "i-success" : "i-copy") +
-      "<span>" + (copied ? COPIED_LABEL : COPY_LABEL) + "</span>";
+    button.innerHTML = "<span>" + (copied ? COPIED_LABEL : COPY_LABEL) + "</span>" +
+      '<span class="btn__orb" aria-hidden="true">' + icon(copied ? "i-success" : "i-copy") + "</span>";
+    button.classList.add("btn--orb");
     button.classList.toggle("is-copied", copied);
   }
 
@@ -266,4 +267,31 @@
   progress.hidden = false;
   nav.hidden = false;
   show(0, false);
+
+  /* ---------- Scroll reveals (transform and opacity only) ---------- */
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    var revealTargets = document.querySelectorAll([
+      ".hero__main > *", ".hero__aside",
+      ".section > .container > h2", ".section > .container > h3", ".section__head", ".section__intro",
+      ".ref-group__head > *", ".chip-group", ".picker-result", ".walkthrough",
+      ".prompt", ".skill", ".callout", ".table-wrap", ".rule-list", ".tip-list", ".source-list"
+    ].join(","));
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    Array.prototype.forEach.call(revealTargets, function (el) {
+      var siblings = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+      el.style.setProperty("--i", Math.min(siblings, 4));
+      el.classList.add("reveal");
+      observer.observe(el);
+    });
+    document.documentElement.classList.add("reveal-on");
+  }
 })();
