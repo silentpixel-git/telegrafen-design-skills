@@ -1,19 +1,44 @@
 ---
-name: telegrafen-design-mockups-v1-4
-description: Use when creating or updating private-customer Figma Make mockups, prototypes, or conversion and ethical-UX design reviews with Telegrafen components, tokens, approved imagery, and verified Telenor content.
+name: telegrafen-design-mockups
+description: Use when creating or updating private-customer Figma Make mockups, screens, flows, or prototypes governed by Telegrafen.
+metadata:
+  version: "2.4"
 ---
 
-# Telegrafen design mockups v1.4
+# Telegrafen design mockups v2.4
 
-## Purpose
+## Purpose and modes
 
-Create quick mockups and prototypes that feel native to Telegrafen. Reuse the design system where it exists, and explore original product layouts where it does not.
+Create private-customer concepts from verified Telegrafen ingredients. Reuse the system where it exists; compose one-off product layouts where it does not.
 
-Prioritize a useful draft over production-ready coverage. Do not create exhaustive variants, documentation, or responsive states unless the user asks for them.
+Use **Clear. Premium. Distinctly Telenor.** as a construction lens, not an acceptance gate: clear purpose/action; precision over effects; task-specific composition.
 
-## Source of truth
+Mockups own assembly; `/telegrafen-visual-design` owns art direction and formal visual acceptance. Hand off with intent, frames, constraints, and QA in a separate prompt.
 
-Use the live, published Telegrafen sources available to the current Make kit:
+**Build & Iterate** is the concept-work default. Build only requested views, outcomes, and responsiveness. Apply accessibility and provenance invariants. End with `Draft status: READY TO ITERATE`, `NEEDS CHANGES`, or `BLOCKED`; do not issue Review verdicts or formal visual acceptance.
+
+**Review & Finalize** applies when the user asks to review, QA, validate, finalize, publish, or treats the design as ready. Inspect every visible section and state in the supplied scope, modify only the requested area and connected states, report unrelated defects, and run the complete production and WCAG gates.
+
+Status meanings are global:
+
+- `PASS`: every required check has inspectable evidence.
+- `FAIL` or `NEEDS CHANGES`: an inspectable violation exists; fix it when authorised and rerun the check.
+- `BLOCKED`: required provenance, access, binding evidence, or a material decision is unavailable. Never substitute visual resemblance.
+
+## Sequence
+
+1. **Scope** — infer the mode, requested view or flow, selected design, and target sizes.
+2. **Resolve** — inspect the brief and closest live patterns. Ask one focused question at a time only while purpose, outcome, hierarchy, content, assets, selection model, defaults, or initial state remains materially unclear. A clear brief or narrow edit needs no confirmation ceremony.
+3. **Place** — satisfy the Destination invariant before building.
+4. **Source** — find required components, tokens, styles, icons, states, and assets by function and common synonyms. An essential unresolved source is `BLOCKED`.
+5. **Build** — use supported instances and ordinary mockup layers. Preserve unaffected work.
+6. **Verify and hand off** — run the active mode gate and report only applicable handoff fields, failures, blocks, placeholders, and manual actions.
+
+If an example conflicts materially with Telegrafen, pause only the affected section and confirm the Telegrafen interpretation.
+
+## Sources and provenance
+
+Use the live sources available to the current Make kit:
 
 - [Introduction to Telegrafen](https://www.figma.com/slides/liUMCNH7tsliKFKjvNbpc0/)
 - [Components](https://www.figma.com/design/80yLUPif6wgDwXLu5MbMFj/)
@@ -24,330 +49,205 @@ Use the live, published Telegrafen sources available to the current Make kit:
 - [Illustrative Icons](https://www.figma.com/design/8pTia61uly3XAkmZfOSUYt/)
 - [Approved brand images](https://www.figma.com/design/Q9WEywDHM8JzcyfcclGuPD/testing-skills?node-id=1231-5824)
 
-Use published production assets by default. Ask before using beta or experimental assets.
+Use production assets by default; ask before beta or experimental assets. The live library wins conflicts. Typography guidance explains roles but is not a token source.
 
-Visual similarity is not proof that an asset belongs to Telegrafen. If an essential component, icon, or text style cannot be verified in these sources, ask instead of inventing it.
+Visual similarity is not provenance. Inspect actual component, style, icon, and variable bindings. A linked source does not prove availability in Make. Missing essential evidence is `BLOCKED`; never use an invented, generated, redrawn, stretched, or external substitute.
 
-When sources conflict, the live Telegrafen library and these brand rules win. An external reference communicates intent only; “make it exactly like this” never permits a non-Telegrafen component, token, brand treatment, or visual style.
+## Core invariants
 
-Use the Typography guidance frame to understand the intended roles of `Display`, `Title`, `Text`, and `Content`, responsive behaviour, and hierarchy. It is supporting guidance, not a token source. If it differs from the live published text-style library, the live library wins; report the conflict and do not invent or preserve an unavailable style.
+### Destination
 
-## Shared-understanding gate
+Resolve hierarchy before coordinates. Near, beside, right-aligned, and top-aligned describe position only; they never make the selected node or anchor a parent.
 
-Interview the user whenever any design choice remains unclear. Do not guess merely because this is a mockup.
+- If the selection is inside a Figma Section, ascend to the direct child of that Section that contains the selection. Use it as the anchor and create each new top-level design frame as a direct child of the same Section, making it a sibling of the anchor.
+- Without an enclosing Section, ascend to the direct child of the Page that contains the selection. Use it as the anchor and create each new top-level design frame as a direct child of the Page, making it a sibling of the anchor.
 
-Visible purpose, flow outcome, component choice, content hierarchy, asset choice, selection or value model, default selection, and initial state are material whenever they affect the requested view.
+Place the design to the right of the anchor, top-aligned, with a consistent gap and no overlap. Never create an independent design as a child or descendant of the selection, anchor, regular Frame, Group, component, component set, instance, or Auto Layout frame. The only exception is an explicitly requested internal edit: then add only the requested content inside the stated target instead of creating an independent design.
 
-1. Inspect the brief and the closest approved Telegrafen patterns.
-2. Identify choices that are unresolved and material to the visible design.
-3. Ask one focused question at a time until those choices are resolved.
-4. Summarize the agreed direction and ask the user to confirm the shared understanding before building the affected part.
+Do not create an extra wrapper, board, frame, group, annotated container, or background solely to hold, label, explain, or position new mockup frames. Put explanations in the handoff; add canvas annotations only when the user explicitly requests them.
 
-Do not re-ask what the brief or library already resolves. Time pressure, an unavailable stakeholder, “use your judgement,” a plausible default, or calling something a draft does not authorize a guess.
+Before building, verify the destination parent type and identity. After building, verify that every new top-level design frame has that exact direct parent and has no ancestor relationship with the selection or anchor. If there is no selection, multiple selections make the anchor ambiguous, the parent cannot be inspected, or placement requires moving unrelated work, ask where to create the design before building.
 
-When a supplied example differs materially from Telegrafen — so that matching it would change the component type, interaction, brand treatment, or information hierarchy — pause that affected section. Continue the one-question-at-a-time interview until the Telegrafen interpretation is agreed and confirmed.
+### Mockup-only boundary
 
-## Quick working method
+This skill never creates Figma components, component sets, variants, or properties. Concepts use ordinary frames, groups, Auto Layout, and existing Telegrafen component instances. Repeated structures remain ordinary mockup layers.
 
-Before building, identify the main controls, icons, and text roles needed for the mockup.
+When the concept needs a reusable API, variants, properties, component-level states, repair, or component QA, stop before construction and prepare a `/telegrafen-design-components` handoff containing the user need, anatomy, visible states, sources, target location, and unresolved decisions. Route directly; do not ask whether this skill should build the component.
 
-1. Search Telegrafen by function and common synonyms.
-2. Use a suitable existing component with its supported properties.
-3. If no suitable component exists, create a purpose-specific product component from Telegrafen ingredients.
-4. Use exact library icons and published text styles wherever they appear.
-5. Build the requested view and run the quick QA below.
+### Published typography binding
 
-Keep this lightweight: resolve only choices that affect the requested design, then build. Record agreed decisions, missing assets, and newly created product components.
+Inventory visible text after the final text edit: created or changed nodes in Build & Iterate; every visible node in Review & Finalize. Separate intact component-internal text from custom text. Overridden or detached component text counts as custom.
 
-When the user selects an existing design and requests a clear change, edit only that scope. Preserve unaffected components, tokens, assets, layout, and content.
+Every custom text node must satisfy all four checks:
 
-## Components
+1. `textStyleId` is non-empty and not mixed.
+2. The resolved style is remote, published, and Telegrafen-owned.
+3. No manual font-family, weight, size, line-height, or letter-spacing override remains.
+4. Its role and exact published style name are recorded.
 
-Use the closest existing Telegrafen component whenever a referenced object serves the same user task or interaction, even when its shape, decoration, or layout differs. Never recreate a component that is similar in purpose and interaction. Use the library component through its supported variants and properties.
+Binding individual typography variables alone does not satisfy the gate. Never leave Inter or another default font on custom text. Visual fidelity never overrides style provenance: use the closest published style and report any difference from the reference.
 
-- Keep library components intact. Do not detach, redraw, or rebuild them to achieve a preferred look.
-- Do not add or override strokes, borders, drop shadows, blurs, glows, or other effects on any Telegrafen library asset or instance unless the component exposes them through a supported property or they are bound to a verified, named, live Telegrafen token or published style. A renamed local value does not qualify. If Telegrafen does not define the treatment, leave it off.
-- Do not treat Figma Make defaults or components from another library as Telegrafen components.
-- If the closest component cannot support the required structure or behavior, create a new **product component**.
+Report `Typography QA: PASS — N/N custom text nodes verified`, `FAIL`, or `BLOCKED`. An empty or mixed ID, non-Telegrafen style, or manual override is `FAIL`; uninspectable bindings or an unresolved appropriate style are `BLOCKED`. Non-pass prevents draft readiness, production QA, and final QA from passing.
 
-A product component may use an original layout or container. Build its controls and interactive parts from Telegrafen components such as Button, Checkbox, Radio Button, input fields, Tabs, and Link. Use Telegrafen tokens, text styles, icons, and states for its visible design.
+### Radius by role
 
-Keep it purpose-specific and label it as a product component, not an official Telegrafen library component. Use Auto Layout for every product component and repeatable content group. Reserve manual positioning for fixed decorative composition that contains no control, changing text, or repeatable content.
+Preserve the radius of verified Telegrafen components. For custom surfaces, decide whether a boundary is needed. A missing component does not require `0`.
 
-For a mockup, cover only the states and responsive behavior needed to communicate the current idea. When the user asks to show a flow or interaction, include the essential outcome state needed to make it understandable. Ask if that state is unclear; do not invent a full set of loading, error, empty, and confirmation states.
+Radius may support containment, interaction, selection, floating layers, media masks, or continuity with an approved pattern. Tokens alone are insufficient. Use it; otherwise choose the smallest verified Radius token:
 
-When Telegrafen has no matching chart, timeline, progress visual, or data visualisation, create a purpose-specific original only after the user has supplied the data and intended meaning. Use Telegrafen tokens and ingredients; never imitate another library’s chart style.
+- `none`: page regions, full-bleed or edge-attached surfaces, list rows, tables, joined elements, or parent-contained groups.
+- `2xs` or `xs`: compact details, inline containers, or media masks.
+- `s`: independent cards, tiles, panels, or interactive surfaces.
+- `m`: detached overlays, modal-like surfaces, or prominent containers.
+- `l`: exceptional surfaces with Telegrafen precedent.
+- `max`: circular or pill roles only.
 
-## Lists, cards, and repeated content
+Visual polish may choose between adjacent appropriate tokens; never invent a value or boundary. Keep peers consistent. Round parent and children only for distinct layers.
 
-- Every rendered list item must contain meaningful primary content. Never add blank, invisible, placeholder, or whitespace-only items to create spacing, fill a grid, balance columns, or equalize container heights.
-- Omit unavailable items. Use the approved Telegrafen Skeleton pattern for loading and an appropriate empty state for a genuinely empty result; never represent either with an empty List instance.
-- Optional fields inside a valid item may be absent only when the component supports that state.
-- Default static icon–title–description benefit sets to an open grid or list without a per-item border, fill, radius, or elevation. Use a card only when its boundary communicates independent content, interaction, selection, state, comparison, or another distinct containment purpose.
-- Treat a section background or panel as existing group containment. Add child cards only when they communicate a second, distinct purpose.
-- Before adding a second consecutive card-led section, review the full page for cardification. Flatten at least one set unless the task genuinely requires repeated independent or comparable modules; do not impose a universal numeric cap.
-- Cards with the same purpose must use the same verified Telegrafen component and variant. Use different variants only when function, hierarchy, interaction, or state differs, and use supported light- or dark-mode treatments instead of manually restyling cards.
-- Interactive cards must use a verified interactive pattern with the required visible states. Static cards must not imitate interaction through unsupported hover treatments, action chevrons, cursor cues, or elevation. Avoid competing nested actions unless the verified component explicitly supports them.
-- Peer cards in the same row, comparison set, or repeated module should use consistent widths and visually aligned heights. Align equivalent internal regions such as titles, content, prices, and actions when this improves scanning.
-- Achieve alignment with Auto Layout, shared structure, consistent padding, and supported fill or hug behaviour. Never use empty items, invisible filler, fake copy, clipping, or truncation to equalize cards.
-- Cards with different purposes or hierarchy do not need matching dimensions. When realistic content varies too much for a sound equal-height treatment, revise the layout or allow natural height.
+Build & Iterate inventories each changed visible custom boundary; Review & Finalize inspects every visible custom boundary. Record role and token, including `none`. Unjustified, inconsistent, oversized, or unresolved radius is `NEEDS CHANGES`. Use `BLOCKED` only when the token cannot be verified or the role needs a material decision, not merely because no component analogue exists. Non-pass prevents readiness and final QA.
 
-## Layer naming
+Coherent nested boundaries use concentric corners; with uniform inset, `outer radius = inner radius + inset`. Use verified tokens or properties. Otherwise use one boundary or a live pattern; inspect non-uniform inset optically.
 
-- Inspect the closest current Telegrafen component before naming. Current live patterns override the historical “How to build components” guide.
-- Name new product components in singular, purpose-based form using the casing and syntax shown by the current library.
-- Name every custom layer by its role. Frames are appropriate for Auto Layout and resizing, but `Frame`, `Group`, or `Rectangle` describes a node type, not its purpose; never leave names such as `Frame 12` or `Rectangle 3`.
-- Use this vocabulary when it fits: `Container`, `Top`, `Content`, `Bottom`, `Section`, `Wrapper`, `Slot`, `Label`, `Title`, `Subtitle`, `Text`, `Trigger`, `Input`, `Item`, and `Option`. Prefer a specific name such as `Plan Summary` or `Payment Actions` when it communicates the role better.
-- Keep equivalent layers named consistently across repeated structures and product-component states. Do not rename internal layers of an untouched library instance.
+### Section icon-family and geometry
 
-## Brand and icons
+Choose exactly one standalone artwork family per visual section:
 
-- Any brand-identity element must use the official Telenor symbol asset when it is available. Never typeset or style “Telenor” to imitate a logo or wordmark. If the symbol cannot be found, ask the user; do not substitute text. Ordinary content may still use the word Telenor.
-- When the official Telenor symbol is displayed, use its official Telenor brand-blue asset. Do not recolour it. If contrast is insufficient, use a suitable surrounding surface rather than changing the logo colour.
-- Reserve the main Telenor brand colour for the official logo or symbol. Do not use it on non-logo elements unless a current, explicit, approved Telegrafen or Telenor brand rule requires it for that exact element. Use the appropriate semantic Telegrafen colour token for every other role.
-- Use a brand image only when the user has supplied or approved it, or when it comes from the approved brand-images source above. Use that source to select imagery, not to copy non-Telegrafen layouts or styles.
-- Keep every approved image source intact. Do not apply local strokes, borders, shadows, blurs, glows, recolouring, distortion, or other effects to the image itself. An approved presentation frame may crop the visible view without altering the source asset; any wrapper treatment must use a verified Telegrafen token, published style, or supported component property.
-- When an approved image is unavailable, use a clearly labelled placeholder or a suitable Telegrafen Product Icon or Illustrative Icon. Never import, copy, or generate a lookalike photograph, illustration, or decorative graphic.
-- Use live instances from UI Icons, Product Icons, or Illustrative Icons. Never use emoji, generated icons, text glyphs, inline SVG, or another icon library.
-- Use UI Icons for interface actions, navigation, and status; Product Icons for products and services; Illustrative Icons for expressive or explanatory artwork.
-- Choose one non-UI icon family for each coherent set of peer content before selecting individual icons. Equivalent peers must never mix Product Icons and Illustrative Icons, even when every asset is individually relevant, visually related, or present in a reference. Different sections may use different families when their semantic roles genuinely differ.
-- Within a peer set, use the same supported instance size, container footprint, alignment, and colour rule. Preserve natural differences in approved artwork; never modify an icon to force identical visual weight.
-- If one family does not cover the complete peer set, choose another family that does, regroup only when content roles genuinely differ, remove icons from the entire set when they are non-essential, or ask and report `BLOCKED` when icons are essential. Never fill a coverage gap with the other non-UI family.
-- A UI Icon may coexist with a Product or Illustrative Icon only in a clearly separate action, navigation, or status role supplied by a supported component or property. It does not permit Product and Illustrative Icons to mix as peer artwork.
-- At 32 px or smaller, use UI Icons only. Above 32 px, continue to choose the family by semantic meaning; size alone never turns a UI Icon into a Product or Illustrative Icon.
-- Never display an Illustrative Icon below a 120 × 120 px instance frame.
-- Choose an icon by semantic meaning, not merely because its shape is close.
-- **Never change an icon's aspect ratio.** Scale width and height together; never stretch, crop, redraw, or alter its strokes.
-- Use a supported size when available. Otherwise, center the unchanged icon inside a suitable token-sized area instead of distorting it to fill the space.
-- Keep every icon's `Default` library colour by default. A designer may explicitly define another colour for a complete section before application, but it must use a verified semantic Telegrafen token or supported component property, apply consistently to equivalent icons, pass contrast in its light or dark context, and never use the logo-reserved main brand colour. One-off recolouring remains prohibited unless a verified semantic state requires it.
-- If no suitable icon can be verified, omit a non-essential icon or ask the user when it is important. Never create a plausible substitute.
+- UI Icons: compact roles at 32 px or smaller.
+- Product Icons: product or service roles above 32 px and below 120 px.
+- Illustrative Icons: 120 px or larger, only promotions, page heroes, and campaign banners.
 
-## Typography and tokens
+Functional UI Icons may coexist inside verified actions, navigation, controls, or status. Equivalent roles share supported size, footprint, alignment, and colour treatment. Keep `Default` colour unless a complete section uses a verified semantic token consistently and passes contrast.
 
-- Apply a published Telegrafen text style to every custom text element, including small labels, helper text, badges, metadata, and table text.
-- Let text inside library components inherit the component's typography. Do not manually override it.
-- Do not manually assemble or approximate the Telegrafen type scale.
+Search by meaning, then official `Fallback`. If neither exists, a draft may use an arbitrary icon from the selected family inside `PLACEHOLDER — replace icon`; report it. Placeholders prevent final `PASS`. Never substitute emoji, generated icons, glyphs, inline SVG, another library, or another family.
 
-### Typography roles and heading hierarchy
+For every standalone, changed, resized, or swapped icon:
 
-- Treat H1 through H5 as semantic levels in the content hierarchy, not as fixed font sizes. Normally use one H1 for each page, screen, or distinct view. Use H2 for a major section below it, then H3, H4, and H5 according to genuine nesting. Do not skip levels or select a level for visual effect.
-- Review the complete visible page hierarchy rather than judging sections in isolation. A child heading must not appear stronger than its parent, and headings with the same semantic role must use the same published style within a page or repeated pattern.
-- Do not use a universal mapping such as `H1 = Title/Xl`. Select a currently published size that suits the hierarchy, available space, and content density. Never use raw font values or create an unavailable family and size combination.
-- Use `Display` only for a concise, expressive page-level H1 in a Hero, banner, or similarly spacious context. An H1 on a functional or compact page uses an appropriate `Title` style. H2 through H5 use `Title`, never `Display`. Do not choose `Display` merely to make text larger.
-- Use `Title` for headings and section titles, `Text` for short interface copy such as labels and compact controls, and `Content` for paragraphs and longer reading. For article-style or longer text sections, pair `Title` and `Content` with the same T-shirt size when matching published styles exist.
-- Prominent text is not automatically a heading. Card titles, dialog titles, form legends, promotional labels, and component titles receive an H1–H5 level only when they introduce a section in the page hierarchy; otherwise preserve their specific UI role.
-- A reusable component must not hard-code a page-level H1. Its title style follows the component contract, while the containing page determines its semantic level.
-- Name custom heading layers by purpose, such as `Page title`, `Section title`, or a more specific content role. Do not rename text layers inside untouched Telegrafen instances. During QA or finalization, report the intended H1–H5 outline.
+1. Inspect source width and height.
+2. Inspect the rendered icon, not its wrapper.
+3. Verify `rendered width / source width = rendered height / source height`.
 
-### Typography sizing and behaviour
+Unequal scaling or visible distortion is `FAIL`. Unavailable source dimensions are `BLOCKED` unless visible distortion already proves failure. Intact verified component internals may rely on published geometry. Report `Icon geometry QA: PASS — N/N source ratios verified`, `FAIL`, or `BLOCKED`; non-pass prevents production QA.
 
-- Use the responsive behaviour supplied by the published Telegrafen text style. Never manually scale typography for mobile, tablet, or desktop.
-- Let headings wrap naturally. Do not shrink the font, tighten tracking or line height, truncate text, or switch to a lower style merely to make a heading fit. Check the copy and layout, then ask before making a material change.
-- Do not impose a universal maximum line count. Follow an explicit limit only when a live Telegrafen component or established pattern defines one; otherwise judge readability and layout at every supplied viewport.
-- A Display H1 may use correct Norwegian word division with a hyphen at a line break when necessary. Do not use a hyphen as a pause. Recheck every supplied viewport so a manual division does not remain inside a reflowed line.
-- Use published Telegrafen spacing tokens and the closest live pattern around typography. Larger headings require appropriate surrounding space, and a heading remains closer to the content it introduces than to the preceding section. Do not invent a universal spacing table.
-- Restrict `Text/2xs` and `Text/3xs` to genuinely secondary, short content. Never use the smallest text styles for essential instructions, prices, terms, errors, consent, consequences, or primary actions, and never reduce important information to make it less noticeable.
-- `Title/2xs` and `Title/3xs` may be used for compact component headings when supported by the closest live pattern. Their semantic level still comes from the surrounding hierarchy; never use them for a major page or section heading merely to make the layout fit.
-- Make custom text containers wrap and grow vertically without clipping, overlap, or hidden controls when text is enlarged. Figma can validate this design evidence, but browser zoom, operating-system text scaling, and semantic HTML remain implementation checks.
+## Visual contract
 
-- Use Telegrafen semantic color tokens rather than raw or copied colors.
-- Use spacing, radius, border, surface, elevation, control-size, and motion tokens where suitable tokens exist.
-- Do not enable the Button property `Neutral`. In every dark-background region, inspect each Button and verify `Neutral = Off`.
-- Treat every dark-background region as a dark-mode context, even inside an otherwise light screen. Verify all content and states within it: nested surfaces, text, icons, the Telenor symbol, dividers, borders, focus indicators, overlays, and hover, active, selected, disabled, and loading states remain visible and distinguishable.
+### Components, layout, and revisions
 
-One-off content widths, composition, and placement may be chosen for the mockup. Do not invent a new type style, control appearance, icon geometry, or repeatable visual rule to solve a one-off layout need.
+- Use the closest component serving the same task and interaction; shape differences do not justify reconstruction. Keep instances intact and use supported variants, properties, tokens, and styles.
+- Familiar controls stay familiar. Task-specific content, hierarchy, grouping, states, imagery, and patterns serve the actual Telenor task; never force novelty to look branded.
+- Each context has one dominant task, status, action, or relationship; subordinate the rest. Repeat visual grammar only for genuinely equivalent content or tasks.
+- Use proximity, alignment, and verified spacing before containment; related elements sit closer than separate topics, levels, or tasks.
+- Controls come from existing Telegrafen instances. One-off charts, timelines, or progress visuals require supplied data and intended meaning and use verified ingredients without imitating another library.
+- Auto Layout governs changing or repeated content. Manual positioning is limited to fixed decoration without controls or changing text.
+- Every list item has meaningful primary content. Use Skeleton for loading and an appropriate empty state; empty or invisible filler never creates spacing or alignment.
+- Static icon-title-description benefits default to an open grid or list. Cards require independent content, interaction, selection, state, comparison, or another distinct containment purpose. A section surface already supplies group containment.
+- Before a second consecutive card-led section, inspect for cardification and flatten a set unless independent repeated modules are necessary. Peer cards share structure and align equivalent regions without fake copy, clipping, or truncation.
+- Interactive cards use a verified interactive pattern and expose its required states. Static cards keep a static affordance; unsupported hover, action chevrons, cursor cues, elevation, and competing nested actions never simulate interactivity.
+- Use shared structure, padding, and supported fill or hug behaviour for alignment. When realistic content makes equal height unsound, revise the layout or allow natural height rather than hiding content.
+- A decision context normally has one primary-styled action. A long page may repeat the same action after substantial content when instances do not compete. Other actions use verified secondary, neutral, or link treatments.
+- Custom layers use semantic purpose names; equivalent structures stay consistent. Preserve names inside untouched instances.
 
-## Content, language, and pricing
+Create a comparison revision only when requested or handed off from `/telegrafen-visual-design`. Preserve the original; place `[Original frame name] — Visual rework` immediately right of it, top-aligned, in the same Section. Ask before moving unrelated work. A visual-design handoff is an execution ledger: return each accepted item as `Implemented`, `Preserved`, `Blocked`, or `Dismissed by user`.
 
-- Preserve the language in the brief or supplied content. For a private-customer mockup with no specified language, use Norwegian Bokmål. Ask before translating customer-facing copy into another language.
-- When customer-facing copy is created or changed, use the Telenor UX microcopy skill when it is available. Otherwise, preserve user-provided copy and ask before inventing tone-sensitive copy.
-- Use user-provided or verified Telenor content for real product names, prices, offers, coverage, speed, availability, and legal claims. Do not invent discounts, campaign language, savings, binding periods, eligibility, availability, bundles, or legal footnotes. Ask when those details are needed.
-- Use fictional, non-identifying customer data by default. Never reproduce personal data from a supplied screenshot unless the user explicitly confirms that it is approved for use.
-- Use Telegrafen form controls with visible labels or an approved accessible-label pattern. Never use placeholder text as the only field label. Use an icon-only control only when its purpose is clear and its available component provides an accessible label.
+### Brand, imagery, tags, and dividers
 
-### Price writing and presentation
+- Brand identity uses the official Telenor logo or symbol from UI Icons in official blue and original proportions. It is the only UI Icon allowed above 32 px in a logo role; maximum height is 64 px. Never reconstruct a logo, create a typed lockup, recolour it, or use a substitute. If unavailable, omit and report `BLOCKED`.
+- Reserve main brand colour for approved brand roles; other roles use semantic tokens.
+- Imagery is user-approved or from Approved brand images. Preserve the source without local strokes, shadows, blur, recolouring, distortion, or other effects; wrappers use verified treatments. Missing imagery uses a labelled placeholder or suitable verified Product or Illustrative Icon.
+- Run the Image radius scan after Radius by role. Images remain rectangular unless an approved pattern, purposeful mask, or justified containing surface calls for rounding; remove inconsistent, oversized, or purposeless radius.
+- Tag with property `Status` communicates changing state such as `Aktiv`, `Betalt`, `Venter`, `Feil`, or `Deaktivert`. Badge communicates non-status emphasis such as `Kampanje`, `Nyhet`, or `Anbefalt`. Select by meaning, never visual preference; ask when meaning is unresolved.
+- Horizontal Divider is a linked instance set to `Fill container`, built-in `Spacing` from `XS` through `2XL`, and `Show spacing = Off`. A required manual Fill action remains `NEEDS CHANGES` and is reported.
 
-Use the closest published Telegrafen text style, but keep the approved Norwegian price phrasing and grouping intact:
+### Typography, tokens, and modes
 
-- `Før 12 000,- Nå 11 000,-`
-- `Spar 1000,-`
-- `Fra 699,-/md.`
+- H1–H5 are semantic levels: normally one H1 per distinct view, genuine nesting, no skipped levels, and no child visually stronger than its parent. Review the complete visible hierarchy and report its intended outline during final QA.
+- `Display` is only a concise expressive page-level H1 in a Hero, banner, or similarly spacious context. Functional H1 and H2–H5 use `Title`.
+- `Title` serves headings, `Text` short UI copy, and `Content` paragraphs. Prominent labels and component titles become headings only when they introduce page hierarchy. Existing component text follows its contract.
+- Let published styles control responsive type. Headings wrap naturally. Adjust copy or layout instead of shrinking, tightening, truncating, or changing semantic level. A Display H1 may use correct Norwegian word division only at a necessary break.
+- Custom `Text` and `Content` use `L`, `M`, or `S`; `XS` is limited to short non-essential metadata. Custom `Text/2xs`, `Text/3xs`, `Content/2xs`, and `Content/3xs` are excluded. `Title/2xs` and `Title/3xs` require a supporting live compact-component pattern.
+- Custom text containers wrap and grow vertically when text is enlarged, without overlap, clipping, or hidden controls. Use published spacing around type; a heading stays closer to the content it introduces than to the preceding section.
+- Bind custom colours to semantic Telegrafen tokens; correct semantic colour binding supplies light and dark modes without parallel manual treatments. In dark regions, set Button `Neutral = Off` and inspect nested surfaces, text, icons, logo, dividers, borders, focus, overlays, and states.
+- Colour needs a verified semantic action, selection, status, focus, wayfinding, or brand role; never decoration alone.
+- Use verified spacing, radius, border, surface, elevation, control-size, and motion tokens only when the applicable purpose rule supports them.
 
-Keep the qualifier and its price together. Use a space as the thousands separator, `,-` for kroner, and `/md.` for a monthly price. Use `Fra` only when the verified source says it applies. Do not use `kr`, `kroner`, `/måneden`, uppercase `SPAR` or `FRA`, strikethrough, split label-and-price layouts, reversed text, or highlighted price text. Use `Før`, `Nå`, or `Spar` only when the user has supplied or verified the relevant campaign terms.
+### Content, prototypes, and ethical conversion
 
-## Existing designs and prototypes
+- Preserve supplied language; otherwise use Norwegian Bokmål. Use `/telegrafen-ux-writing` in a separate prompt for new or changed customer copy when available.
+- Commercial names, prices, offers, speeds, availability, commitments, and legal claims come from user-approved or freshly verified official content with source and date. Verify TV and broadband against Telenor's [official price list](https://www.telenor.no/vilkar/prisliste-tv-og-bredband/).
+- Use fictional, non-identifying customer data. Never reproduce personal data without explicit approval. Forms use visible labels or approved accessible labels.
+- Final visible copy contains no accidental `Button`, `Item`, `Heading`, lorem ipsum, filler, or nonsense. An agreed labelled draft placeholder prevents final `PASS`.
+- Approved price forms are `Før 12 000,- Nå 11 000,-`, `Spar 1000,-`, and `Fra 699,-/md.` Keep qualifier and price together; use spaces for thousands, `,-`, and `/md.` only when verified terms support them.
+- Preserve these price forms instead of using `kr`, `kroner`, `/måneden`, uppercase qualifiers, strikethrough, split qualifier-price layouts, reversed text, or highlighted price text.
+- Add prototype links, animation, or interactions only when requested. Preserve built-in instance interactions and show the essential outcome. Check every supplied target frame for usable content; do not invent additional breakpoints unless requested.
+- For a conversion concept, define the event and user benefit. Evidence-backed claims require current credible sources; otherwise state hypotheses. Keep value, consequences, consent, prices, commitments, cancellation, and opt-out clear. Never introduce dark patterns such as false urgency, hidden terms, preselected consent, confirmshaming, forced continuity, or cancellation obstruction.
 
-- Do not add prototype links, interactions, or animations unless the user requests them. When requested, use the closest Telegrafen interaction pattern and ask if the outcome is unclear.
-- Never modify built-in prototype interactions on an existing Telegrafen library instance.
-- At every supplied target frame size, check that no content is unintentionally clipped, overlaps, hides a control, or makes text unusable. Do not create additional breakpoints unless requested.
+## Visual polish QA
 
-## Evidence, conversion, and ethical UX
+After the final change, inspect fresh screenshots of each changed frame in every relevant supplied state and size; Review & Finalize inspects the entire visible in-scope design. Correct tokens and components do not prove visual quality.
 
-Use this section only when the user asks for best-practice design, a high-conversion concept, or a conversion and ethical-UX review.
+Compare with the closest approved pattern visually and structurally. Check hierarchy; spacing rhythm; alignment; typography; component meaning; containment; semantic colour and contrast; imagery; content fit; interaction cues; and balance. Apply a mandatory squint test: when visually reduced, primary, secondary, and major groups remain apparent. Use a skeleton test only as a diagnostic where composition or visual storytelling should work without copy; forms, tables, and settings may depend on labels.
 
-- Treat conversion as a user outcome and measurable event, not as a visual style. Identify the event and intended user benefit; ask one focused question if either is unclear.
-- Research current, credible guidance before describing a recommendation as best practice or conversion-informed. Translate the evidence into Telegrafen components and tokens; never copy a competitor or external UI. If research is unavailable, label the recommendation as a design hypothesis, not a best practice or conversion guarantee.
-- Never claim that a mockup will achieve a conversion result. Describe the intended effect as a hypothesis that needs validation through appropriate product research or testing.
-- Never improve conversion by reducing clarity, hiding consequences, weakening consent, or bypassing accessibility or any rule in this skill.
+Run one bounded cycle: inspect fresh screenshots, make one batched correction, then inspect fresh post-correction screenshots in one confirmation pass. Build covers changed frames, states, and sizes; Review covers full visible scope. Ask only when correction needs an out-of-scope decision or changes confirmed intent, hierarchy, or interaction.
 
-When asked to review a design, inspect the visible flow for clarity of value and next action, information hierarchy, decision friction, form friction, errors and recovery, disclosures, price and commitment transparency, accessibility, and dark patterns. For every finding, identify the affected element, explain the user risk, and propose a Telegrafen-compliant improvement.
-
-Flag and propose a correction for any dark pattern, including false urgency or social proof, hidden or delayed prices and terms, preselected add-ons or consent, confirmshaming, deceptive visual hierarchy, forced continuity, privacy-invasive defaults, or cancellation and opt-out obstruction. Do not introduce, preserve, or recommend them.
+Report `Visual polish QA: PASS`, `NEEDS CHANGES`, or `BLOCKED`, with corrections, deviations, and unresolved decisions. A remaining correctable defect is `NEEDS CHANGES`; `BLOCKED` requires unavailable evidence or a material decision. Non-pass prevents draft readiness and all QA.
 
 ## Never re-skin another library
 
-Do not use Material, MUI, Ant, Bootstrap, Radix, shadcn, Chakra, copied web UI, or Figma Make's default component patterns as a starting point.
+Build an original Telegrafen design. External references may communicate need or hierarchy, but Material, MUI, Ant, Bootstrap, Radix, shadcn, Chakra, copied web UI, and Figma defaults never become the design foundation. Recolouring or respacing another library is not Telegrafen.
 
-An external reference may inform the user need or information hierarchy. Recreate it as an original Telegrafen design: replace external colors, shapes, underlines, text effects, and layout conventions with the closest Telegrafen components, styles, and tokens. Never make the result look like another company's interface. Changing another component's colors, fonts, spacing, radius, shadows, or icons does not make it Telegrafen.
+When a solution is unclear: use a verified ingredient; compose an original one-off layout; or omit non-essential decoration and note it. Return to Resolve when intent is unclear. Essential unverified needs are `BLOCKED`.
 
-## Safe fallback order
+## Build & Iterate gate
 
-When the exact design-system solution is unclear:
+Inspect each changed frame at every supplied target size:
 
-1. Use a verified Telegrafen component, icon, or style.
-2. Compose an original product-specific layout from verified Telegrafen ingredients.
-3. Ask one focused question and continue the interview until the user confirms the shared understanding.
-4. Omit a non-essential decorative element only when that omission follows the agreed direction, and note it.
+- Provenance, Destination, Mockup-only, Published typography binding, and Radius by role invariants pass.
+- Visual polish QA passes after the bounded audit, batched correction, and confirmation cycle.
+- Every new top-level design frame has the resolved Section or Page as its direct parent; no synthetic destination wrapper or unintended selection-anchor ancestry exists.
+- The concept and essential outcome are visible; existing instances remain intact.
+- No obvious clipping, overlap, unusable text, hidden control, accidental placeholder, or distorted asset remains.
+- Labels are visible; meaning is colour-independent; text and targets are usable; represented focus is visible.
+- Placeholders, manual actions, missing assets, deferred states, and gaps are named.
 
-Never fill the gap with a generated, redrawn, stretched, or external substitute.
+Report `Draft status: READY TO ITERATE` only when the gate passes. After the bounded cycle, report `Draft status: NEEDS CHANGES` for a remaining inspectable, correctable defect and `Draft status: BLOCKED` only for unavailable evidence or an unresolved material decision.
 
-## WCAG delivery gate
+## Review & Finalize gate
 
-Before every delivery, inspect fresh screenshots of every changed frame at each supplied target size. Check clipping, overlap, gaps, off-canvas elements, peer icon-family commitment and presentation, component and token provenance, unapproved effects, empty list items, dark-mode treatment, card-boundary purpose, redundant containment, consecutive cardification, static or interactive affordance, repeated-card alignment, typography, and contrast. Fix clear in-scope defects and reinspect; a draft may report unfinished defects, but it must name them.
+Use fresh screenshots for every supplied target size and inspect bindings, not resemblance. Verify every applicable rule above plus:
 
-Before every delivery, inspect Figma component and variable bindings for every custom or changed element; visual resemblance alone is not proof of Telegrafen origin. If the origin cannot be verified, ask or report `BLOCKED`.
+- component integrity; semantic names; destination and revision placement;
+- list/card purpose and alignment; action hierarchy; Radius by role, nested, image, and visible-copy scans;
+- icon family, logo, placeholders, and Icon geometry QA;
+- Tag/Badge meaning; Divider properties; Typography QA and H1–H5 outline;
+- Visual polish QA across every relevant supplied state and size;
+- semantic token bindings, dark contexts, layout integrity, prototype scope, and absence of external re-skinning.
 
-Run a [WCAG 2.2](https://www.w3.org/TR/WCAG22/) Level AA design review on every visible section of every supplied screen or frame in the submitted mockup, and on every visible mode and state in scope. Exclude unrelated pages and hidden prototype branches unless the user explicitly includes them.
+Report `Mockup production QA: PASS` only when all applicable checks pass. Use `NEEDS CHANGES` for correctable violations and `BLOCKED` for unavailable evidence.
 
-- Normal text has at least 4.5:1 contrast; WCAG large text has at least 3:1.
-- UI components, meaningful graphics, and state indicators have at least 3:1 contrast against adjacent colors.
-- Keyboard focus is visible and is not obscured.
-- Pointer targets are at least 24 × 24 CSS px unless a documented WCAG exception applies.
-- Labels, status, and meaning do not depend on color alone; agreed keyboard and interaction behavior is represented where the mockup can show it.
+Run a WCAG 2.2 AA design review on every visible in-scope section and state:
 
-Run the review separately for light and dark modes. A Figma review validates design evidence only; it cannot prove implementation semantics or full product conformance.
+- normal text contrast ≥ 4.5:1; large text ≥ 3:1;
+- meaningful graphics, UI, and states ≥ 3:1 against adjacent colours;
+- visible unobscured focus where represented;
+- pointer targets ≥ 24 × 24 CSS px unless an exception applies;
+- labels and meaning independent of colour; agreed keyboard behaviour represented where Figma can show it.
 
-When a clear Telegrafen-compliant correction exists in the changed section or its directly connected states and surfaces, apply it automatically and rerun the review. Ask before a correction would change the agreed hierarchy, interaction, or design direction. For unrelated visible sections in a scoped update, report issues but do not modify them unless the user asks.
+Semantic colour bindings are primary light/dark evidence. Inspect an alternate mode only when supplied, requested, or suspicious; treat dark regions as dark contexts. Report implementation semantics, browser zoom, operating-system scaling, and full conformance as implementation-only checks.
 
-Never omit the results from the handoff. State `Visual QA: PASS`, `NEEDS CHANGES`, or `BLOCKED`, followed by `WCAG 2.2 AA design review: PASS`, `NEEDS CHANGES`, or `BLOCKED`, the modes and states checked, failures or exceptions, and implementation-only items that could not be verified. Overall QA cannot be `PASS` when either review is missing or fails. For a scoped update, also state `Requested change QA: PASS`, `NEEDS CHANGES`, or `BLOCKED`; it may pass while the overall review needs changes because of an unrelated visible section.
+Report `WCAG 2.2 AA design review: PASS`, `NEEDS CHANGES`, or `BLOCKED`, with modes, states, failures, exceptions, and implementation-only items. Apply clear corrections inside authorised scope and rerun affected checks; ask before changing confirmed hierarchy or interaction.
 
-## Quick QA
+For scoped work, report `Requested change QA` separately. `QA result: PASS` requires production QA, WCAG, and every required sub-gate to pass; otherwise use `NEEDS CHANGES` or `BLOCKED` according to the global meanings.
 
-Review only the visible mockup and the states needed for the current concept:
+## Handoff
 
-- Existing Telegrafen components are used where they fit and remain intact.
-- Every custom or changed element has verified Telegrafen component and token bindings; origin is not inferred from appearance.
-- Library instances contain no unapproved strokes or effects.
-- New product components use Telegrafen controls and are not presented as library components.
-- Custom layers have semantic, consistent names; no generic Figma node names remain.
-- Every visible icon comes from the correct Telegrafen icon library and keeps its original proportions.
-- Icons at 32 px or smaller are UI Icons; Illustrative Icons are at least 120 × 120 px; every icon keeps `Default` colour unless an approved section rule or semantic state controls it.
-- The official Telenor symbol is used in its Telenor brand-blue asset for brand identity; “Telenor” is not typeset as a substitute logo.
-- Every custom text element uses a published Telegrafen text style.
-- The complete visible H1–H5 outline is logical, uses one H1 per distinct view by default, and has no skipped levels or child headings that appear stronger than their parent.
-- `Display`, `Title`, `Text`, and `Content` are used for their intended roles; heading levels, family and size bindings, wrapping, and responsive behaviour have been inspected. If the bindings cannot be inspected, typography structure QA is `BLOCKED` even when the screenshot looks correct.
-- Semantic colors and standard control sizes come from Telegrafen tokens.
-- Every dark-background region has been checked in full, including nested surfaces, text, icons, dividers, states, and every Button with `Neutral = Off`.
-- Each supplied target frame has no unintended clipping, overlap, hidden control, or unusable text.
-- Lists contain no empty or filler items, and peer cards use sound Auto Layout alignment without fake or hidden content.
-- The WCAG 2.2 AA design review is recorded and passes before overall QA is `PASS`.
-- No external component has been copied or re-skinned.
+Always report only applicable fields:
 
-Report `PASS` when the visible mockup contains no invented, distorted, or externally sourced design-system elements. Report `NEEDS CHANGES` when a visible issue can be corrected. Report `BLOCKED` only when an essential source or asset cannot be accessed or verified.
+- mode, scope, chosen design destination, and verified direct parent type and name;
+- main Telegrafen instances, assets, tokens, styles, and any component-skill handoff;
+- `Typography QA` with exact styles by custom role;
+- `Radius QA` with failed or blocked boundaries;
+- `Visual polish QA` with corrections made, remaining deviations, and decisions requiring clarification;
+- decisions, placeholders, manual actions, missing assets, and known gaps.
 
-## Short handoff
+Build adds `Draft status`.
 
-Report:
-
-- Main Telegrafen components used
-- Product components created, if any
-- Important icons and text styles used
-- Intended H1–H5 outline and material typography decisions, when relevant
-- Agreed decisions and missing assets
-- `Visual QA: PASS`, `NEEDS CHANGES`, or `BLOCKED`
-- `WCAG 2.2 AA design review: PASS`, `NEEDS CHANGES`, or `BLOCKED`, including modes and states checked, exceptions or failures, and implementation-only items not verified
-- `Requested change QA: PASS`, `NEEDS CHANGES`, or `BLOCKED`, when updating an existing selected design
-- `Conversion and ethical UX review`, when requested: conversion event, evidence-backed findings or stated hypotheses, dark patterns found, and Telegrafen-compliant recommendations
-- QA result: `PASS`, `NEEDS CHANGES`, or `BLOCKED`
-
-## Product reference — TV and broadband
-
-Use this dated snapshot only for private-customer TV, broadband, WiFi, and T-We mockups. It is not a source for mobile, insurance, business, or other Telenor product areas.
-
-- Use these names, speeds, inclusions, and prices as realistic mockup content. Prices are standard prices including mva unless stated otherwise.
-- If the user asks for live, launch-ready, or current commercial information, require refreshed user-provided or verified content. Do not present this snapshot as current.
-- Do not make T-We the default recommendation: it is scheduled for retirement in January 2027.
-- For prices marked as changing, use a neutral placeholder or ask which effective date the mockup represents.
-
-**Kilde:** Telenors [prisliste for TV og bredbånd](https://www.telenor.no/vilkar/prisliste-tv-og-bredband/)
-
-**Sist kontrollert:** 30. juli 2026  
-**Oppgitt virkningsdato for prisliste:** 1. februar 2026
-
-### Fiberbredbånd
-
-| Produkt | Månedspris |
-| --- | --- |
-| Bredbånd 150 | 1 048,-/md. |
-| Bredbånd 500 | 1 148,-/md. |
-| Bredbånd 1000 | 1 398,-/md. |
-
-### Trådløst bredbånd
-
-| Produkt | Månedspris |
-| --- | --- |
-| Trådløst Bredbånd 500 | 1 149,-/md. |
-| Trådløst Bredbånd 250 | 999,-/md. |
-| Trådløst Bredbånd 100 | 899,-/md. |
-| Trådløst Bredbånd 50 | 849,-/md. |
-| Trådløst Bredbånd 30 | 849,-/md. |
-| Trådløst Bredbånd 10 | 799,-/md. |
-
-### Trådløst bredbånd hytte
-
-| Produkt | Månedspris |
-| --- | --- |
-| Trådløst Bredbånd Hytte 100 | 699,-/md. |
-| Trådløst Bredbånd Hytte 60 | 699,-/md. |
-| Trådløst Bredbånd Hytte 30 | 669,-/md. |
-| Trådløst Bredbånd Hytte 10 | 599,-/md. |
-
-### TV-tjenester
-
-| Produkt | Månedspris | Merknad |
-| --- | --- | --- |
-| T-We | 690,-/md. | Planlagt avviklet i januar 2027 |
-| T-We & Streaming | 849,-/md. | |
-| T-We Classic | 699,-/md. | |
-| Ekstra programkort | Avklar før bruk | Kilden oppga prisendring til 99,-/md. fra 1. juli 2026 |
-| Poengpakke, 20 poeng | 29,-/md. | Kilden oppga prisendring til 35,-/md. fra 1. september 2026 |
-| Opptak | 99,-/md. | |
-
-### TV-tillegg
-
-| Produkt | Pris |
-| --- | --- |
-| V premium | 699,-/md. |
-| Select | Fra 149,-/md. |
-| Filmleie | 39–59,- per film |
-
-### Utstyr
-
-| Produkt | Månedspris |
-| --- | --- |
-| WiFi Ruter | 49,-/md. |
-| WiFi Ruter II | 49,-/md. |
-| WiFi Forsterker | 29,-/md. |
-| WiFi Forsterker II | 39,-/md. |
-| T-We Boks II with recorder | 129,-/md. |
-| T-We Boks II without recorder | 99,-/md. |
-| T-We Boks III | 129,-/md. |
-
-### Etableringskostnader
-
-| Tjeneste | Engangspris |
-| --- | --- |
-| Hybridfiber, new cable to home | 1 990,- |
-| Fiber, new cable to home | 4 990,- |
-| TV or broadband setup for existing customer, without technician | 399,- |
-| TV or broadband setup for existing customer, with technician | 695,- |
+Review adds `Icon geometry QA`, intended H1–H5 outline, `Mockup production QA`, `WCAG 2.2 AA design review`, optional `Requested change QA`, and final `QA result`. When conversion guardrails applied, add the event, user benefit, evidence or hypothesis, and any dark-pattern correction.

@@ -1,6 +1,8 @@
 ---
-name: telegrafen-ux-writing-v1-2
+name: telegrafen-ux-writing
 description: Use when creating, rewriting, directly updating, or QAing Norwegian Bokmål UX writing for Telenor private-customer designs and interfaces. Do not use for campaigns, articles, product pages, emails, push notifications, or other long-form copy.
+metadata:
+  version: "1.2"
 ---
 
 # Telegrafen UX Writing v1.2
