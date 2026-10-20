@@ -1,8 +1,18 @@
 /*
- * EXPERIMENTAL tokens for a non-Telegrafen restyle of the workshop guide.
- * Vibe: Ethereal Glass. Layout: Asymmetrical Bento.
- * These values are NOT Telegrafen tokens. The Telegrafen-governed version of
- * this guide lives on the silentpixel-git-workshop-html-guide branch.
+ * Tokens for an EXPERIMENTAL restyle of the workshop guide.
+ * Vibe: Ethereal Glass. Layout: Asymmetrical Bento (softened, few frames).
+ *
+ * COLOUR: Telegrafen semantic colour tokens, Light and Dark modes, read with
+ * the Figma MCP from Telegrafen Design Tokens v1.4.4, collection "Colors"
+ * (figma.com/design/aW7bFTLqx5L0XTWMskOHSR). Names keep the Telegrafen token
+ * path: "Color/Surface/Action/Stronger" becomes --color-surface-action-stronger.
+ * The resolved primitive is noted as Light / Dark.
+ * Mode: follows prefers-color-scheme; [data-theme="light|dark"] on <html>
+ * overrides it (set by the theme switch in app.js).
+ *
+ * Everything else (type scale, spacing, radii, motion, Geist font) is
+ * experimental and NOT Telegrafen. The Telegrafen-governed version of this
+ * guide lives on the silentpixel-git-workshop-html-guide branch.
  *
  * Font: Geist and Geist Mono (Vercel, SIL Open Font License 1.1), served
  * from ../fonts so the page works offline from file://. See fonts/OFL.txt.
@@ -25,41 +35,183 @@
   font-display: swap;
 }
 
+/* Telegrafen Colors, Light mode (default) */
 :root {
+  color-scheme: light;
+  --color-page-default: #ffffff;                  /* Base/White */
+  --color-page-subtle: #f9f9fb;                   /* Neutral/25 */
+  --color-surface-default: #ffffff;               /* Base/White */
+  --color-surface-subtle: #f2f3f7;                /* Neutral/50 */
+  --color-surface-subtler: #f9f9fb;               /* Neutral/25 */
+  --color-surface-transparent: rgba(249, 249, 251, 0.9); /* Opacity White/1000 */
+  --color-surface-brand-logo: #00c8ff;            /* Blue/500 */
+  --color-surface-brand-stronger: #1c16c5;        /* Mid Blue/700 */
+  --color-surface-info-subtler: #ebf3ff;          /* Mid Blue/50 */
+  --color-surface-success-subtler: #ecfef1;       /* Green/50 */
+  --color-surface-success-strong: #178222;        /* Green/700 */
+  --color-surface-action-stronger: #1020f9;       /* Mid Blue/600 */
+  --color-surface-action-stronger-hover: #0e09aa; /* Mid Blue/800 */
+  --color-surface-action-strong: #18223f;         /* Neutral/1000 */
+  --color-surface-action-strong-hover: #374262;   /* Neutral/800 */
+  --color-surface-action-subtler: #e5e8f0;        /* Neutral/100 */
+  --color-surface-action-subtler-hover: #c5cbdd;  /* Neutral/200 */
+  --color-surface-action-opacity: rgba(0, 26, 102, 0.1);        /* Opacity Black/100 */
+  --color-surface-action-opacity-hover: rgba(0, 28, 112, 0.23); /* Opacity Black/200 */
+  --color-surface-action-disabled: #e5e8f0;       /* Neutral/100 */
+
+  --color-text-default: #293351;                  /* Neutral/900 */
+  --color-text-subtle: #4f5b7d;                   /* Neutral/700 */
+  --color-text-subtler: #677398;                  /* Neutral/600 */
+  --color-text-strong: #000b2e;                   /* Base/Black */
+  --color-text-inverted: #ffffff;                 /* Base/White */
+  --color-text-brand-on-subtle: #0e0a7f;          /* Mid Blue/900 */
+  --color-text-info-on-subtler: #0e0a7f;          /* Mid Blue/900 */
+  --color-text-success: #178222;                  /* Green/700 */
+  --color-text-success-on-strong: #ffffff;        /* Base/White */
+  --color-text-action-strong: #1020f9;            /* Mid Blue/600 */
+  --color-text-action-strong-hover: #0e09aa;      /* Mid Blue/800 */
+  --color-text-action-subtle: #18223f;            /* Neutral/1000 */
+  --color-text-action-inverted: #f5ffff;          /* Turquoise/25 */
+  --color-text-action-disabled: #b2bad1;          /* Neutral/300 */
+
+  --color-border-subtle: #b2bad1;                 /* Neutral/300 */
+  --color-border-subtler: #e5e8f0;                /* Neutral/100 */
+  --color-border-action-focus: #5b00d1;           /* Purple/700 */
+  --color-icon-info: #1020f9;                     /* Mid Blue/600 */
+
+  /* Decorative glow strength (experimental) */
+  --orb-alpha-1: 22%;
+  --orb-alpha-2: 14%;
+  --grain-opacity: 0.025;
+  --ambient-shadow: 0 30px 60px -36px rgba(0, 26, 102, 0.28);
+}
+
+/* Telegrafen Colors, Dark mode. Applied by system preference unless the
+   reader picked Light, or explicitly via [data-theme="dark"]. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-page-default: #000b2e;                  /* Base/Black */
+    --color-page-subtle: #18223f;                   /* Neutral/1000 */
+    --color-surface-default: #000b2e;               /* Base/Black */
+    --color-surface-subtle: #293351;                /* Neutral/900 */
+    --color-surface-subtler: #18223f;               /* Neutral/1000 */
+    --color-surface-transparent: rgba(0, 12, 46, 0.84); /* Opacity Black/900 */
+    --color-surface-brand-logo: #00c8ff;            /* Blue/500 */
+    --color-surface-brand-stronger: #42f0f0;        /* Turquoise/400 */
+    --color-surface-info-subtler: #0e0a7f;          /* Mid Blue/900 */
+    --color-surface-success-subtler: #002904;       /* Green/1000 */
+    --color-surface-success-strong: #54de62;        /* Green/400 */
+    --color-surface-action-stronger: #42f0f0;       /* Turquoise/400 */
+    --color-surface-action-stronger-hover: #adffff; /* Turquoise/200 */
+    --color-surface-action-strong: #f9f9fb;         /* Neutral/25 */
+    --color-surface-action-strong-hover: #b2bad1;   /* Neutral/300 */
+    --color-surface-action-subtler: #374262;        /* Neutral/800 */
+    --color-surface-action-subtler-hover: #4f5b7d;  /* Neutral/700 */
+    --color-surface-action-opacity: rgba(249, 249, 251, 0.23);       /* Opacity White/200 */
+    --color-surface-action-opacity-hover: rgba(249, 249, 251, 0.42); /* Opacity White/400 */
+    --color-surface-action-disabled: #374262;       /* Neutral/800 */
+
+    --color-text-default: #f2f3f7;                  /* Neutral/50 */
+    --color-text-subtle: #c5cbdd;                   /* Neutral/200 */
+    --color-text-subtler: #b2bad1;                  /* Neutral/300 */
+    --color-text-strong: #ffffff;                   /* Base/White */
+    --color-text-inverted: #000b2e;                 /* Base/Black */
+    --color-text-brand-on-subtle: #42f0f0;          /* Turquoise/400 */
+    --color-text-info-on-subtler: #f5f9ff;          /* Mid Blue/25 */
+    --color-text-success: #54de62;                  /* Green/400 */
+    --color-text-success-on-strong: #002904;        /* Green/1000 */
+    --color-text-action-strong: #42f0f0;            /* Turquoise/400 */
+    --color-text-action-strong-hover: #adffff;      /* Turquoise/200 */
+    --color-text-action-subtle: #f9f9fb;            /* Neutral/25 */
+    --color-text-action-inverted: #070452;          /* Mid Blue/1000 */
+    --color-text-action-disabled: #677398;          /* Neutral/600 */
+
+    --color-border-subtle: #4f5b7d;                 /* Neutral/700 */
+    --color-border-subtler: #293351;                /* Neutral/900 */
+    --color-border-action-focus: #b18aff;           /* Purple/300 */
+    --color-icon-info: #42f0f0;                     /* Turquoise/400 */
+
+    --orb-alpha-1: 30%;
+    --orb-alpha-2: 18%;
+    --grain-opacity: 0.04;
+    --ambient-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  }
+}
+:root[data-theme="dark"] {
   color-scheme: dark;
+  --color-page-default: #000b2e;                  /* Base/Black */
+  --color-page-subtle: #18223f;                   /* Neutral/1000 */
+  --color-surface-default: #000b2e;               /* Base/Black */
+  --color-surface-subtle: #293351;                /* Neutral/900 */
+  --color-surface-subtler: #18223f;               /* Neutral/1000 */
+  --color-surface-transparent: rgba(0, 12, 46, 0.84); /* Opacity Black/900 */
+  --color-surface-brand-logo: #00c8ff;            /* Blue/500 */
+  --color-surface-brand-stronger: #42f0f0;        /* Turquoise/400 */
+  --color-surface-info-subtler: #0e0a7f;          /* Mid Blue/900 */
+  --color-surface-success-subtler: #002904;       /* Green/1000 */
+  --color-surface-success-strong: #54de62;        /* Green/400 */
+  --color-surface-action-stronger: #42f0f0;       /* Turquoise/400 */
+  --color-surface-action-stronger-hover: #adffff; /* Turquoise/200 */
+  --color-surface-action-strong: #f9f9fb;         /* Neutral/25 */
+  --color-surface-action-strong-hover: #b2bad1;   /* Neutral/300 */
+  --color-surface-action-subtler: #374262;        /* Neutral/800 */
+  --color-surface-action-subtler-hover: #4f5b7d;  /* Neutral/700 */
+  --color-surface-action-opacity: rgba(249, 249, 251, 0.23);       /* Opacity White/200 */
+  --color-surface-action-opacity-hover: rgba(249, 249, 251, 0.42); /* Opacity White/400 */
+  --color-surface-action-disabled: #374262;       /* Neutral/800 */
 
-  /* Surfaces: OLED black canvas, vantablack cores, white/alpha hairlines */
-  --bg: #050505;
-  --core: #0c0c0f;
-  --core-raised: #121216;
-  --well: #070709;
-  --shell: rgba(255, 255, 255, 0.035);
-  --hairline: rgba(255, 255, 255, 0.09);
-  --hairline-strong: rgba(255, 255, 255, 0.16);
-  --highlight: inset 0 1px 1px rgba(255, 255, 255, 0.08);
-  --fill-soft: rgba(255, 255, 255, 0.06);
-  --fill-soft-hover: rgba(255, 255, 255, 0.11);
+  --color-text-default: #f2f3f7;                  /* Neutral/50 */
+  --color-text-subtle: #c5cbdd;                   /* Neutral/200 */
+  --color-text-subtler: #b2bad1;                  /* Neutral/300 */
+  --color-text-strong: #ffffff;                   /* Base/White */
+  --color-text-inverted: #000b2e;                 /* Base/Black */
+  --color-text-brand-on-subtle: #42f0f0;          /* Turquoise/400 */
+  --color-text-info-on-subtler: #f5f9ff;          /* Mid Blue/25 */
+  --color-text-success: #54de62;                  /* Green/400 */
+  --color-text-success-on-strong: #002904;        /* Green/1000 */
+  --color-text-action-strong: #42f0f0;            /* Turquoise/400 */
+  --color-text-action-strong-hover: #adffff;      /* Turquoise/200 */
+  --color-text-action-subtle: #f9f9fb;            /* Neutral/25 */
+  --color-text-action-inverted: #070452;          /* Mid Blue/1000 */
+  --color-text-action-disabled: #677398;          /* Neutral/600 */
 
-  /* Text (all >= 7:1 on --core except --text-faint, used only for decoration) */
-  --text-strong: #fafafa;
-  --text: #e4e4e7;
-  --text-subtle: #a1a1aa;
-  --text-faint: #52525b;
+  --color-border-subtle: #4f5b7d;                 /* Neutral/700 */
+  --color-border-subtler: #293351;                /* Neutral/900 */
+  --color-border-action-focus: #b18aff;           /* Purple/300 */
+  --color-icon-info: #42f0f0;                     /* Turquoise/400 */
 
-  /* Accents */
-  --accent: #6ee7b7;          /* emerald, commands and numerals */
-  --accent-ink: #052e1f;
-  --link: #a5b4fc;            /* indigo, inline links */
-  --link-hover: #c7d2fe;
-  --focus: #c4b5fd;
-  --orb-violet: rgba(124, 58, 237, 0.30);
-  --orb-emerald: rgba(16, 185, 129, 0.18);
-  --orb-cyan: rgba(0, 200, 255, 0.10);
+  --orb-alpha-1: 30%;
+  --orb-alpha-2: 18%;
+  --grain-opacity: 0.04;
+  --ambient-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
 
-  /* Radii: concentric shell / core pairs */
-  --bezel: 6px;
-  --r-shell: 2rem;
-  --r-core: calc(var(--r-shell) - var(--bezel));
+/* Experimental role aliases, mapped onto Telegrafen semantic colours */
+:root {
+  --bg: var(--color-page-default);
+  --band: var(--color-page-subtle);
+  --panel: var(--color-surface-subtle);
+  --well: var(--color-surface-subtle);
+  --hairline: var(--color-border-subtler);
+  --hairline-strong: var(--color-border-subtle);
+  --fill-soft: var(--color-surface-action-subtler);
+  --fill-soft-hover: var(--color-surface-action-subtler-hover);
+
+  --text-strong: var(--color-text-strong);
+  --text: var(--color-text-default);
+  --text-subtle: var(--color-text-subtle);
+  --text-faint: var(--color-text-subtler);
+
+  --accent: var(--color-text-brand-on-subtle);   /* commands and numerals */
+  --link: var(--color-text-action-strong);
+  --link-hover: var(--color-text-action-strong-hover);
+  --focus: var(--color-border-action-focus);
+  --orb-1: color-mix(in srgb, var(--color-surface-brand-stronger) var(--orb-alpha-1), transparent);
+  --orb-2: color-mix(in srgb, var(--color-surface-brand-logo) var(--orb-alpha-2), transparent);
+
+  /* Radii */
+  --r-panel: 1.75rem;
   --r-well: 1rem;
   --r-pill: 999px;
 
@@ -108,6 +260,6 @@
     --s-9: 72px;
     --s-10: 88px;
     --fs-body: 1rem;
-    --r-shell: 1.5rem;
+    --r-panel: 1.25rem;
   }
 }

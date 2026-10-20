@@ -17,6 +17,25 @@
     });
   }
 
+  /* ---------- Theme switch (System follows prefers-color-scheme) ---------- */
+
+  var themeSwitch = document.querySelector(".theme-switch");
+  if (themeSwitch) {
+    var savedTheme = document.documentElement.getAttribute("data-theme") || "system";
+    var themeInput = themeSwitch.querySelector('input[value="' + savedTheme + '"]');
+    if (themeInput) { themeInput.checked = true; }
+    themeSwitch.addEventListener("change", function (event) {
+      var value = event.target.value;
+      if (value === "light" || value === "dark") {
+        document.documentElement.setAttribute("data-theme", value);
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+      try { localStorage.setItem("guide-theme", value); } catch (e) { /* storage unavailable */ }
+    });
+    themeSwitch.hidden = false;
+  }
+
   /* ---------- Copy to clipboard ---------- */
 
   var COPY_LABEL = "Copy prompt";

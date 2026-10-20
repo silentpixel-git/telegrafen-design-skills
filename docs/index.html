@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>try{var t=localStorage.getItem("guide-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
   <title>Telegrafen design skills: workshop guide</title>
   <meta name="description" content="A self-serve guide to the four Telegrafen Figma skills: mockups, components, visual design and UX writing.">
   <link rel="stylesheet" href="css/tokens.css">
@@ -24,7 +26,17 @@
 <header class="hero t-dark">
   <div class="container hero__grid">
     <div class="hero__main">
-      <svg class="hero__logo" aria-hidden="true" focusable="false"><use href="#i-telenor"></use></svg>
+      <div class="hero__top">
+        <svg class="hero__logo" aria-hidden="true" focusable="false"><use href="#i-telenor"></use></svg>
+        <fieldset class="theme-switch" hidden>
+          <legend class="visually-hidden">Colour theme</legend>
+          <div class="theme-switch__items">
+            <label><input type="radio" name="theme" value="system" checked><span>System</span></label>
+            <label><input type="radio" name="theme" value="light"><span>Light</span></label>
+            <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
+          </div>
+        </fieldset>
+      </div>
       <p class="eyebrow">Workshop guide</p>
       <h1>Design with the Telegrafen skills in Figma</h1>
       <p class="lead">Pick the right skill and mode, copy a starter prompt, and follow the recommended workflow from first draft to final QA.</p>
