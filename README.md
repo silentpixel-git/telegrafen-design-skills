@@ -69,7 +69,7 @@ Visual design does not replace component construction, mockup assembly, or UX wr
 
 An interactive guide for designer workshops on the four Figma skills is published at **https://silentpixel-git.github.io/telegrafen-design-skills/**. It has a skill and mode picker, copyable demo prompts, a step-by-step workflow and the cheat sheet. The source is in [`docs/`](docs/index.html): plain HTML, CSS and JavaScript with no build step. It also works when you open `docs/index.html` directly from disk.
 
-The workflow, demo prompts and agenda are workshop recommendations. The `SKILL.md` files and the live Telegrafen libraries remain the source of truth. [`.github/workflows/pages.yml`](.github/workflows/pages.yml) deploys the guide when `docs/` changes on `main`. In **Settings → Pages**, set **Source** to **GitHub Actions**.
+The workflow and demo prompts are workshop recommendations. The `SKILL.md` files and the live Telegrafen libraries remain the source of truth. [`.github/workflows/pages.yml`](.github/workflows/pages.yml) deploys the guide when `docs/` changes on `main`. In **Settings → Pages**, set **Source** to **GitHub Actions**.
 
 ## Commercial content
 
