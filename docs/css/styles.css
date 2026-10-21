@@ -592,8 +592,9 @@ main:focus { outline: none; }
 }
 .prompt__text {
   padding: var(--s-5) calc(var(--s-5) + 44px) var(--s-5) var(--s-5);
-  font-size: var(--fs-body);
-  line-height: 1.6;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  line-height: 1.65;
   color: var(--text);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -771,6 +772,11 @@ tbody th { font-weight: 560; color: var(--text-strong); }
   .walkthrough__nav .btn { flex: 1 1 0; }
   .hero__actions .btn { flex: 1 1 auto; }
   .toc__label { padding-left: var(--s-2); }
+  .prompt__text {
+    padding: calc(var(--s-5) + 36px) var(--s-4) var(--s-4);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
 }
 
 /* ---------- Reduced motion: no reveals, no transitions, no smooth scroll ---------- */
