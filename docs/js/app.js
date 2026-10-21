@@ -223,8 +223,8 @@
   }).join("");
 
   function renderResult(t) {
-    var source = t.promptSource === "Starter prompt"
-      ? "Starter prompt (adapt the bracketed details)"
+    var source = t.prompt.indexOf("[") !== -1
+      ? t.promptSource + " (adapt the bracketed details)"
       : t.promptSource;
     result.innerHTML =
       '<div class="picker-result__meta"><span class="badge">From the cheat sheet</span></div>' +
