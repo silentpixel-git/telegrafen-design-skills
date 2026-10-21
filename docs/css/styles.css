@@ -278,6 +278,7 @@ main:focus { outline: none; }
   font-size: var(--fs-lead);
   line-height: 1.55;
   color: var(--text-subtle);
+  text-wrap: pretty;
 }
 .hero__actions {
   display: flex;

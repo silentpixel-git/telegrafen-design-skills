@@ -14,12 +14,46 @@
  * experimental and NOT Telegrafen. The Telegrafen-governed version of this
  * guide lives on the silentpixel-git-workshop-html-guide branch.
  *
- * Font: Schibsted Grotesk (Schibsted, SIL Open Font License 1.1), served
+ * Font (experiment): Telenor Evolution UI, loaded only via local() from the
+ * visitor's installed fonts. No Telenor font files are committed or served.
+ * Fallback: Schibsted Grotesk (Schibsted, SIL Open Font License 1.1), served
  * from ../fonts so the page works offline from file://. See fonts/OFL.txt.
  * Commands use the platform monospace font.
  *
  * Icons: Telegrafen UI Icons v1.2.5 symbols, inlined in index.html.
  */
+
+@font-face {
+  font-family: "Telenor Evolution UI Local";
+  src: local("Telenor Evolution UI Light"), local("TelenorEvolutionUI-Light");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telenor Evolution UI Local";
+  src: local("Telenor Evolution UI Normal"), local("TelenorEvolutionUI-Normal");
+  font-weight: 400 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telenor Evolution UI Local";
+  src: local("Telenor Evolution UI Medium"), local("TelenorEvolutionUI-Medium");
+  font-weight: 500 560;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telenor Evolution UI Local";
+  src: local("Telenor Evolution UI Bold"), local("TelenorEvolutionUI-Bold");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Schibsted Grotesk";
@@ -212,7 +246,7 @@
   --measure: 68ch;
 
   /* Type */
-  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Telenor Evolution UI Local", "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --fs-display: clamp(2.75rem, 1.6rem + 4.8vw, 5.75rem);
   --fs-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
