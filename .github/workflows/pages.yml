@@ -1,4 +1,4 @@
-name: Deploy workshop guide to GitHub Pages
+name: Deploy skills guide to GitHub Pages
 
 on:
   push:
