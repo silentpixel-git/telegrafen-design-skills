@@ -279,7 +279,7 @@
             <span class="badge">v1.2</span>
           </div>
           <p class="skill__cmd">/telegrafen-ux-writing</p>
-          <p>Norwegian Bokmål interface microcopy. Not for campaigns, articles, product pages, emails, push notifications or other long-form copy.</p>
+          <p>Norwegian Bokmål interface microcopy only. Campaigns, articles, product pages, emails, push notifications and other long-form copy are out of scope.</p>
           <div class="skill__modes">
             <p class="label">Operations</p>
             <ul class="mode-list">
@@ -313,7 +313,7 @@
             <tr><th scope="col">Skill</th><th scope="col">Mode</th><th scope="col">Edits</th><th scope="col">What it does</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row" rowspan="2">Mockups</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, requested views only</td><td>Rapid draft with targeted checks. Ends with <em>Draft status</em>: READY TO ITERATE, NEEDS CHANGES or BLOCKED. No review verdicts.</td></tr>
+            <tr><th scope="row" rowspan="2">Mockups</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, requested views only</td><td>Rapid draft with targeted checks. Ends with <em>Draft status</em>: READY TO ITERATE, NEEDS CHANGES or BLOCKED, rather than a review verdict.</td></tr>
             <tr><td>Review &amp; Finalize</td><td>Requested area and connected states</td><td>Inspects every visible section and state in scope, reports unrelated defects, and runs the complete production and WCAG 2.2 AA gates.</td></tr>
             <tr><th scope="row" rowspan="3">Components</th><td>Build &amp; Iterate <span class="muted">(default)</span></td><td>Yes, after the interview gate</td><td>Fast draft loop. Every unresolved product decision needs your answer, and you confirm the contract before it builds.</td></tr>
             <tr><td>Review &amp; QA</td><td>No, read-only</td><td>Structural and visual assessment.</td></tr>
@@ -332,7 +332,7 @@
   <section id="rules" class="section section--ref" aria-labelledby="rules-title">
     <div class="container">
       <h3 id="rules-title">Source rules everyone should know</h3>
-      <p class="section__intro">These come from the <code>SKILL.md</code> files. They are rules, not suggestions.</p>
+      <p class="section__intro">These come from the <code>SKILL.md</code> files. Every prompt should follow them.</p>
       <ol class="rule-list">
         <li><strong>One skill per prompt.</strong> Only the first Figma Resources skill mentioned in a prompt is reliably invoked. Use separate prompts and explicit handoffs.</li>
         <li><strong>Live Telegrafen is the authority.</strong> Verify actual component instances, icon, style and variable bindings, and provenance. Visual resemblance does not prove compliance.</li>
@@ -354,7 +354,7 @@
         <li><strong>Task first.</strong> Prioritise the user task and one clear primary action over decorative effects. Avoid unnecessary cards and repeated containment; consider open lists and grids.</li>
         <li><strong>Real styles and tokens.</strong> Use published typography styles and semantic colour tokens, not visual copies or hard-coded approximations.</li>
         <li><strong>Stress the design.</strong> Check component states and interactive affordances, light and dark contexts, resizing, long labels and wrapped text.</li>
-        <li><strong>UX Writing.</strong> Clear, calm Norwegian Bokmål. <em>du</em> for the customer and <em>vi</em> for Telenor, sentence case, specific actions. No invented prices, eligibility or promises.</li>
+        <li><strong>UX Writing.</strong> Clear, calm Norwegian Bokmål. <em>du</em> for the customer and <em>vi</em> for Telenor, sentence case, specific actions. Never invent prices, eligibility or promises.</li>
         <li><strong>QA.</strong> Give evidence-backed status, scope and remaining blocks. An attractive output alone is not a PASS.</li>
       </ul>
     </div>

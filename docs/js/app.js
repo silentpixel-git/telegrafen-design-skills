@@ -303,12 +303,8 @@
 
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduceMotion && "IntersectionObserver" in window) {
-    var revealTargets = document.querySelectorAll([
-      ".hero__main > *", ".hero__aside",
-      ".section > .container > h2", ".section > .container > h3", ".section__head", ".section__intro",
-      ".ref-group__head > *", ".chip-group", ".picker-result", ".walkthrough",
-      ".skill", ".callout", ".table-wrap", ".rule-list", ".tip-list", ".source-list"
-    ].join(","));
+    // Reserved for two places: the hero's load-in and the skills list stagger.
+    var revealTargets = document.querySelectorAll(".hero__main > *, .hero__aside, .skill");
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {

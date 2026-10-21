@@ -10,27 +10,21 @@
  * Mode: follows prefers-color-scheme; [data-theme="light|dark"] on <html>
  * overrides it (set by the theme switch in app.js).
  *
- * Everything else (type scale, spacing, radii, motion, Geist font) is
+ * Everything else (type scale, spacing, radii, motion, font) is
  * experimental and NOT Telegrafen. The Telegrafen-governed version of this
  * guide lives on the silentpixel-git-workshop-html-guide branch.
  *
- * Font: Geist and Geist Mono (Vercel, SIL Open Font License 1.1), served
+ * Font: Schibsted Grotesk (Schibsted, SIL Open Font License 1.1), served
  * from ../fonts so the page works offline from file://. See fonts/OFL.txt.
+ * Commands use the platform monospace font.
  *
  * Icons: Telegrafen UI Icons v1.2.5 symbols, inlined in index.html.
  */
 
 @font-face {
-  font-family: "Geist";
-  src: url("../fonts/Geist-Variable.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Geist Mono";
-  src: url("../fonts/GeistMono-Variable.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "Schibsted Grotesk";
+  src: url("../fonts/SchibstedGrotesk-Variable.woff2") format("woff2");
+  font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
@@ -80,9 +74,6 @@
   --color-icon-info: #1020f9;                     /* Mid Blue/600 */
 
   /* Decorative glow strength (experimental) */
-  --orb-alpha-1: 22%;
-  --orb-alpha-2: 14%;
-  --grain-opacity: 0.025;
   --ambient-shadow: 0 6px 20px -12px rgba(0, 26, 102, 0.16);
 }
 
@@ -131,10 +122,6 @@
     --color-border-subtler: #293351;                /* Neutral/900 */
     --color-border-action-focus: #b18aff;           /* Purple/300 */
     --color-icon-info: #42f0f0;                     /* Turquoise/400 */
-
-    --orb-alpha-1: 30%;
-    --orb-alpha-2: 18%;
-    --grain-opacity: 0.04;
     --ambient-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.45);
   }
 }
@@ -180,10 +167,6 @@
   --color-border-subtler: #293351;                /* Neutral/900 */
   --color-border-action-focus: #b18aff;           /* Purple/300 */
   --color-icon-info: #42f0f0;                     /* Turquoise/400 */
-
-  --orb-alpha-1: 30%;
-  --orb-alpha-2: 18%;
-  --grain-opacity: 0.04;
   --ambient-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.45);
 }
 
@@ -207,12 +190,10 @@
   --link: var(--color-text-action-strong);
   --link-hover: var(--color-text-action-strong-hover);
   --focus: var(--color-border-action-focus);
-  --orb-1: color-mix(in srgb, var(--color-surface-brand-stronger) var(--orb-alpha-1), transparent);
-  --orb-2: color-mix(in srgb, var(--color-surface-brand-logo) var(--orb-alpha-2), transparent);
 
   /* Radii */
-  --r-panel: 1.75rem;
-  --r-well: 1rem;
+  --r-panel: 1rem;
+  --r-well: 0.75rem;
   --r-pill: 999px;
 
   /* Spacing scale */
@@ -231,8 +212,8 @@
   --measure: 68ch;
 
   /* Type */
-  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --fs-display: clamp(2.75rem, 1.6rem + 4.8vw, 5.75rem);
   --fs-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
   --fs-h3-ref: clamp(1.625rem, 1.3rem + 1.4vw, 2.375rem);
@@ -250,7 +231,6 @@
   --dur-reveal: 1000ms;
 
   /* Z-index layers */
-  --z-grain: 1;
   --z-nav: 20;
   --z-skip: 30;
 }
