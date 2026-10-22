@@ -255,6 +255,27 @@ main:focus { outline: none; }
   color: var(--color-surface-brand-logo);
   fill: currentColor;
 }
+/* Language switch (Chip Selectable M, single select) beside the theme toggle */
+.hero__controls { display: flex; align-items: center; gap: var(--spacing-s); }
+.lang-switch { display: inline-flex; gap: var(--spacing-xs); }
+.lang-switch[hidden] { display: none; }
+.lang-switch .lang-switch__chip {
+  border: 0;
+  font-family: inherit;
+  font-weight: var(--font-weight-light);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.lang-switch__chip:hover { background: var(--color-surface-action-subtler-hover); }
+.lang-switch__chip:active { background: var(--color-surface-action-subtler-active); transform: scale(0.97); }
+.lang-switch__chip[aria-pressed="true"] {
+  background: var(--color-surface-action-strong);
+  color: var(--color-text-action-inverted);
+}
+.lang-switch__chip[aria-pressed="true"]:hover { background: var(--color-surface-action-strong-hover); }
+.lang-switch__chip[aria-pressed="true"]:active { background: var(--color-surface-action-strong-active); }
+.lang-switch__chip[aria-pressed="true"] .icon { display: inline-block; color: var(--color-icon-action-inverted); }
+
 .theme-toggle__light, .theme-toggle.is-dark .theme-toggle__dark { display: none; }
 .theme-toggle.is-dark .theme-toggle__light { display: block; }
 .theme-toggle:active { transform: scale(0.94); }
@@ -705,7 +726,7 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
 .reveal-on .reveal.is-in { opacity: 1; transform: none; }
 
 @media (min-width: 900px) {
-  .theme-toggle { position: absolute; top: 0; right: 0; }
+  .hero__controls { position: absolute; top: 0; right: 0; }
 }
 
 /* ---------- Below 900 (Tablet, Mobile) ---------- */
@@ -734,7 +755,7 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
     animation: none !important;
   }
   .reveal-on .reveal { opacity: 1 !important; transform: none !important; }
-  .btn:active, .chip input:active + .chip__face, .stepper button:active { transform: none; }
+  .btn:active, .chip input:active + .chip__face, .lang-switch__chip:active, .stepper button:active { transform: none; }
 }
 
 /* ---------- Forced colours ---------- */
@@ -745,7 +766,7 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
 }
 
 @media print {
-  .toc, .theme-toggle, .hero__actions, .copy-btn, .walkthrough__nav, .stepper, .skip-link { display: none !important; }
+  .toc, .theme-toggle, .lang-switch, .hero__actions, .copy-btn, .walkthrough__nav, .stepper, .skip-link { display: none !important; }
   .is-enhanced .step[hidden] { display: block !important; }
   .reveal-on .reveal { opacity: 1; transform: none; }
 }
