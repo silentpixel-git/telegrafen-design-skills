@@ -220,7 +220,7 @@
       command: "/telegrafen-design-components",
       mode: "Review & QA",
       why: "Read-only structural and visual assessment. Nothing is changed.",
-      starter: "/telegrafen-design-components. Review & QA the selected component, read-only. Assess structure, properties, variants, states, token and style bindings, light and dark contexts, and accessibility. Report findings with evidence and do not edit."
+      starter: "/telegrafen-design-components. Review & QA the selected component, read-only. Report findings with evidence."
     },
     {
       id: "component-fix",
@@ -229,7 +229,7 @@
       command: "/telegrafen-design-components",
       mode: "Repair & Finalize",
       why: "Makes authorised edits, then runs the complete finalisation audit.",
-      starter: "/telegrafen-design-components. Repair & Finalize the selected component. Fix only [listed defects] and preserve accepted decisions. Ask before changing the public API. Then run the complete finalisation audit and report the results with evidence."
+      starter: "/telegrafen-design-components. Repair & Finalize the selected component. Fix only [listed defects], then run the finalisation audit."
     },
     {
       id: "visual-critique",
@@ -268,7 +268,7 @@
       command: "/telegrafen-ux-writing",
       mode: "QA",
       why: "Read-only. You get findings and ready-to-paste replacements without changes to the design.",
-      starter: "/telegrafen-ux-writing. QA the copy in the selected frame, read-only. Report findings and ready-to-paste replacements without changing the design."
+      starter: "/telegrafen-ux-writing. QA the copy in the selected frame, read-only. Give me ready-to-paste replacements."
     }
   ];
 
@@ -330,9 +330,6 @@
   var steps = Array.prototype.slice.call(document.querySelectorAll("#steps .step"));
   var stepper = document.getElementById("stepper");
   var progress = document.getElementById("walkthrough-progress");
-  var nav = document.getElementById("walkthrough-nav");
-  var prev = document.getElementById("step-prev");
-  var next = document.getElementById("step-next");
   var current = 0;
 
   var stepButtons = [];
@@ -365,12 +362,6 @@
     });
     progress.textContent = t("progress", { n: current + 1, total: steps.length });
 
-    var focused = document.activeElement;
-    prev.disabled = current === 0;
-    next.disabled = current === steps.length - 1;
-    if (focused === prev && prev.disabled) { next.focus(); }
-    if (focused === next && next.disabled) { prev.focus(); }
-
     if (focusPanel) {
       steps[current].setAttribute("tabindex", "-1");
       steps[current].focus();
@@ -381,13 +372,10 @@
     var button = event.target.closest("button[data-step]");
     if (button) { show(Number(button.getAttribute("data-step")), true); }
   });
-  prev.addEventListener("click", function () { show(current - 1, false); });
-  next.addEventListener("click", function () { show(current + 1, false); });
 
   walkthrough.classList.add("is-enhanced");
   stepper.hidden = false;
   progress.hidden = false;
-  nav.hidden = false;
   show(0, false);
   onLanguage(function () { renderStepper(); show(current, false); });
 

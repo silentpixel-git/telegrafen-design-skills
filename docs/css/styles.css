@@ -9,7 +9,7 @@
  *   - Telegrafen Components v2.5.0 (figma.com/design/80yLUPif6wgDwXLu5MbMFj):
  *       Button (4906:15790), Chip (5639:2555), Tabs/.Tab (68:22072, 68:21991),
  *       Badge (23:122), Divider (5190:40745), Link Group (5353:260),
- *       Label (2888:20671), Notification Inline (3036:25959).
+ *       Label (2888:20671).
  *   - Telegrafen Design Tokens v1.4.4 (figma.com/design/aW7bFTLqx5L0XTWMskOHSR).
  *   - Telegrafen UI Icons v1.2.5 (figma.com/design/tgJeQElYu5kOzdP3VxVsky).
  *   - Typography guidance (figma.com/design/Q9WEywDHM8JzcyfcclGuPD, 1231-4612).
@@ -563,12 +563,6 @@ main:focus { outline: none; }
   outline-offset: var(--spacing-s);
 }
 
-.walkthrough__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-m);
-  margin-top: var(--spacing-2xl);
-}
 
 /* ---------- Prompt well (composed: Surface/Subtle, Radius/S, Content/S) ---------- */
 .step > .step__prompt { margin-top: var(--spacing-2xl); }
@@ -580,7 +574,11 @@ main:focus { outline: none; }
   border-radius: var(--radius-s);
   background: var(--color-surface-subtle);
 }
+/* Commands and prompts: platform monospace at Text/M size */
 .prompt__text {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-m);
+  line-height: var(--line-height-content);
   padding: var(--spacing-xl) calc(var(--spacing-s) + var(--height-xl) + var(--spacing-s)) var(--spacing-xl) var(--spacing-xl);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -625,30 +623,6 @@ main:focus { outline: none; }
 .mode-list { list-style: none; margin: 0; padding: 0; color: var(--color-text-default); }
 .mode-list li { padding: var(--spacing-3xs) 0; }
 .skill__note { margin-top: var(--spacing-m); font-size: var(--font-size-text-m); line-height: var(--line-height-text); }
-
-/* ---------- Notification Inline (Status Information, Horizontal False) ---------- */
-/* Surface/Info/Subtle, Radius/S, padding Spacing/2XL, gap Spacing/S,
-   Info Circle Filled 32, Title/XS + Content/M in Text/Info/On Subtle. */
-.callout {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-s);
-  margin-top: var(--spacing-3xl);
-  padding: var(--spacing-2xl);
-  max-width: 880px;
-  border-radius: var(--radius-s);
-  background: var(--color-surface-info-subtle);
-  color: var(--color-text-info-on-subtle);
-  font-size: var(--font-size-content-m);
-}
-.callout > div > * + * { margin-top: var(--spacing-2xs); }
-.callout__icon { width: var(--height-l); height: var(--height-l); flex: none; }
-.callout__title {
-  font-size: var(--font-size-title-xs);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-title);
-}
-.callout strong { color: inherit; }
 
 /* ---------- Tables (composed: Text/M, Divider rows) ---------- */
 .table-wrap {
@@ -695,9 +669,29 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
   list-style: none;
   max-width: 880px;
 }
-.rule-list li, .tip-list li {
-  padding: var(--spacing-l) 0;
+.rule-list > li, .tip-list > li {
+  padding: var(--spacing-xl) 0;
   border-top: var(--border-xs) solid var(--color-border-subtle);
+}
+.rule-list > li > * + *, .tip-list > li > * + * { margin-top: var(--spacing-xs); }
+/* Item title: Title/2XS. Body: Content/M in Text/Subtle */
+.list-item__title { font-size: var(--font-size-title-2xs); }
+.rule-list p, .tip-list p, .rule-list .bullets, .tip-list .bullets {
+  max-width: 68ch;
+  font-size: var(--font-size-content-m);
+  color: var(--color-text-subtle);
+}
+
+/* Bullet lists: native disc marker in Text/Subtle */
+.bullets { margin: 0; padding-left: var(--spacing-xl); list-style: disc; }
+.bullets li + li { margin-top: var(--spacing-2xs); }
+.bullets li::marker { color: var(--color-text-subtle); }
+.step > .bullets { margin-top: var(--spacing-s); }
+.section__bullets {
+  margin-top: var(--spacing-s);
+  max-width: 60ch;
+  font-size: var(--font-size-content-m);
+  color: var(--color-text-subtle);
 }
 
 /* ---------- Sources and footer ---------- */
@@ -743,7 +737,6 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
 @media (max-width: 599px) {
   .picker-result, .is-enhanced .steps { padding: var(--spacing-xl); }
   .toc__group + .toc__group ul { grid-template-columns: minmax(0, 1fr); }
-  .walkthrough__nav .btn { flex: 1 1 0; }
   .hero__actions .btn { flex: 1 1 auto; }
 }
 
@@ -762,11 +755,11 @@ tbody th { font-weight: var(--font-weight-medium); color: var(--color-text-stron
 @media (forced-colors: active) {
   .btn, .chip__face, .stepper button, .badge { border: 1px solid CanvasText; }
   .stepper button[aria-current="step"] { border-bottom-width: 3px; }
-  .picker-result, .walkthrough.is-enhanced .steps, .callout, .prompt__well { border: 1px solid CanvasText; }
+  .picker-result, .walkthrough.is-enhanced .steps, .prompt__well { border: 1px solid CanvasText; }
 }
 
 @media print {
-  .toc, .theme-toggle, .lang-switch, .hero__actions, .copy-btn, .walkthrough__nav, .stepper, .skip-link { display: none !important; }
+  .toc, .theme-toggle, .lang-switch, .hero__actions, .copy-btn, .stepper, .skip-link { display: none !important; }
   .is-enhanced .step[hidden] { display: block !important; }
   .reveal-on .reveal { opacity: 1; transform: none; }
 }
