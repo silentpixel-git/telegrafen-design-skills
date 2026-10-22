@@ -1,25 +1,67 @@
 /*
- * Tokens for an EXPERIMENTAL restyle of the skills guide.
- * Vibe: Ethereal Glass. Layout: Asymmetrical Bento (softened, few frames).
+ * Telegrafen tokens for the skills guide, TELEGRAFEN-COMPONENTS VARIANT
+ * (branch silentpixel-git-telegrafen-components-prototype).
  *
- * COLOUR: Telegrafen semantic colour tokens, Light and Dark modes, read with
- * the Figma MCP from Telegrafen Design Tokens v1.4.4, collection "Colors"
- * (figma.com/design/aW7bFTLqx5L0XTWMskOHSR). Names keep the Telegrafen token
- * path: "Color/Surface/Action/Stronger" becomes --color-surface-action-stronger.
- * The resolved primitive is noted as Light / Dark.
- * Mode: follows prefers-color-scheme; [data-theme="light|dark"] on <html>
- * overrides it (set by the theme switch in app.js).
+ * Every value below was read with the Figma MCP (read-only) from:
+ *   - Telegrafen Design Tokens v1.4.4 (figma.com/design/aW7bFTLqx5L0XTWMskOHSR)
+ *       Colors (modes Light, Dark), Device (modes Mobile, Tablet, Laptop,
+ *       Desktop), Primitive (Radius, Border), text styles (Title, Text,
+ *       Content) and effect styles (Shadow).
+ *   - Telegrafen Typography guidance
+ *       (figma.com/design/Q9WEywDHM8JzcyfcclGuPD, node 1231-4612).
+ * Names keep the Telegrafen path: "Color/Surface/Action/Stronger" becomes
+ * --color-surface-action-stronger; "Spacing/XL" becomes --spacing-xl. The
+ * resolved primitive is noted per colour.
  *
- * Everything else (type scale, spacing, radii, motion, font) is
- * experimental and NOT Telegrafen. The Telegrafen-governed version of this
- * guide lives on the silentpixel-git-workshop-html-guide branch.
+ * Colour mode follows prefers-color-scheme; [data-theme="light|dark"] on
+ * <html> overrides it (set by the theme toggle in app.js).
  *
- * Font: Schibsted Grotesk (Schibsted, SIL Open Font License 1.1), served
- * from ../fonts so the page works offline from file://. See fonts/OFL.txt.
- * Commands use the platform monospace font.
+ * Device modes map to breakpoints from Primitive/Device: Mobile max 599,
+ * Tablet 600-899, Laptop 900-1199, Desktop 1200+.
+ *
+ * Motion: Telegrafen Design Tokens v1.4.4 has no motion tokens, so the
+ * easing and durations are kept unchanged from the guide on main.
+ *
+ * Font: Telenor Evolution UI is licensed and is NOT shipped. It is used via
+ * local() when installed. Fallback: Schibsted Grotesk (SIL OFL 1.1, served
+ * from ../fonts so the page works from file://), then Arial (Telegrafen
+ * backup font). Telegrafen weights: Light 300 (Text, Content), Medium 500
+ * (Title, Bold styles).
  *
  * Icons: Telegrafen UI Icons v1.2.5 symbols, inlined in index.html.
  */
+
+@font-face {
+  font-family: "Telenor Evolution UI Local";
+  src: local("Telenor Evolution UI Light"), local("TelenorEvolutionUI-Light");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telenor Evolution UI Local";
+  src: local("Telenor Evolution UI Normal"), local("TelenorEvolutionUI-Normal");
+  font-weight: 400 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telenor Evolution UI Local";
+  src: local("Telenor Evolution UI Medium"), local("TelenorEvolutionUI-Medium");
+  font-weight: 500 560;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telenor Evolution UI Local";
+  src: local("Telenor Evolution UI Bold"), local("TelenorEvolutionUI-Bold");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Schibsted Grotesk";
@@ -32,49 +74,54 @@
 /* Telegrafen Colors, Light mode (default) */
 :root {
   color-scheme: light;
-  --color-page-default: #ffffff;                  /* Base/White */
-  --color-page-subtle: #f9f9fb;                   /* Neutral/25 */
-  --color-surface-default: #ffffff;               /* Base/White */
-  --color-surface-subtle: #f2f3f7;                /* Neutral/50 */
-  --color-surface-subtler: #f9f9fb;               /* Neutral/25 */
-  --color-surface-transparent: rgba(249, 249, 251, 0.9); /* Opacity White/1000 */
-  --color-surface-brand-logo: #00c8ff;            /* Blue/500 */
-  --color-surface-brand-stronger: #1c16c5;        /* Mid Blue/700 */
-  --color-surface-info-subtler: #ebf3ff;          /* Mid Blue/50 */
-  --color-surface-success-subtler: #ecfef1;       /* Green/50 */
-  --color-surface-success-strong: #178222;        /* Green/700 */
-  --color-surface-action-stronger: #1020f9;       /* Mid Blue/600 */
-  --color-surface-action-stronger-hover: #0e09aa; /* Mid Blue/800 */
-  --color-surface-action-strong: #18223f;         /* Neutral/1000 */
-  --color-surface-action-strong-hover: #374262;   /* Neutral/800 */
-  --color-surface-action-subtler: #e5e8f0;        /* Neutral/100 */
-  --color-surface-action-subtler-hover: #c5cbdd;  /* Neutral/200 */
-  --color-surface-action-opacity: rgba(0, 26, 102, 0.1);        /* Opacity Black/100 */
-  --color-surface-action-opacity-hover: rgba(0, 28, 112, 0.23); /* Opacity Black/200 */
-  --color-surface-action-disabled: #e5e8f0;       /* Neutral/100 */
+  --color-page-default: #ffffff;              /* Base/White */
+  --color-page-subtle: #f9f9fb;               /* Neutral/25 */
+  --color-surface-default: #ffffff;           /* Base/White */
+  --color-surface-subtle: #f2f3f7;            /* Neutral/50 */
+  --color-surface-brand-logo: #00c8ff;        /* Blue/500 */
+  --color-surface-brand-subtler: #ebf3ff;     /* Mid Blue/50 */
+  --color-surface-info-subtle: #d6e7ff;       /* Mid Blue/100 */
+  --color-surface-action-stronger: #1020f9;   /* Mid Blue/600 */
+  --color-surface-action-stronger-hover: #0e09aa;/* Mid Blue/800 */
+  --color-surface-action-stronger-active: #070452;/* Mid Blue/1000 */
+  --color-surface-action-strong: #18223f;     /* Neutral/1000 */
+  --color-surface-action-strong-hover: #374262;/* Neutral/800 */
+  --color-surface-action-strong-active: #677398;/* Neutral/600 */
+  --color-surface-action-subtle: #ebf3ff;     /* Mid Blue/50 */
+  --color-surface-action-subtle-hover: #d6e7ff;/* Mid Blue/100 */
+  --color-surface-action-subtle-active: #ebf3ff;/* Mid Blue/50 */
+  --color-surface-action-subtler: #e5e8f0;    /* Neutral/100 */
+  --color-surface-action-subtler-hover: #c5cbdd;/* Neutral/200 */
+  --color-surface-action-subtler-active: #b2bad1;/* Neutral/300 */
+  --color-surface-action-disabled: #e5e8f0;   /* Neutral/100 */
 
-  --color-text-default: #293351;                  /* Neutral/900 */
-  --color-text-subtle: #4f5b7d;                   /* Neutral/700 */
-  --color-text-subtler: #677398;                  /* Neutral/600 */
-  --color-text-strong: #000b2e;                   /* Base/Black */
-  --color-text-inverted: #ffffff;                 /* Base/White */
-  --color-text-brand-on-subtle: #0e0a7f;          /* Mid Blue/900 */
-  --color-text-info-on-subtler: #0e0a7f;          /* Mid Blue/900 */
-  --color-text-success: #178222;                  /* Green/700 */
-  --color-text-success-on-strong: #ffffff;        /* Base/White */
-  --color-text-action-strong: #1020f9;            /* Mid Blue/600 */
-  --color-text-action-strong-hover: #0e09aa;      /* Mid Blue/800 */
-  --color-text-action-subtle: #18223f;            /* Neutral/1000 */
-  --color-text-action-inverted: #f5ffff;          /* Turquoise/25 */
-  --color-text-action-disabled: #b2bad1;          /* Neutral/300 */
+  --color-text-default: #293351;              /* Neutral/900 */
+  --color-text-subtle: #4f5b7d;               /* Neutral/700 */
+  --color-text-strong: #000b2e;               /* Base/Black */
+  --color-text-inverted: #ffffff;             /* Base/White */
+  --color-text-brand-on-subtler: #0e0a7f;     /* Mid Blue/900 */
+  --color-text-info-on-subtle: #0e0a7f;       /* Mid Blue/900 */
+  --color-text-action-strong: #1020f9;        /* Mid Blue/600 */
+  --color-text-action-strong-hover: #0e09aa;  /* Mid Blue/800 */
+  --color-text-action-strong-active: #070452; /* Mid Blue/1000 */
+  --color-text-action-subtle: #18223f;        /* Neutral/1000 */
+  --color-text-action-subtle-hover: #0e09aa;  /* Mid Blue/800 */
+  --color-text-action-subtle-active: #070452; /* Mid Blue/1000 */
+  --color-text-action-inverted: #f5ffff;      /* Turquoise/25 */
+  --color-text-action-disabled: #b2bad1;      /* Neutral/300 */
 
-  --color-border-subtle: #b2bad1;                 /* Neutral/300 */
-  --color-border-subtler: #e5e8f0;                /* Neutral/100 */
-  --color-border-action-focus: #5b00d1;           /* Purple/700 */
-  --color-icon-info: #1020f9;                     /* Mid Blue/600 */
+  --color-border-subtle: #b2bad1;             /* Neutral/300 */
+  --color-border-subtler: #e5e8f0;            /* Neutral/100 */
+  --color-border-action-strong: #1020f9;      /* Mid Blue/600 */
+  --color-border-action-strong-hover: #0e09aa;/* Mid Blue/800 */
+  --color-border-action-focus: #5b00d1;       /* Purple/700 */
 
-  /* Decorative glow strength (experimental) */
-  --ambient-shadow: 0 6px 20px -12px rgba(0, 26, 102, 0.16);
+  --color-icon-info: #1020f9;                 /* Mid Blue/600 */
+  --color-icon-inverted: #ffffff;             /* Base/White */
+  --color-icon-action-strong: #1020f9;        /* Mid Blue/600 */
+  --color-icon-action-strong-hover: #0e09aa;  /* Mid Blue/800 */
+  --color-icon-action-strong-active: #070452; /* Mid Blue/1000 */
+  --color-icon-action-inverted: #f5ffff;      /* Turquoise/25 */
 }
 
 /* Telegrafen Colors, Dark mode. Applied by system preference unless the
@@ -82,164 +129,240 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --color-page-default: #000b2e;                  /* Base/Black */
-    --color-page-subtle: #18223f;                   /* Neutral/1000 */
-    --color-surface-default: #000b2e;               /* Base/Black */
-    --color-surface-subtle: #293351;                /* Neutral/900 */
-    --color-surface-subtler: #18223f;               /* Neutral/1000 */
-    --color-surface-transparent: rgba(0, 12, 46, 0.84); /* Opacity Black/900 */
-    --color-surface-brand-logo: #00c8ff;            /* Blue/500 */
-    --color-surface-brand-stronger: #42f0f0;        /* Turquoise/400 */
-    --color-surface-info-subtler: #0e0a7f;          /* Mid Blue/900 */
-    --color-surface-success-subtler: #002904;       /* Green/1000 */
-    --color-surface-success-strong: #54de62;        /* Green/400 */
-    --color-surface-action-stronger: #42f0f0;       /* Turquoise/400 */
-    --color-surface-action-stronger-hover: #adffff; /* Turquoise/200 */
-    --color-surface-action-strong: #f9f9fb;         /* Neutral/25 */
-    --color-surface-action-strong-hover: #b2bad1;   /* Neutral/300 */
-    --color-surface-action-subtler: #374262;        /* Neutral/800 */
-    --color-surface-action-subtler-hover: #4f5b7d;  /* Neutral/700 */
-    --color-surface-action-opacity: rgba(249, 249, 251, 0.23);       /* Opacity White/200 */
-    --color-surface-action-opacity-hover: rgba(249, 249, 251, 0.42); /* Opacity White/400 */
-    --color-surface-action-disabled: #374262;       /* Neutral/800 */
+    --color-page-default: #000b2e;              /* Base/Black */
+    --color-page-subtle: #18223f;               /* Neutral/1000 */
+    --color-surface-default: #000b2e;           /* Base/Black */
+    --color-surface-subtle: #293351;            /* Neutral/900 */
+    --color-surface-brand-logo: #00c8ff;        /* Blue/500 */
+    --color-surface-brand-subtler: #293351;     /* Neutral/900 */
+    --color-surface-info-subtle: #0e09aa;       /* Mid Blue/800 */
+    --color-surface-action-stronger: #42f0f0;   /* Turquoise/400 */
+    --color-surface-action-stronger-hover: #adffff;/* Turquoise/200 */
+    --color-surface-action-stronger-active: #ebffff;/* Turquoise/50 */
+    --color-surface-action-strong: #f9f9fb;     /* Neutral/25 */
+    --color-surface-action-strong-hover: #b2bad1;/* Neutral/300 */
+    --color-surface-action-strong-active: #7c88ab;/* Neutral/500 */
+    --color-surface-action-subtle: #003333;     /* Turquoise/1000 */
+    --color-surface-action-subtle-hover: #044e4e;/* Turquoise/900 */
+    --color-surface-action-subtle-active: #003333;/* Turquoise/1000 */
+    --color-surface-action-subtler: #374262;    /* Neutral/800 */
+    --color-surface-action-subtler-hover: #4f5b7d;/* Neutral/700 */
+    --color-surface-action-subtler-active: #677398;/* Neutral/600 */
+    --color-surface-action-disabled: #374262;   /* Neutral/800 */
 
-    --color-text-default: #f2f3f7;                  /* Neutral/50 */
-    --color-text-subtle: #c5cbdd;                   /* Neutral/200 */
-    --color-text-subtler: #b2bad1;                  /* Neutral/300 */
-    --color-text-strong: #ffffff;                   /* Base/White */
-    --color-text-inverted: #000b2e;                 /* Base/Black */
-    --color-text-brand-on-subtle: #42f0f0;          /* Turquoise/400 */
-    --color-text-info-on-subtler: #f5f9ff;          /* Mid Blue/25 */
-    --color-text-success: #54de62;                  /* Green/400 */
-    --color-text-success-on-strong: #002904;        /* Green/1000 */
-    --color-text-action-strong: #42f0f0;            /* Turquoise/400 */
-    --color-text-action-strong-hover: #adffff;      /* Turquoise/200 */
-    --color-text-action-subtle: #f9f9fb;            /* Neutral/25 */
-    --color-text-action-inverted: #070452;          /* Mid Blue/1000 */
-    --color-text-action-disabled: #677398;          /* Neutral/600 */
+    --color-text-default: #f2f3f7;              /* Neutral/50 */
+    --color-text-subtle: #c5cbdd;               /* Neutral/200 */
+    --color-text-strong: #ffffff;               /* Base/White */
+    --color-text-inverted: #000b2e;             /* Base/Black */
+    --color-text-brand-on-subtler: #adffff;     /* Turquoise/200 */
+    --color-text-info-on-subtle: #f5f9ff;       /* Mid Blue/25 */
+    --color-text-action-strong: #42f0f0;        /* Turquoise/400 */
+    --color-text-action-strong-hover: #adffff;  /* Turquoise/200 */
+    --color-text-action-strong-active: #ebffff; /* Turquoise/50 */
+    --color-text-action-subtle: #f9f9fb;        /* Neutral/25 */
+    --color-text-action-subtle-hover: #adffff;  /* Turquoise/200 */
+    --color-text-action-subtle-active: #ebffff; /* Turquoise/50 */
+    --color-text-action-inverted: #070452;      /* Mid Blue/1000 */
+    --color-text-action-disabled: #677398;      /* Neutral/600 */
 
-    --color-border-subtle: #4f5b7d;                 /* Neutral/700 */
-    --color-border-subtler: #293351;                /* Neutral/900 */
-    --color-border-action-focus: #b18aff;           /* Purple/300 */
-    --color-icon-info: #42f0f0;                     /* Turquoise/400 */
-    --ambient-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.45);
+    --color-border-subtle: #4f5b7d;             /* Neutral/700 */
+    --color-border-subtler: #293351;            /* Neutral/900 */
+    --color-border-action-strong: #42f0f0;      /* Turquoise/400 */
+    --color-border-action-strong-hover: #adffff;/* Turquoise/200 */
+    --color-border-action-focus: #b18aff;       /* Purple/300 */
+
+    --color-icon-info: #42f0f0;                 /* Turquoise/400 */
+    --color-icon-inverted: #000b2e;             /* Base/Black */
+    --color-icon-action-strong: #42f0f0;        /* Turquoise/400 */
+    --color-icon-action-strong-hover: #adffff;  /* Turquoise/200 */
+    --color-icon-action-strong-active: #ebffff; /* Turquoise/50 */
+    --color-icon-action-inverted: #070452;      /* Mid Blue/1000 */
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-page-default: #000b2e;                  /* Base/Black */
-  --color-page-subtle: #18223f;                   /* Neutral/1000 */
-  --color-surface-default: #000b2e;               /* Base/Black */
-  --color-surface-subtle: #293351;                /* Neutral/900 */
-  --color-surface-subtler: #18223f;               /* Neutral/1000 */
-  --color-surface-transparent: rgba(0, 12, 46, 0.84); /* Opacity Black/900 */
-  --color-surface-brand-logo: #00c8ff;            /* Blue/500 */
-  --color-surface-brand-stronger: #42f0f0;        /* Turquoise/400 */
-  --color-surface-info-subtler: #0e0a7f;          /* Mid Blue/900 */
-  --color-surface-success-subtler: #002904;       /* Green/1000 */
-  --color-surface-success-strong: #54de62;        /* Green/400 */
-  --color-surface-action-stronger: #42f0f0;       /* Turquoise/400 */
-  --color-surface-action-stronger-hover: #adffff; /* Turquoise/200 */
-  --color-surface-action-strong: #f9f9fb;         /* Neutral/25 */
-  --color-surface-action-strong-hover: #b2bad1;   /* Neutral/300 */
-  --color-surface-action-subtler: #374262;        /* Neutral/800 */
-  --color-surface-action-subtler-hover: #4f5b7d;  /* Neutral/700 */
-  --color-surface-action-opacity: rgba(249, 249, 251, 0.23);       /* Opacity White/200 */
-  --color-surface-action-opacity-hover: rgba(249, 249, 251, 0.42); /* Opacity White/400 */
-  --color-surface-action-disabled: #374262;       /* Neutral/800 */
+  --color-page-default: #000b2e;              /* Base/Black */
+  --color-page-subtle: #18223f;               /* Neutral/1000 */
+  --color-surface-default: #000b2e;           /* Base/Black */
+  --color-surface-subtle: #293351;            /* Neutral/900 */
+  --color-surface-brand-logo: #00c8ff;        /* Blue/500 */
+  --color-surface-brand-subtler: #293351;     /* Neutral/900 */
+  --color-surface-info-subtle: #0e09aa;       /* Mid Blue/800 */
+  --color-surface-action-stronger: #42f0f0;   /* Turquoise/400 */
+  --color-surface-action-stronger-hover: #adffff;/* Turquoise/200 */
+  --color-surface-action-stronger-active: #ebffff;/* Turquoise/50 */
+  --color-surface-action-strong: #f9f9fb;     /* Neutral/25 */
+  --color-surface-action-strong-hover: #b2bad1;/* Neutral/300 */
+  --color-surface-action-strong-active: #7c88ab;/* Neutral/500 */
+  --color-surface-action-subtle: #003333;     /* Turquoise/1000 */
+  --color-surface-action-subtle-hover: #044e4e;/* Turquoise/900 */
+  --color-surface-action-subtle-active: #003333;/* Turquoise/1000 */
+  --color-surface-action-subtler: #374262;    /* Neutral/800 */
+  --color-surface-action-subtler-hover: #4f5b7d;/* Neutral/700 */
+  --color-surface-action-subtler-active: #677398;/* Neutral/600 */
+  --color-surface-action-disabled: #374262;   /* Neutral/800 */
 
-  --color-text-default: #f2f3f7;                  /* Neutral/50 */
-  --color-text-subtle: #c5cbdd;                   /* Neutral/200 */
-  --color-text-subtler: #b2bad1;                  /* Neutral/300 */
-  --color-text-strong: #ffffff;                   /* Base/White */
-  --color-text-inverted: #000b2e;                 /* Base/Black */
-  --color-text-brand-on-subtle: #42f0f0;          /* Turquoise/400 */
-  --color-text-info-on-subtler: #f5f9ff;          /* Mid Blue/25 */
-  --color-text-success: #54de62;                  /* Green/400 */
-  --color-text-success-on-strong: #002904;        /* Green/1000 */
-  --color-text-action-strong: #42f0f0;            /* Turquoise/400 */
-  --color-text-action-strong-hover: #adffff;      /* Turquoise/200 */
-  --color-text-action-subtle: #f9f9fb;            /* Neutral/25 */
-  --color-text-action-inverted: #070452;          /* Mid Blue/1000 */
-  --color-text-action-disabled: #677398;          /* Neutral/600 */
+  --color-text-default: #f2f3f7;              /* Neutral/50 */
+  --color-text-subtle: #c5cbdd;               /* Neutral/200 */
+  --color-text-strong: #ffffff;               /* Base/White */
+  --color-text-inverted: #000b2e;             /* Base/Black */
+  --color-text-brand-on-subtler: #adffff;     /* Turquoise/200 */
+  --color-text-info-on-subtle: #f5f9ff;       /* Mid Blue/25 */
+  --color-text-action-strong: #42f0f0;        /* Turquoise/400 */
+  --color-text-action-strong-hover: #adffff;  /* Turquoise/200 */
+  --color-text-action-strong-active: #ebffff; /* Turquoise/50 */
+  --color-text-action-subtle: #f9f9fb;        /* Neutral/25 */
+  --color-text-action-subtle-hover: #adffff;  /* Turquoise/200 */
+  --color-text-action-subtle-active: #ebffff; /* Turquoise/50 */
+  --color-text-action-inverted: #070452;      /* Mid Blue/1000 */
+  --color-text-action-disabled: #677398;      /* Neutral/600 */
 
-  --color-border-subtle: #4f5b7d;                 /* Neutral/700 */
-  --color-border-subtler: #293351;                /* Neutral/900 */
-  --color-border-action-focus: #b18aff;           /* Purple/300 */
-  --color-icon-info: #42f0f0;                     /* Turquoise/400 */
-  --ambient-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.45);
+  --color-border-subtle: #4f5b7d;             /* Neutral/700 */
+  --color-border-subtler: #293351;            /* Neutral/900 */
+  --color-border-action-strong: #42f0f0;      /* Turquoise/400 */
+  --color-border-action-strong-hover: #adffff;/* Turquoise/200 */
+  --color-border-action-focus: #b18aff;       /* Purple/300 */
+
+  --color-icon-info: #42f0f0;                 /* Turquoise/400 */
+  --color-icon-inverted: #000b2e;             /* Base/Black */
+  --color-icon-action-strong: #42f0f0;        /* Turquoise/400 */
+  --color-icon-action-strong-hover: #adffff;  /* Turquoise/200 */
+  --color-icon-action-strong-active: #ebffff; /* Turquoise/50 */
+  --color-icon-action-inverted: #070452;      /* Mid Blue/1000 */
 }
 
-/* Experimental role aliases, mapped onto Telegrafen semantic colours */
+/* Device collection, Desktop mode (default; also Tablet and Laptop except
+   where overridden below). */
 :root {
-  --bg: var(--color-page-default);
-  --band: var(--color-page-subtle);
-  --panel: var(--color-surface-subtle);
-  --well: var(--color-surface-subtle);
-  --hairline: var(--color-border-subtler);
-  --hairline-strong: var(--color-border-subtle);
-  --fill-soft: var(--color-surface-action-subtler);
-  --fill-soft-hover: var(--color-surface-action-subtler-hover);
+  /* Spacing */
+  --spacing-6xl: 80px;
+  --spacing-5xl: 64px;
+  --spacing-4xl: 48px;
+  --spacing-3xl: 32px;
+  --spacing-2xl: 24px;
+  --spacing-xl: 20px;
+  --spacing-l: 16px;
+  --spacing-m: 12px;
+  --spacing-s: 8px;
+  --spacing-xs: 6px;
+  --spacing-2xs: 4px;
+  --spacing-3xs: 2px;
 
-  --text-strong: var(--color-text-strong);
-  --text: var(--color-text-default);
-  --text-subtle: var(--color-text-subtle);
-  --text-faint: var(--color-text-subtler);
+  /* Height */
+  --height-3xl: 56px;
+  --height-2xl: 48px;
+  --height-xl: 40px;
+  --height-l: 32px;
+  --height-m: 28px;
+  --height-s: 24px;
+  --height-xs: 20px;
 
-  --accent: var(--color-text-brand-on-subtle);   /* commands and numerals */
-  --link: var(--color-text-action-strong);
-  --link-hover: var(--color-text-action-strong-hover);
-  --focus: var(--color-border-action-focus);
+  /* Layout */
+  --layout-margin: 48px;
+  --layout-gap: 24px;
 
-  /* Radii */
-  --r-panel: 1rem;
-  --r-well: 0.75rem;
-  --r-pill: 999px;
+  /* Font sizes (Typography/Font Size/*) */
+  --font-size-title-xl: 48px;
+  --font-size-title-l: 40px;
+  --font-size-title-m: 32px;
+  --font-size-title-s: 24px;
+  --font-size-title-xs: 20px;
+  --font-size-title-2xs: 18px;
+  --font-size-title-3xs: 16px;
+  --font-size-text-xl: 20px;
+  --font-size-text-l: 18px;
+  --font-size-text-m: 16px;
+  --font-size-text-s: 14px;
+  --font-size-text-xs: 12px;
+  --font-size-content-l: 20px;
+  --font-size-content-m: 18px;
+  --font-size-content-s: 16px;
 
-  /* Spacing scale */
-  --s-1: 4px;
-  --s-2: 8px;
-  --s-3: 12px;
-  --s-4: 16px;
-  --s-5: 24px;
-  --s-6: 32px;
-  --s-7: 48px;
-  --s-8: 64px;
-  --s-9: 96px;
-  --s-10: 144px;
-  --gutter: clamp(16px, 4vw, 48px);
-  --gap: clamp(16px, 2vw, 24px);
-  --measure: 68ch;
+  /* Primitive: Radius and Border */
+  --radius-none: 0;
+  --radius-2xs: 2px;
+  --radius-xs: 4px;
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-max: 1000px;
+  --border-xs: 1px;
+  --border-s: 2px;
 
-  /* Type */
-  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Effect style Shadow/S */
+  --shadow-s: 0 0 4px -2px rgba(0, 26, 102, 0.05), 0 2px 8px 0 rgba(0, 26, 102, 0.1), 0 2px 8px 0 rgba(0, 26, 102, 0.02);
+
+  /* Text styles: line heights and weights */
+  --line-height-title: 1.2;
+  --line-height-text: 1.4;
+  --line-height-content: 1.5;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+
+  --font-sans: "Telenor Evolution UI Local", "Schibsted Grotesk", Arial, sans-serif;
+  /* Commands only. Telegrafen has no code style; platform monospace. */
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --fs-display: clamp(2.75rem, 1.6rem + 4.8vw, 5.75rem);
-  --fs-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
-  --fs-h3-ref: clamp(1.625rem, 1.3rem + 1.4vw, 2.375rem);
-  --fs-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-  --fs-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
-  --fs-body: 1.0625rem;
-  --fs-small: 0.9375rem;
-  --fs-micro: 0.6875rem;
 
-  /* Motion: spring-like curves, never linear or ease-in-out */
+  /* Motion: unchanged from main (no Telegrafen motion tokens exist) */
   --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 280ms;
   --dur: 520ms;
   --dur-reveal: 1000ms;
 
-  /* Z-index layers */
-  --z-nav: 20;
+  /* Layering (not a design token) */
   --z-skip: 30;
 }
 
-@media (max-width: 767px) {
+/* Device: Tablet and Laptop layout (600-1199) */
+@media (max-width: 1199px) {
   :root {
-    --s-9: 72px;
-    --s-10: 88px;
-    --fs-body: 1rem;
-    --r-panel: 1.25rem;
+    --layout-margin: 24px;
+    --layout-gap: 16px;
+  }
+}
+
+/* Device: Mobile and Small Mobile (max 599) */
+@media (max-width: 599px) {
+  :root {
+    --spacing-6xl: 64px;
+    --spacing-5xl: 48px;
+    --spacing-4xl: 32px;
+    --spacing-3xl: 24px;
+    --spacing-2xl: 20px;
+    --spacing-xl: 16px;
+    --spacing-l: 12px;
+    --spacing-m: 8px;
+    --spacing-s: 6px;
+    --spacing-xs: 4px;
+    --spacing-2xs: 2px;
+    --spacing-3xs: 1px;
+
+    --height-3xl: 48px;
+    --height-2xl: 40px;
+    --height-xl: 32px;
+    --height-l: 28px;
+    --height-m: 24px;
+    --height-s: 20px;
+    --height-xs: 18px;
+
+    --layout-margin: 16px;
+    --layout-gap: 16px;
+
+    --font-size-title-xl: 40px;
+    --font-size-title-l: 32px;
+    --font-size-title-m: 24px;
+    --font-size-title-s: 20px;
+    --font-size-title-xs: 18px;
+    --font-size-title-2xs: 16px;
+    --font-size-title-3xs: 14px;
+    --font-size-text-xl: 18px;
+    --font-size-text-l: 16px;
+    --font-size-text-m: 14px;
+    --font-size-text-s: 12px;
+    --font-size-text-xs: 10px;
+    --font-size-content-l: 18px;
+    --font-size-content-m: 16px;
+    --font-size-content-s: 14px;
   }
 }
