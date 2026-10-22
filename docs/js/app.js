@@ -233,7 +233,7 @@
       '<p class="picker-result__why">' + escapeHtml(t.why) + "</p>" +
       '<p class="label picker-result__prompt-label" id="picker-prompt-label">' + escapeHtml(source) + "</p>" +
       '<div class="prompt__well"><p class="prompt__text" id="picker-prompt-text">' + escapeHtml(t.prompt) + "</p>" +
-      '<button type="button" class="copy-btn" data-copy-target="picker-prompt-text" aria-describedby="picker-prompt-label" hidden></button></div>';
+      '<button type="button" class="btn btn--tertiary btn--icon btn--s copy-btn" data-copy-target="picker-prompt-text" aria-describedby="picker-prompt-label" hidden></button></div>';
     initCopyButton(result.querySelector(".copy-btn"));
   }
 
