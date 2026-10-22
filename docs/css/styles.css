@@ -406,6 +406,7 @@ main:focus { outline: none; }
 .section--ref { padding: var(--s-9) 0; }
 .section--ref > .container > h3 { font-size: var(--fs-h3-ref); letter-spacing: -0.03em; line-height: 1.1; }
 .ref-group__head + .section--ref { padding-top: var(--s-8); }
+.section > .container > .section__subtitle { margin-top: var(--s-9); }
 .section--last { padding-bottom: var(--s-10); }
 
 /* ---------- Picker: pill chips + result card ---------- */
