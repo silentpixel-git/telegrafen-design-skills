@@ -371,6 +371,10 @@ main:focus { outline: none; }
   color: var(--color-text-subtle);
 }
 
+/* Subheading after an intro block: same Title/M, Spacing/4XL above */
+.section > .container > .section__subtitle { margin-top: var(--spacing-4xl); }
+.section__intro + .section__intro { margin-top: var(--spacing-m); }
+
 /* Reference band on Color/Page/Subtle */
 .ref-group {
   padding-top: var(--spacing-6xl);
