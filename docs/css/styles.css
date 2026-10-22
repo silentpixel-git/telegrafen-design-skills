@@ -249,7 +249,31 @@ main:focus { outline: none; }
   margin-bottom: var(--s-6);
 }
 
-/* Theme toggle: single icon button, shown by JS only */
+/* Language switch and theme toggle, shown by JS only */
+.hero__controls { display: flex; align-items: center; gap: var(--s-2); }
+.lang-switch { display: inline-flex; gap: 2px; }
+.lang-switch[hidden] { display: none; }
+.lang-switch button {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 var(--s-3);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-subtle);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-spring), color var(--dur-fast) var(--ease-spring), transform var(--dur-fast) var(--ease-spring);
+}
+.lang-switch button:hover { background: var(--color-surface-action-opacity); color: var(--text); }
+.lang-switch button:active { transform: scale(0.94); }
+.lang-switch button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.lang-switch button[aria-pressed="true"] { background: var(--color-surface-action-opacity); color: var(--text); font-weight: 700; }
+
+/* Theme toggle: single icon button */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -748,7 +772,7 @@ tbody th { font-weight: 560; color: var(--text-strong); }
 
 @media (min-width: 900px) {
   .hero__grid { position: relative; }
-  .theme-toggle { position: absolute; top: 0; right: var(--gutter); }
+  .hero__controls { position: absolute; top: 0; right: var(--gutter); }
 }
 
 /* ---------- Below 900: bento collapses ---------- */
@@ -786,13 +810,13 @@ tbody th { font-weight: 560; color: var(--text-strong); }
 
 /* ---------- Forced colours ---------- */
 @media (forced-colors: active) {
-  .btn, .chip__face, .toc__inner.container, .stepper button, .theme-toggle, .copy-btn { border: 1px solid CanvasText; }
+  .btn, .chip__face, .toc__inner.container, .stepper button, .theme-toggle, .lang-switch button, .copy-btn { border: 1px solid CanvasText; }
   .picker-result, .walkthrough.is-enhanced .steps, .callout { border: 1px solid CanvasText; }
 }
 
 @media print {
   body::before, body::after { display: none; }
-  .toc, .theme-toggle, .hero__actions, .copy-btn, .walkthrough__nav, .stepper, .skip-link { display: none !important; }
+  .toc, .theme-toggle, .lang-switch, .hero__actions, .copy-btn, .walkthrough__nav, .stepper, .skip-link { display: none !important; }
   .is-enhanced .step[hidden] { display: block !important; }
   .reveal-on .reveal { opacity: 1; transform: none; }
 }

@@ -30,10 +30,16 @@
     <div class="hero__main">
       <div class="hero__top">
         <svg class="hero__logo" aria-hidden="true" focusable="false"><use href="#i-telenor"></use></svg>
-        <button type="button" class="theme-toggle" hidden aria-label="Switch to dark theme">
-          <svg class="icon theme-toggle__dark" aria-hidden="true" focusable="false"><use href="#i-dark-mode"></use></svg>
-          <svg class="icon theme-toggle__light" aria-hidden="true" focusable="false"><use href="#i-light-mode"></use></svg>
-        </button>
+        <div class="hero__controls">
+          <div class="lang-switch" role="group" aria-label="Language" hidden>
+            <button type="button" lang="en" data-lang="en" aria-label="English" aria-pressed="true">EN</button>
+            <button type="button" lang="nb" data-lang="no" aria-label="Norsk" aria-pressed="false">NO</button>
+          </div>
+          <button type="button" class="theme-toggle" hidden aria-label="Switch to dark theme">
+            <svg class="icon theme-toggle__dark" aria-hidden="true" focusable="false"><use href="#i-dark-mode"></use></svg>
+            <svg class="icon theme-toggle__light" aria-hidden="true" focusable="false"><use href="#i-light-mode"></use></svg>
+          </button>
+        </div>
       </div>
       <p class="eyebrow">Skills guide</p>
       <h1>Design with the Telegrafen skills in Figma</h1>
@@ -410,6 +416,7 @@
 </footer>
 
 <div class="visually-hidden" id="announcer" aria-live="polite" aria-atomic="true"></div>
+<script src="js/i18n.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
