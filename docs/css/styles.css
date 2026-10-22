@@ -173,7 +173,6 @@ main:focus { outline: none; }
 .btn--s { min-height: 44px; font-size: var(--fs-small); padding: 4px 20px; }
 .btn--orb { padding-right: 6px; }
 .btn--s.btn--orb { padding-right: 5px; }
-.btn--orb-lead { padding-left: 6px; padding-right: 24px; }
 
 .btn__orb {
   display: inline-flex;
@@ -188,7 +187,6 @@ main:focus { outline: none; }
 .btn--s .btn__orb { width: 34px; height: 34px; }
 .btn__orb .icon { width: 18px; height: 18px; }
 .btn:hover .btn__orb { transform: translate(3px, -1px) scale(1.05); }
-.btn--orb-lead:hover .btn__orb { transform: translate(-3px, -1px) scale(1.05); }
 
 .btn--primary {
   background: var(--color-surface-action-stronger);
@@ -587,13 +585,6 @@ main:focus { outline: none; }
 .is-enhanced .step:focus-visible { outline: 2px solid var(--focus); outline-offset: 8px; }
 .is-enhanced .step__title::before { content: none; }
 
-.walkthrough__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-3);
-  margin-top: var(--s-6);
-}
-
 /* ---------- Skills grid and prompt wells ---------- */
 .skill-list {
   display: grid;
@@ -616,7 +607,8 @@ main:focus { outline: none; }
 }
 .prompt__text {
   padding: var(--s-5) calc(var(--s-5) + 44px) var(--s-5) var(--s-5);
-  font-size: var(--fs-body);
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--text);
   white-space: pre-wrap;
@@ -674,24 +666,6 @@ main:focus { outline: none; }
 .mode-list li { padding: 3px 0; }
 .skill__note { margin-top: var(--s-3); font-size: var(--fs-small); }
 
-/* ---------- Callout ---------- */
-.callout {
-  display: flex;
-  gap: var(--s-4);
-  margin-top: var(--s-7);
-  padding: var(--s-5) var(--s-6);
-  max-width: 880px;
-  border-radius: var(--r-well);
-  background: var(--color-surface-info-subtler);
-  color: var(--color-text-info-on-subtler);
-}
-.callout__icon {
-  width: 28px;
-  height: 28px;
-  color: var(--color-icon-info);
-}
-.callout__title { font-weight: 600; color: inherit; margin-bottom: var(--s-1); }
-
 /* ---------- Tables ---------- */
 .table-wrap {
   margin-top: var(--s-6);
@@ -737,10 +711,32 @@ tbody th { font-weight: 560; color: var(--text-strong); }
   list-style: none;
   max-width: 920px;
 }
-.rule-list li, .tip-list li {
+.rule-list > li, .tip-list > li {
   position: relative;
   padding: var(--s-5) 0;
   border-top: 1px solid var(--hairline);
+}
+.list-item__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--text-strong);
+}
+.rule-list > li > * + *, .tip-list > li > * + * { margin-top: var(--s-2); }
+.rule-list p, .tip-list p, .rule-list .bullets, .tip-list .bullets { max-width: 68ch; color: var(--text-subtle); }
+
+.bullets { margin: var(--s-2) 0 0; padding-left: 1.25em; }
+.bullets li + li { margin-top: var(--s-1); }
+.bullets li::marker { color: var(--text-faint); }
+.step > .bullets { margin-top: var(--s-3); }
+.step > .bullets + p { margin-top: var(--s-3); }
+.section__bullets {
+  margin-top: var(--s-3);
+  max-width: 56ch;
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--text-subtle);
 }
 
 
@@ -790,9 +786,6 @@ tbody th { font-weight: 560; color: var(--text-strong); }
   :root { --gutter: 16px; }
   .hero { padding-top: var(--s-9); }
   .picker-result, .is-enhanced .steps { padding: var(--s-5); }
-  .callout { padding: var(--s-5); }
-  .callout { flex-direction: column; }
-  .walkthrough__nav .btn { flex: 1 1 0; }
   .hero__actions .btn { flex: 1 1 auto; }
   .toc__label { padding-left: var(--s-2); }
 }
@@ -811,12 +804,12 @@ tbody th { font-weight: 560; color: var(--text-strong); }
 /* ---------- Forced colours ---------- */
 @media (forced-colors: active) {
   .btn, .chip__face, .toc__inner.container, .stepper button, .theme-toggle, .lang-switch button, .copy-btn { border: 1px solid CanvasText; }
-  .picker-result, .walkthrough.is-enhanced .steps, .callout { border: 1px solid CanvasText; }
+  .picker-result, .walkthrough.is-enhanced .steps { border: 1px solid CanvasText; }
 }
 
 @media print {
   body::before, body::after { display: none; }
-  .toc, .theme-toggle, .lang-switch, .hero__actions, .copy-btn, .walkthrough__nav, .stepper, .skip-link { display: none !important; }
+  .toc, .theme-toggle, .lang-switch, .hero__actions, .copy-btn, .stepper, .skip-link { display: none !important; }
   .is-enhanced .step[hidden] { display: block !important; }
   .reveal-on .reveal { opacity: 1; transform: none; }
 }
