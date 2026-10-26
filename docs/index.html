@@ -73,8 +73,6 @@
       <ul aria-labelledby="toc-ref">
         <li><a href="#skills">Skills</a></li>
         <li><a href="#modes">Modes</a></li>
-        <li><a href="#rules">Source rules</a></li>
-        <li><a href="#tips">Design tips</a></li>
         <li><a href="#cheatsheet">Cheat sheet</a></li>
         <li><a href="#sources">Sources</a></li>
       </ul>
@@ -326,93 +324,6 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </section>
-
-  <!-- Reference: Source rules -->
-  <section id="rules" class="section section--ref" aria-labelledby="rules-title">
-    <div class="container">
-      <h3 id="rules-title">Source rules everyone should know</h3>
-      <p class="section__intro">These come from the <code>SKILL.md</code> files. Every prompt should follow them.</p>
-      <ol class="rule-list">
-        <li>
-          <h4 class="list-item__title">One skill per prompt</h4>
-          <p>Only the first Figma Resources skill mentioned in a prompt is reliably invoked. Use separate prompts and explicit handoffs.</p>
-        </li>
-        <li>
-          <h4 class="list-item__title">Live Telegrafen is the authority</h4>
-          <p>Check what is actually used, not what it looks like:</p>
-          <ul class="bullets">
-            <li>Component instances</li>
-            <li>Icon, style and variable bindings</li>
-            <li>Provenance</li>
-          </ul>
-        </li>
-        <li>
-          <h4 class="list-item__title">No guessing on material decisions</h4>
-          <p>Inspect the system first, then ask about unresolved user needs, purpose, behaviour, content or constraints. Components has a stricter interview-and-confirmation gate.</p>
-        </li>
-        <li>
-          <h4 class="list-item__title">Mockups assembles screens</h4>
-          <p>It hands off reusable component anatomy, properties, variants, states or QA to Components.</p>
-        </li>
-        <li>
-          <h4 class="list-item__title">New frames are siblings, placed to the right</h4>
-          <p>Mockups creates new independent design frames beside the anchor in the same Section (or Page), never inside the selected object.</p>
-        </li>
-        <li>
-          <h4 class="list-item__title">Production assets by default</h4>
-          <p>Beta or experimental assets need your consent. Preserve existing work, content and accepted design decisions.</p>
-        </li>
-        <li>
-          <h4 class="list-item__title">Dark surfaces are local dark-mode contexts</h4>
-          <p>Verify nested colours, states and controls. In dark contexts, Button <code>Neutral</code> is Off. Components goes further: never enable <code>Neutral</code> on a Button.</p>
-        </li>
-        <li>
-          <h4 class="list-item__title">No invented facts or fake PASS</h4>
-          <p>Do not invent commercial facts or claim a verified PASS without evidence. Missing necessary provenance or access is BLOCKED.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- Reference: Tips -->
-  <section id="tips" class="section section--ref" aria-labelledby="tips-title">
-    <div class="container">
-      <h3 id="tips-title">Practical design tips</h3>
-      <ul class="tip-list">
-        <li>
-          <h4 class="list-item__title">Task first</h4>
-          <p>Prioritise the user task and one clear primary action over decorative effects. Avoid unnecessary cards and repeated containment; consider open lists and grids.</p>
-        </li>
-        <li>
-          <h4 class="list-item__title">Real styles and tokens</h4>
-          <p>Use published typography styles and semantic colour tokens, not visual copies or hard-coded approximations.</p>
-        </li>
-        <li>
-          <h4 class="list-item__title">Stress the design</h4>
-          <p>Check the design with:</p>
-          <ul class="bullets">
-            <li>Component states and interactive affordances</li>
-            <li>Light and dark contexts</li>
-            <li>Resizing</li>
-            <li>Long labels and wrapped text</li>
-          </ul>
-        </li>
-        <li>
-          <h4 class="list-item__title">UX Writing</h4>
-          <p>Clear, calm Norwegian Bokmål.</p>
-          <ul class="bullets">
-            <li><em>du</em> for the customer and <em>vi</em> for Telenor</li>
-            <li>Sentence case and specific actions</li>
-            <li>Never invent prices, eligibility or promises</li>
-          </ul>
-        </li>
-        <li>
-          <h4 class="list-item__title">QA</h4>
-          <p>Give evidence-backed status, scope and remaining blocks. An attractive output alone is not a PASS.</p>
-        </li>
-      </ul>
     </div>
   </section>
 

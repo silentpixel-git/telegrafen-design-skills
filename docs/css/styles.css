@@ -704,28 +704,6 @@ thead th {
 }
 tbody th { font-weight: 560; color: var(--text-strong); }
 
-/* ---------- Rules and tips ---------- */
-.rule-list, .tip-list {
-  margin: var(--s-6) 0 0;
-  padding: 0;
-  list-style: none;
-  max-width: 920px;
-}
-.rule-list > li, .tip-list > li {
-  position: relative;
-  padding: var(--s-5) 0;
-  border-top: 1px solid var(--hairline);
-}
-.list-item__title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
-  color: var(--text-strong);
-}
-.rule-list > li > * + *, .tip-list > li > * + * { margin-top: var(--s-2); }
-.rule-list p, .tip-list p, .rule-list .bullets, .tip-list .bullets { max-width: 68ch; color: var(--text-subtle); }
-
 .bullets { margin: var(--s-2) 0 0; padding-left: 1.25em; }
 .bullets li + li { margin-top: var(--s-1); }
 .bullets li::marker { color: var(--text-faint); }
