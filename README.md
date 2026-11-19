@@ -9,6 +9,7 @@ skills/
 ├── telegrafen-visual-design/SKILL.md
 ├── telegrafen-design-mockups/SKILL.md
 ├── telegrafen-design-components/SKILL.md
+├── telegrafen-equipment-captions/SKILL.md
 └── telegrafen-ux-writing/SKILL.md
 docs/                      # Skills guide (GitHub Pages)
 ├── index.html
@@ -22,6 +23,7 @@ docs/                      # Skills guide (GitHub Pages)
 - [Telegrafen visual design](skills/telegrafen-visual-design/SKILL.md) — Art-direct Telegrafen-governed designs so their hierarchy, composition, visual weight, typography, colour, imagery, motion, accessibility, and brand expression feel clear, premium, and distinctly Telenor.
 - [Telegrafen design mockups](skills/telegrafen-design-mockups/SKILL.md) — Create, update, and QA Telegrafen-native mockups and prototypes. Covers tokens, components, responsive typography and heading hierarchy, approved imagery, accessibility, conversion and ethical-UX review, and a dated TV and broadband product reference.
 - [Telegrafen component design](skills/telegrafen-design-components/SKILL.md) — Create, iterate, review, and finalize individual Telegrafen or Telenor components in Figma, including reusable typography contracts that respect their page context.
+- [Telegrafen equipment captions](skills/telegrafen-equipment-captions/SKILL.md) — Write Norwegian Bokmål captions and alt text for Telenor equipment images that meet WCAG 2.2 AA, including colour and colour-blindness descriptions. Draft v0.1.
 - [Telegrafen UX Writing](skills/telegrafen-ux-writing/SKILL.md) — Create, update, and QA Norwegian Bokmål UX microcopy for Telenor private-customer designs and interfaces.
 
 ## Use
@@ -41,6 +43,7 @@ Figma Resources skills are standalone. Figma currently invokes only the first sk
 | `/telegrafen-visual-design` | 1.1 |
 | `/telegrafen-design-mockups` | 2.4 |
 | `/telegrafen-design-components` | 1.4 |
+| `/telegrafen-equipment-captions` | 0.1 draft |
 | `/telegrafen-ux-writing` | 1.2 |
 
 ## Which skill should I use?
@@ -52,6 +55,7 @@ Choose the primary skill according to the artifact or responsibility at the cent
 | Art-direct or review visual hierarchy, composition, visual weight, premium quality, or Telenor brand expression | [Telegrafen visual design](skills/telegrafen-visual-design/SKILL.md) |
 | Create or update a screen, page, flow, product layout, mockup, or prototype | [Telegrafen design mockups](skills/telegrafen-design-mockups/SKILL.md) |
 | Create, iterate, repair, or finalize a reusable component and its properties, variants, states, and behavior | [Telegrafen component design](skills/telegrafen-design-components/SKILL.md) |
+| Write or QA captions and alt text for Telenor equipment images | [Telegrafen equipment captions](skills/telegrafen-equipment-captions/SKILL.md) |
 | Create, rewrite, directly update, or QA Norwegian Bokmål interface copy | [Telegrafen UX Writing](skills/telegrafen-ux-writing/SKILL.md) |
 
 When a task crosses responsibilities, use one skill per prompt and pass a clear handoff into the next step:
